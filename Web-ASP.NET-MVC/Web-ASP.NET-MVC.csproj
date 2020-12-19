@@ -137,6 +137,8 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\BannerController.cs" />
+    <Compile Include="Controllers\BikeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -144,6 +146,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
     <Content Include="Assets\admin\css\sb-admin-2.css" />
     <Content Include="Assets\admin\css\sb-admin-2.min.css" />
     <Content Include="Assets\admin\img\undraw_posting_photo.svg" />
@@ -1827,6 +1833,57 @@
     <Content Include="Assets\admin\vendor\jquery\jquery.min.js" />
     <Content Include="Assets\admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Assets\admin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Assets\user\css\animate.min.css" />
+    <Content Include="Assets\user\css\bootstrap.min.css" />
+    <Content Include="Assets\user\css\font-awesome.min.css" />
+    <Content Include="Assets\user\css\jquery-ui.css" />
+    <Content Include="Assets\user\css\jquery.fancybox.min.css" />
+    <Content Include="Assets\user\css\jquery.mCustomScrollbar.min.css" />
+    <Content Include="Assets\user\css\meanmenu.css" />
+    <Content Include="Assets\user\css\nice-select.css" />
+    <Content Include="Assets\user\css\normalize.css" />
+    <Content Include="Assets\user\css\owl.carousel.min.css" />
+    <Content Include="Assets\user\css\responsive.css" />
+    <Content Include="Assets\user\css\slick.css" />
+    <Content Include="Assets\user\css\style.css" />
+    <Content Include="Assets\user\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\user\images\about_us.png" />
+    <Content Include="Assets\user\images\about_us_2.png" />
+    <Content Include="Assets\user\images\banner_bg.png" />
+    <Content Include="Assets\user\images\blog1.png" />
+    <Content Include="Assets\user\images\blog2.png" />
+    <Content Include="Assets\user\images\blog_1.png" />
+    <Content Include="Assets\user\images\c1_icon.png" />
+    <Content Include="Assets\user\images\c2_icon.png" />
+    <Content Include="Assets\user\images\c3_icon.png" />
+    <Content Include="Assets\user\images\cross_blue.jpg" />
+    <Content Include="Assets\user\images\cross_blue.png" />
+    <Content Include="Assets\user\images\cross_orange.png" />
+    <Content Include="Assets\user\images\c_1.png" />
+    <Content Include="Assets\user\images\c_2.png" />
+    <Content Include="Assets\user\images\footer_blog.png" />
+    <Content Include="Assets\user\images\footer_logo.png" />
+    <Content Include="Assets\user\images\head_d.png" />
+    <Content Include="Assets\user\images\loading.gif" />
+    <Content Include="Assets\user\images\location_icon.png" />
+    <Content Include="Assets\user\images\location_point.png" />
+    <Content Include="Assets\user\images\logo.png" />
+    <Content Include="Assets\user\images\mail_icon.png" />
+    <Content Include="Assets\user\images\menu_icon.png" />
+    <Content Include="Assets\user\images\phone_icon.png" />
+    <Content Include="Assets\user\images\right_side_tag.png" />
+    <Content Include="Assets\user\images\search_icon.png" />
+    <Content Include="Assets\user\images\slider_1.png" />
+    <Content Include="Assets\user\images\slider_2.png" />
+    <Content Include="Assets\user\images\testimonial.png" />
+    <Content Include="Assets\user\images\testimonial_qoute.png" />
+    <Content Include="Assets\user\images\top_bg.png" />
+    <Content Include="Assets\user\js\bootstrap.bundle.js" />
+    <Content Include="Assets\user\js\custom.js" />
+    <Content Include="Assets\user\js\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Assets\user\js\jquery.min.js" />
+    <Content Include="Assets\user\js\jquery.validate.js" />
+    <Content Include="Assets\user\js\popper.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2016,6 +2073,11 @@
     <Content Include="Areas\Admin\Views\Shared\_LeftMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Register\Index.cshtml" />
+    <Content Include="Assets\user\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\user\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\user\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\user\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\user\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2041,11 +2103,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Bike\Index.cshtml" />
+    <Content Include="Views\Banner\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\BikeStore\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
