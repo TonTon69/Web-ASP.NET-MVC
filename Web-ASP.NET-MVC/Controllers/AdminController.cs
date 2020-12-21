@@ -9,7 +9,9 @@ namespace Web_ASP.NET_MVC.Controllers
 {
     public class AdminController : Controller
     {
+        dbShopFashionEntities db = new dbShopFashionEntities();
         // GET: Admin
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -20,32 +22,32 @@ namespace Web_ASP.NET_MVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(FormCollection collection)
+        public ActionResult Login(tbl_admin avm)
         {
-            var tendn = collection["username"];
-            var matkhau = collection["password"];
-            if (String.IsNullOrEmpty(tendn))
+            if (String.IsNullOrEmpty(avm.ad_username))
             {
                 ViewData["Loi1"] = "Vui lòng nhập tên đăng nhập";
             }
-            else if (String.IsNullOrEmpty(matkhau))
+            else if (String.IsNullOrEmpty(avm.ad_password))
             {
-                ViewData["Loi2"] = "Vui lòng nhập mật khẩu";
+                ViewData["Loi2"] = "Vui lòng nhập tên mật khẩu";
             }
             else
             {
-                Admin ad = db.Admins.SingleOrDefault(n => n.UserAdmin == tendn && n.PassAdmin == matkhau);
-                if(ad != null)
+                tbl_admin ad = db.tbl_admin.SingleOrDefault(x => x.ad_username == avm.ad_username && x.ad_password == avm.ad_password);
+                if (ad != null)
                 {
-                    Session["Taikhoanadmin"] = ad;
+                    Session["AdminId"] = ad.ad_id.ToString();
                     return RedirectToAction("Index", "Admin");
                 }
                 else
                 {
-                    ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                    ViewBag.error = "Tên đăng nhập hoặc mật khẩu không đúng!";
                 }
             }
             return View();
         }
     }
 }
+
+

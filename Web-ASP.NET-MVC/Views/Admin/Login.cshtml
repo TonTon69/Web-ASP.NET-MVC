@@ -1,8 +1,7 @@
-﻿
+﻿@model Web_ASP.NET_MVC.Models.tbl_admin
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,29 +42,23 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Đăng Nhập</h1>
                                     </div>
-                                    <h4 style="color: red; text-align: center">@ViewBag.Thongbao</h4>
-                                    <h4 style="color: red; text-align: center"></h4>
-                                    <form class="user">
-                                        @using (Html.BeginForm())
-                                        {
-                                            @Html.ValidationSummary(true)
+                                    @using (@Html.BeginForm())
+                                    {
+                                        <form class="user">
                                             <div class="form-group">
-                                                <input type="text" class="form-control form-control-user"
-                                                       name="username"
-                                                       id="exampleInputEmail" aria-describedby="emailHelp"
-                                                       placeholder="Tên tài khoản">
-                                                @ViewData["Loi1"]
+                                                @*<input type="text" class="form-control form-control-user" name="username" placeholder="Tên đăng nhập">*@
+                                                @Html.TextBoxFor(x => x.ad_username, new { @class = "form-control form-control-user", @placeholder = "Tên đăng nhập" })
                                             </div>
+                                            <span style="color: red">@Html.ValidationMessageFor(x => x.ad_username)</span>
                                             <div class="form-group">
-                                                <input type="password" class="form-control form-control-user"
-                                                       name="password"
-                                                       id="exampleInputPassword" placeholder="Mật khẩu">
-                                                @ViewData["Loi1"]
+                                                @*<input type="password" class="form-control form-control-user" name="password" placeholder="Mật khẩu">*@
+                                                @Html.PasswordFor(x => x.ad_password, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
                                             </div>
-
-                                            <button type="submit" class="btn btn-primary btn-user btn-block">
-                                                Đăng nhập
-                                            </button>
+                                            <span style="color: red">@Html.ValidationMessageFor(x => x.ad_password)</span>
+                                            <div class="form-group">
+                                                <p style="color: red">@ViewBag.error</p>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary btn-user btn-block">Đăng nhập</button>
 
                                             <hr>
                                             <a href="index.html" class="btn btn-google btn-user btn-block">
@@ -74,8 +67,8 @@
                                             <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                                 <i class="fab fa-facebook-f fa-fw"></i> Đăng ký với tài khoản Facebook
                                             </a>
-                                        }
-                                    </form>
+                                        </form>
+                                    }
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Quên Mật Khẩu?</a>
@@ -83,6 +76,7 @@
                                     <div class="text-center">
                                         <a class="small" href="/Admin/Register">Bạn chưa có tài khoản? Đăng ký</a>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -92,6 +86,14 @@
         </div>
     </div>
 
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
     <!-- Bootstrap core JavaScript-->
     <script src="~/Content/assets/vendor/jquery/jquery.min.js"></script>
     <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
