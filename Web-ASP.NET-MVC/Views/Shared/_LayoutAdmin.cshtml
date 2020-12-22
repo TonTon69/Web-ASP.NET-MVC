@@ -58,8 +58,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/Admin/products">Tất cả sản phẩm</a>
-                        <a class="collapse-item" href="/Admin/products/create">Thêm mới</a>
+                        @Html.ActionLink("Tất cả sản phẩm", "Fashion", "Admin", new { @class = "collapse-item" })
+                        @Html.ActionLink("Thêm mới", "Fashion", "Admin", new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>

@@ -45,16 +45,15 @@
                                     @using (@Html.BeginForm())
                                     {
                                         <form class="user">
+                                            <p style="color: red">@ViewData["error1"]</p>
                                             <div class="form-group">
                                                 @Html.TextBoxFor(x => x.ad_username, new { @class = "form-control form-control-user", @placeholder = "Tên đăng nhập" })
                                             </div>
-                                            <p style="color: red">@ViewBag.error1</p>
-                                            @*<span style="color: red">@Html.ValidationMessageFor(x => x.ad_username)</span>*@
+                                            <p style="color: red">@ViewData["error2"]</p>
                                             <div class="form-group">
                                                 @Html.PasswordFor(x => x.ad_password, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
                                             </div>
-                                            <p style="color: red">@ViewBag.error2</p>
-                                            @*<span style="color: red">@Html.ValidationMessageFor(x => x.ad_password)</span>*@
+                                            <p style="color: red">@ViewData["error3"]</p>
                                             <div class="form-group">
                                                 <p style="color: red">@ViewBag.error</p>
                                             </div>

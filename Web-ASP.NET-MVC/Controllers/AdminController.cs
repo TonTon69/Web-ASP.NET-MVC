@@ -16,6 +16,22 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             return View();
         }
+        public ActionResult Create()
+        {
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+            return View();
+        }
+        public ActionResult Fashion()
+        {
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+            return View(db.tbl_product.ToList());
+        }
         [HttpGet]
         public ActionResult Login()
         {
@@ -24,13 +40,17 @@ namespace Web_ASP.NET_MVC.Controllers
         [HttpPost]
         public ActionResult Login(tbl_admin avm)
         {
-            if (String.IsNullOrEmpty(avm.ad_username))
+            if (String.IsNullOrEmpty(avm.ad_username) && String.IsNullOrEmpty(avm.ad_password))
             {
-                ViewBag.error1 = "Vui lòng nhập tên đăng nhập";
+                ViewData["error1"] = "Vui lòng nhập tên đăng nhập và mật khẩu";
+            }
+            else if (String.IsNullOrEmpty(avm.ad_username))
+            {
+                ViewData["error2"] = "Vui lòng nhập tên đăng nhập";
             }
             else if (String.IsNullOrEmpty(avm.ad_password))
             {
-                ViewBag.error2 = "Vui lòng nhập tên mật khẩu";
+                ViewData["error3"] = "Vui lòng nhập mật khẩu";
             }
             else
             {
@@ -47,14 +67,7 @@ namespace Web_ASP.NET_MVC.Controllers
             }
             return View();
         }
-        public ActionResult Create()
-        {
-            if(Session["AdminId"] == null)
-            {
-                return RedirectToAction("Login");
-            }
-            return View();
-        }
+        
     }
 }
 
