@@ -19,15 +19,8 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             return View();
         }
-        public ActionResult Create()
-        {
-            if (Session["AdminId"] == null)
-            {
-                return RedirectToAction("Login");
-            }
-            return View();
-        }
-        public ActionResult Fashion(int ?page)
+
+        public ActionResult Products(int? page)
         {
             if (Session["AdminId"] == null)
             {
@@ -35,7 +28,24 @@ namespace Web_ASP.NET_MVC.Controllers
             }
             int pageNumber = (page ?? 1);
             int pageSize = 7;
-            return View(db.tbl_product.ToList().OrderBy(n=>n.pro_id).ToPagedList(pageNumber, pageSize));
+            return View(db.tbl_product.ToList().OrderBy(n => n.pro_id).ToPagedList(pageNumber, pageSize));
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+            
+            var cateList = db.tbl_category.ToList();
+            var adList = db.tbl_admin.ToList();
+            var ctyList = db.tbl_company.ToList();
+            ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
+            ViewBag.AdList = new SelectList(adList, "ad_id", "id_username");
+            ViewBag.CtyList = new SelectList(ctyList, "cty_id", "cty_name");
+
+            return View();
         }
         [HttpGet]
         public ActionResult Login()
@@ -72,7 +82,7 @@ namespace Web_ASP.NET_MVC.Controllers
             }
             return View();
         }
-        
+
     }
 }
 

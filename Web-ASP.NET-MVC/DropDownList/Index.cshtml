@@ -1,0 +1,43 @@
+﻿<div class="jumbotron">
+    <p>
+        .........Add this to your Controller:
+        ........Here the variable will get the data from the DB and select the value and text to show.
+        
+        Controller:
+        var DrugNDC = db.DrugClaims.Where(m => m.PatientNo == PatientNo).Select(p => new SelectListItem
+        {
+        Value = p.NDC,
+        Text = p.DrugName
+        });
+        
+
+        ViewBag.DrugNDC = new SelectList(DrugNDC, "Value", "Text"); 
+
+    </p>
+    
+    
+    ....................In the View use the following to show the dropdown:
+    
+    <li class="dropdown">
+        @Html.DropDownListFor(DrugNDC => Model.NDC,
+            new SelectList(ViewBag.DrugNDC, "Value", "Text", Model),
+            "Please Select a Drug", new { @class = "form-control border-input ddlLiaisons" })
+    </li>
+    
+    ...............This will pass back the Model.NDC back to the Controller if your using @Html.BeginForm( ) or Ajax.BeginForm().
+    
+    ..................This will also work with Foreach Loop with the DropDownListFor(NDC => item.NDC)
+    
+    
+    If you are not in a Loop and just want to send back the data then- 
+    <ul class="nav nav-tabs">
+        <li class="dropdown">
+            @Html.DropDownList("inProgressReason",
+                new SelectList(ViewBag.InProgressReason, "Value", "Text", Model),
+                "In Progress Reason", new {@class = "form-control border-input", id = "d1"})
+        </li>
+    </ul>
+    ......................Here the data that will be passed back will be "inProgressReason"
+    
+
+</div>
