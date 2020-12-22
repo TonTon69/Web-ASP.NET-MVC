@@ -19,6 +19,7 @@ namespace Web_ASP.NET_MVC.Models
         public int pro_price { get; set; }
         public string pro_des { get; set; }
         public string pro_image { get; set; }
+        public int pro_slton { get; set; }
         public Nullable<int> pro_fk_cat { get; set; }
         public Nullable<int> pro_fk_user { get; set; }
     
