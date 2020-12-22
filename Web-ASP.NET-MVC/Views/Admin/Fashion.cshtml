@@ -1,4 +1,19 @@
-﻿@model IEnumerable<Web_ASP.NET_MVC.Models.tbl_product>
+﻿@using Web_ASP.NET_MVC.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<Web_ASP.NET_MVC.Models.tbl_product>
+
+@*Thuộc tính mô tả nội dung quá dài, do đó sẽ sử dụng một Helper HTML tùy chỉnh cho phép dễ dàng cắt những thuộc tính này với độ dài phù hợp.*@
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
 
 @{
     ViewBag.Title = "Fashion";
@@ -16,7 +31,7 @@
         <th>Tên</th>
         <th>Giá</th>
         <th>Mô tả</th>
-        <th>Ảnh</th> 
+        <th>Ảnh</th>
         <th></th>
     </tr>
 
@@ -33,17 +48,43 @@
                 @Html.DisplayFor(modelItem => item.pro_price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.pro_des)
+                @Truncate(item.pro_des, 100)
             </td>
             <td>
+                @*<img src="@Url.Content("~/Image/" + item.pro_image)/>*@
                 @Html.DisplayFor(modelItem => item.pro_image)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) 
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) 
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Sửa", "Edit", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Chi tiết", "Details", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Xóa", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
     }
 
 </table>
+
+
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount:
+<div aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("tbl_product", new { page = page }))
+</div>

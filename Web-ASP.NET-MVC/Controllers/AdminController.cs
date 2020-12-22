@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using Web_ASP.NET_MVC.Models;
 
+using PagedList;
+using PagedList.Mvc;
+
 namespace Web_ASP.NET_MVC.Controllers
 {
     public class AdminController : Controller
@@ -24,13 +27,15 @@ namespace Web_ASP.NET_MVC.Controllers
             }
             return View();
         }
-        public ActionResult Fashion()
+        public ActionResult Fashion(int ?page)
         {
             if (Session["AdminId"] == null)
             {
                 return RedirectToAction("Login");
             }
-            return View(db.tbl_product.ToList());
+            int pageNumber = (page ?? 1);
+            int pageSize = 7;
+            return View(db.tbl_product.ToList().OrderBy(n=>n.pro_id).ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult Login()
