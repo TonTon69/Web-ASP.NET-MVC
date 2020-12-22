@@ -24,7 +24,8 @@ namespace Web_ASP.NET_MVC.Models
         public Nullable<int> pro_fk_user { get; set; }
         public Nullable<int> pro_fk_ad { get; set; }
         public Nullable<int> pro_fk_cty { get; set; }
-    
+        public Nullable<int> pro_day_update { get; set; }
+
         public virtual tbl_admin tbl_admin { get; set; }
         public virtual tbl_category tbl_category { get; set; }
         public virtual tbl_company tbl_company { get; set; }

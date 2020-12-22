@@ -7,6 +7,7 @@ using Web_ASP.NET_MVC.Models;
 
 using PagedList;
 using PagedList.Mvc;
+using System.IO;
 
 namespace Web_ASP.NET_MVC.Controllers
 {
@@ -30,21 +31,38 @@ namespace Web_ASP.NET_MVC.Controllers
             int pageSize = 7;
             return View(db.tbl_product.ToList().OrderBy(n => n.pro_id).ToPagedList(pageNumber, pageSize));
         }
-        [HttpGet]
-        public ActionResult Create()
+       
+        [HttpPost]
+        public ActionResult Create(tbl_product pro, HttpPostedFileBase fileUpload)
         {
+            //Muốn thêm mới trước hết phải login
             if (Session["AdminId"] == null)
             {
                 return RedirectToAction("Login");
             }
-            
+
+            //Luu ten file
+            var fileName = Path.GetFileName(fileUpload.FileName);
+            //Luu duong dan cua file
+            var path = Path.Combine(Server.MapPath("~/ImageProduct"), fileName);
+            //Kiem tra image ton tai?
+            if (System.IO.File.Exists(path))
+            {
+                ViewBag.message = "Hình ảnh đã tồn tại";
+            }
+            else
+            {
+                //Luu anh vao duong dan
+                fileUpload.SaveAs(path);
+            }
+
+            //DropDownList 
             var cateList = db.tbl_category.ToList();
             var adList = db.tbl_admin.ToList();
             var ctyList = db.tbl_company.ToList();
             ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
             ViewBag.AdList = new SelectList(adList, "ad_id", "id_username");
             ViewBag.CtyList = new SelectList(ctyList, "cty_id", "cty_name");
-
             return View();
         }
         [HttpGet]

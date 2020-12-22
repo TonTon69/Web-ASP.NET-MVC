@@ -8,19 +8,13 @@
 <div>
     @Html.ActionLink("Quay về Danh sách sản phẩm", "Products")
 </div>
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("Create", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.pro_id, "ID", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.pro_id, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.pro_id, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
         <div class="form-group">
             @Html.LabelFor(model => model.pro_name, "Tên sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -45,7 +39,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.pro_image, "Ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.pro_image, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="file" name="fileUpload"/>
                 @Html.ValidationMessageFor(model => model.pro_image, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -57,6 +51,13 @@
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.pro_day_update, "Ngày cập nhật", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="pro_day_update" />
+                @Html.ValidationMessageFor(model => model.pro_day_update, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.pro_fk_cat, "Thể loại", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.pro_fk_cat, ViewBag.CateList as SelectList, "-- Chọn thể loại --", new { @class = "form-control" })
@@ -64,12 +65,12 @@
 
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.pro_fk_cty, "Công ty", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.pro_fk_cty, ViewBag.CtyList as SelectList, "-- Chọn công ty --", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.pro_fk_cty, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.pro_fk_cty, "Công ty", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.pro_fk_cty, ViewBag.CtyList as SelectList, "-- Chọn công ty --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.pro_fk_cty, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
     <div class="form-group">
