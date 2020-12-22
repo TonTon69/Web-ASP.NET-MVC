@@ -12,7 +12,7 @@ namespace Web_ASP.NET_MVC.Controllers
 {
     public class AdminController : Controller
     {
-        dbShopFashionEntities db = new dbShopFashionEntities();
+        QuanLyShopFashionEntities db = new QuanLyShopFashionEntities();
         // GET: Admin
         [HttpGet]
         public ActionResult Index()

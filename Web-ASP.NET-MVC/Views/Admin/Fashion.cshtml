@@ -63,9 +63,9 @@
                 @Html.DisplayFor(modelItem => item.tbl_category.cat_name)
             </td>
             <td>
-                @Html.ActionLink("Sửa", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Chi tiết", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Xóa", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Sửa", "Edit", new { id = item.pro_id }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.pro_id }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.pro_id })
             </td>
         </tr>
     }

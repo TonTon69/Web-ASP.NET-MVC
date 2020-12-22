@@ -4,14 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e44a64de271b40cd8559247512bb1a7f" Name="Diagram1">
-        <EntityTypeShape EntityType="dbShopFashionModel.tbl_admin" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbShopFashionModel.tbl_category" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbShopFashionModel.tbl_product" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbShopFashionModel.tbl_user" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <AssociationConnector Association="dbShopFashionModel.FK__tbl_categ__cat_f__267ABA7A" ManuallyRouted="false" />
-        <AssociationConnector Association="dbShopFashionModel.FK__tbl_produ__pro_f__29572725" ManuallyRouted="false" />
-        <AssociationConnector Association="dbShopFashionModel.FK__tbl_produ__pro_f__2A4B4B5E" ManuallyRouted="false" />
+      <Diagram DiagramId="85b93a8c9e2d4d24b1e82109572c43dd" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyShopFashionModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyShopFashionModel.tbl_admin" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyShopFashionModel.tbl_category" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyShopFashionModel.tbl_company" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyShopFashionModel.tbl_product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyShopFashionModel.tbl_user" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyShopFashionModel.FK__tbl_produ__pro_f__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyShopFashionModel.FK__tbl_produ__pro_f__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyShopFashionModel.FK__tbl_produ__pro_f__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyShopFashionModel.FK__tbl_produ__pro_f__398D8EEE" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

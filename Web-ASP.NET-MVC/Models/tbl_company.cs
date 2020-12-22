@@ -12,20 +12,19 @@ namespace Web_ASP.NET_MVC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_user
+    public partial class tbl_company
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_user()
+        public tbl_company()
         {
             this.tbl_product = new HashSet<tbl_product>();
         }
     
-        public int u_id { get; set; }
-        public string u_name { get; set; }
-        public string u_email { get; set; }
-        public string u_password { get; set; }
-        public string u_contact { get; set; }
-        public string u_phone { get; set; }
+        public int cty_id { get; set; }
+        public string cty_name { get; set; }
+        public string cty_email { get; set; }
+        public string cty_contact { get; set; }
+        public string cty_phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_product> tbl_product { get; set; }
