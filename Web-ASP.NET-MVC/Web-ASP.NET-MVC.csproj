@@ -177,6 +177,7 @@
   <ItemGroup>
     <Content Include="Content\assets\css\sb-admin-2.css" />
     <Content Include="Content\assets\css\sb-admin-2.min.css" />
+    <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\img\undraw_posting_photo.svg" />
     <Content Include="Content\assets\img\undraw_profile.svg" />
     <Content Include="Content\assets\img\undraw_profile_1.svg" />
@@ -187,8 +188,17 @@
     <Content Include="Content\assets\js\demo\chart-bar-demo.js" />
     <Content Include="Content\assets\js\demo\chart-pie-demo.js" />
     <Content Include="Content\assets\js\demo\datatables-demo.js" />
+    <Content Include="Content\assets\js\main.js" />
     <Content Include="Content\assets\js\sb-admin-2.js" />
     <Content Include="Content\assets\js\sb-admin-2.min.js" />
+    <Content Include="Content\assets\lib\easing\easing.js" />
+    <Content Include="Content\assets\lib\easing\easing.min.js" />
+    <Content Include="Content\assets\lib\slick\ajax-loader.gif" />
+    <Content Include="Content\assets\lib\slick\fonts\slick.svg" />
+    <Content Include="Content\assets\lib\slick\slick-theme.css" />
+    <Content Include="Content\assets\lib\slick\slick.css" />
+    <Content Include="Content\assets\lib\slick\slick.js" />
+    <Content Include="Content\assets\lib\slick\slick.min.js" />
     <Content Include="Content\assets\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Content\assets\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Content\assets\vendor\bootstrap\js\bootstrap.js" />
@@ -2057,6 +2067,14 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\assets\lib\slick\config.rb" />
+    <Content Include="Content\assets\lib\slick\fonts\slick.eot" />
+    <Content Include="Content\assets\lib\slick\fonts\slick.ttf" />
+    <Content Include="Content\assets\lib\slick\fonts\slick.woff" />
+    <Content Include="Content\assets\lib\slick\slick-theme.less" />
+    <Content Include="Content\assets\lib\slick\slick-theme.scss" />
+    <Content Include="Content\assets\lib\slick\slick.less" />
+    <Content Include="Content\assets\lib\slick\slick.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2085,6 +2103,7 @@
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,11 +26,11 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             if (String.IsNullOrEmpty(avm.ad_username))
             {
-                ViewData["Loi1"] = "Vui lòng nhập tên đăng nhập";
+                ViewBag.error1 = "Vui lòng nhập tên đăng nhập";
             }
             else if (String.IsNullOrEmpty(avm.ad_password))
             {
-                ViewData["Loi2"] = "Vui lòng nhập tên mật khẩu";
+                ViewBag.error2 = "Vui lòng nhập tên mật khẩu";
             }
             else
             {
@@ -44,6 +44,14 @@ namespace Web_ASP.NET_MVC.Controllers
                 {
                     ViewBag.error = "Tên đăng nhập hoặc mật khẩu không đúng!";
                 }
+            }
+            return View();
+        }
+        public ActionResult Create()
+        {
+            if(Session["AdminId"] == null)
+            {
+                return RedirectToAction("Login");
             }
             return View();
         }

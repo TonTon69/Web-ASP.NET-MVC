@@ -46,15 +46,15 @@
                                     {
                                         <form class="user">
                                             <div class="form-group">
-                                                @*<input type="text" class="form-control form-control-user" name="username" placeholder="Tên đăng nhập">*@
                                                 @Html.TextBoxFor(x => x.ad_username, new { @class = "form-control form-control-user", @placeholder = "Tên đăng nhập" })
                                             </div>
-                                            <span style="color: red">@Html.ValidationMessageFor(x => x.ad_username)</span>
+                                            <p style="color: red">@ViewBag.error1</p>
+                                            @*<span style="color: red">@Html.ValidationMessageFor(x => x.ad_username)</span>*@
                                             <div class="form-group">
-                                                @*<input type="password" class="form-control form-control-user" name="password" placeholder="Mật khẩu">*@
                                                 @Html.PasswordFor(x => x.ad_password, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
                                             </div>
-                                            <span style="color: red">@Html.ValidationMessageFor(x => x.ad_password)</span>
+                                            <p style="color: red">@ViewBag.error2</p>
+                                            @*<span style="color: red">@Html.ValidationMessageFor(x => x.ad_password)</span>*@
                                             <div class="form-group">
                                                 <p style="color: red">@ViewBag.error</p>
                                             </div>
