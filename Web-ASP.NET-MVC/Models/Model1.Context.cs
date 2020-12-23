@@ -31,5 +31,7 @@ namespace Web_ASP.NET_MVC.Models
         public virtual DbSet<tbl_company> tbl_company { get; set; }
         public virtual DbSet<tbl_product> tbl_product { get; set; }
         public virtual DbSet<tbl_user> tbl_user { get; set; }
+
+     
     }
 }
