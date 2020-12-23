@@ -7,6 +7,7 @@ using Web_ASP.NET_MVC.Models;
 using PagedList;
 using PagedList.Mvc;
 using System.IO;
+using System.Data.Entity;
 
 namespace Web_ASP.NET_MVC.Controllers
 {
@@ -79,45 +80,49 @@ namespace Web_ASP.NET_MVC.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(tbl_product pro, HttpPostedFileBase fileUpload)
+        public ActionResult Create(tbl_product pro /*HttpPostedFileBase fileUpload*/)
         {
-            if (fileUpload == null)
-            {
-                ViewBag.message = "Vui lòng chọn ảnh";
-                return View();
-            }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    //Luu ten file
-                    var fileName = Path.GetFileName(fileUpload.FileName);
-                    //Luu duong dan cua file
-                    var path = Path.Combine(Server.MapPath("~/ImageProduct"), fileName);
-                    //Kiem tra image ton tai?
-                    if (System.IO.File.Exists(path))
-                    {
-                        ViewBag.message = "Hình ảnh đã tồn tại";
-                    }
-                    else
-                    {
-                        //Luu anh vao duong dan
-                        fileUpload.SaveAs(path);
-                    }
-                    pro.pro_image = fileName;
-                    //Luu vao CSDL
-                    db.tbl_product.Add(pro);
-                    db.SaveChanges();
-                }
-                return RedirectToAction("Products");
-            }
+
+            db.tbl_product.Add(pro);
+            db.SaveChanges();
+            return RedirectToAction("Products");
+            //if (fileUpload == null)
+            //{
+            //    ViewBag.message = "Vui lòng chọn ảnh";
+            //    return View();
+            //}
+            //else
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        //Luu ten file
+            //        var fileName = Path.GetFileName(fileUpload.FileName);
+            //        //Luu duong dan cua file
+            //        var path = Path.Combine(Server.MapPath("~/ImageProduct"), fileName);
+            //        //Kiem tra image ton tai?
+            //        if (System.IO.File.Exists(path))
+            //        {
+            //            ViewBag.message = "Hình ảnh đã tồn tại";
+            //        }
+            //        else
+            //        {
+            //            //Luu anh vao duong dan
+            //            fileUpload.SaveAs(path);
+            //        }
+            //        pro.pro_image = fileName;
+            //        //Luu vao CSDL
+            //        db.tbl_product.Add(pro);
+            //        db.SaveChanges();
+            //    }
+            //    return RedirectToAction("Products");
+            //}
         }
         [HttpGet]
         public ActionResult Details(int id)
         {
             //Lay ra doi tuong san pham theo ID
             tbl_product pro = db.tbl_product.SingleOrDefault(x => x.pro_id == id);
-            if(pro == null)
+            if (pro == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -128,6 +133,33 @@ namespace Web_ASP.NET_MVC.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            //DropDownList 
+            var cateList = db.tbl_category.ToList();
+            var ctyList = db.tbl_company.ToList();
+            ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
+            ViewBag.CtyList = new SelectList(ctyList, "cty_id", "cty_name");
+
+            tbl_product pro = db.tbl_product.FirstOrDefault(x => x.pro_id == id);
+            if (pro == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(pro);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(tbl_product pro, int id)
+        {
+            pro = db.tbl_product.Find(id);
+            db.Entry(pro).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Products");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
             tbl_product pro = db.tbl_product.SingleOrDefault(x => x.pro_id == id);
             if (pro == null)
             {
@@ -135,6 +167,14 @@ namespace Web_ASP.NET_MVC.Controllers
                 return null;
             }
             return View(pro);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult Delete(tbl_product pro, int id)
+        {
+            pro = db.tbl_product.Find(id);
+            db.tbl_product.Remove(pro);
+            db.SaveChanges();
+            return RedirectToAction("Products");
         }
     }
 }
