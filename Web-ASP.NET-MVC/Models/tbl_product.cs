@@ -11,7 +11,7 @@ namespace Web_ASP.NET_MVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class tbl_product
     {
         public int pro_id { get; set; }

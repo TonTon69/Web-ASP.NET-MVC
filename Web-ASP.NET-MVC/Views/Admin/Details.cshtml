@@ -1,0 +1,51 @@
+﻿@model Web_ASP.NET_MVC.Models.tbl_product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thông Tin Chi Tiết Sản Phẩm</h2>
+<p>
+    @Html.ActionLink("Quay về Danh sách sản phẩm", "Products")
+</p>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Tên:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.pro_name)
+        </dd>
+        <dt>Giá:</dt>
+        <dd>
+            @String.Format("{0:0,0}", Model.pro_price) VNĐ
+        </dd>
+        <dt>Mô tả:</dt>
+        <dd style="width: 700px; text-align: justify">
+            @Html.DisplayFor(model => model.pro_des)
+        </dd>
+        <dt>Ảnh:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.pro_image)
+        </dd>
+        <dt>Số lượng tồn:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.pro_slton)
+        </dd>
+        <dt>Thể loại:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.tbl_category.cat_name)
+        </dd>
+        <dt>Công ty:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.tbl_company.cty_name)
+        </dd>
+        <dt>Ngày cập nhật:</dt>
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}", Model.pro_day_update)
+        </dd>
+    </dl>
+    <br />
+    <br />
+
+</div>

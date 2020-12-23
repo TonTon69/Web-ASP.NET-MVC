@@ -19,13 +19,6 @@ namespace Web_ASP.NET_MVC
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "Web_ASP.NET_MVC.Controllers" }
             );
-
-            //routes.MapRoute(
-            //    name: "Admin",
-            //    url: "admin/{controller}/{action}/{id}",
-            //    defaults: new { controller = "Admin", action = "Index", id = UrlParameter.Optional },
-            //    namespaces: new[] { "Web_ASP.NET_MVC.Controllers" }
-            //);
         }
     }
 }

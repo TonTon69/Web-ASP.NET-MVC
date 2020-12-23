@@ -22,10 +22,10 @@ namespace Web_ASP.NET_MVC.Controllers
 
         public ActionResult Products(int? page)
         {
-            if (Session["AdminId"] == null)
-            {
-                return RedirectToAction("Login");
-            }
+            //if (Session["AdminId"] == null)
+            //{
+            //    return RedirectToAction("Login");
+            //}
             int pageNumber = (page ?? 1);
             int pageSize = 7;
             return View(db.tbl_product.ToList().OrderBy(n => n.pro_id).ToPagedList(pageNumber, pageSize));
@@ -80,7 +80,7 @@ namespace Web_ASP.NET_MVC.Controllers
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Create(tbl_product pro, HttpPostedFileBase fileUpload)
-        {           
+        {
             if (fileUpload == null)
             {
                 ViewBag.message = "Vui lòng chọn ảnh";
@@ -111,6 +111,30 @@ namespace Web_ASP.NET_MVC.Controllers
                 }
                 return RedirectToAction("Products");
             }
+        }
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            //Lay ra doi tuong san pham theo ID
+            tbl_product pro = db.tbl_product.SingleOrDefault(x => x.pro_id == id);
+            if(pro == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(pro);
+
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            tbl_product pro = db.tbl_product.SingleOrDefault(x => x.pro_id == id);
+            if (pro == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(pro);
         }
     }
 }
