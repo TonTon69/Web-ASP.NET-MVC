@@ -49,7 +49,8 @@
                 @Html.DisplayFor(modelItem => item.pro_name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.pro_price)
+                @*@Html.DisplayFor(modelItem => item.pro_price)*@
+                @String.Format("{0:0,0}", item.pro_price) VNĐ
             </td>
             <td style="width: 300px">
                 @Truncate(item.pro_des, 100)

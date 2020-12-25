@@ -8,6 +8,7 @@ using PagedList;
 using PagedList.Mvc;
 using System.IO;
 using System.Data.Entity;
+using System.Net;
 
 namespace Web_ASP.NET_MVC.Controllers
 {
@@ -79,12 +80,14 @@ namespace Web_ASP.NET_MVC.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(tbl_product pro /*HttpPostedFileBase fileUpload*/)
         {
-
-            db.tbl_product.Add(pro);
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                db.tbl_product.Add(pro);
+                db.SaveChanges();
+            }
             return RedirectToAction("Products");
             //if (fileUpload == null)
             //{
@@ -131,7 +134,7 @@ namespace Web_ASP.NET_MVC.Controllers
 
         }
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
             //DropDownList 
             var cateList = db.tbl_category.ToList();
@@ -139,39 +142,50 @@ namespace Web_ASP.NET_MVC.Controllers
             ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
             ViewBag.CtyList = new SelectList(ctyList, "cty_id", "cty_name");
 
-            tbl_product pro = db.tbl_product.FirstOrDefault(x => x.pro_id == id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbl_product pro = db.tbl_product.Find(id);
             if (pro == null)
             {
-                Response.StatusCode = 404;
-                return null;
+                return HttpNotFound();
             }
             return View(pro);
         }
 
-        [HttpPost]
-        public ActionResult Edit(tbl_product pro, int id)
+        [HttpPost, ActionName("Edit")]
+        public ActionResult Edit(int id)
         {
-            pro = db.tbl_product.Find(id);
-            db.Entry(pro).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Products");
+            var pro = db.tbl_product.Find(id);
+            if (pro == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (pro != null)
+            {
+                db.Entry(pro).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Products");
+
+            }
+            return View(pro);
         }
 
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            tbl_product pro = db.tbl_product.SingleOrDefault(x => x.pro_id == id);
+            tbl_product pro = db.tbl_product.Find(id);
             if (pro == null)
             {
-                Response.StatusCode = 404;
-                return null;
+                return HttpNotFound();
             }
             return View(pro);
         }
         [HttpPost, ActionName("Delete")]
-        public ActionResult Delete(tbl_product pro, int id)
+        public ActionResult Delete(int id)
         {
-            pro = db.tbl_product.Find(id);
+            tbl_product pro = db.tbl_product.Find(id);
             db.tbl_product.Remove(pro);
             db.SaveChanges();
             return RedirectToAction("Products");
