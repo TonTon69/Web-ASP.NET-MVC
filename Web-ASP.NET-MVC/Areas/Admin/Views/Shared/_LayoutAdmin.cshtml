@@ -51,33 +51,45 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuProducts"
+                   aria-expanded="true" aria-controls="menuProducts">
                     <i class="fas fa-fw fa-tshirt"></i>
                     <span>Sản phẩm</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="menuProducts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @Html.ActionLink("Tất cả sản phẩm", "Products", "Admin", new { @class = "collapse-item" })
+                        @Html.ActionLink("Tất cả sản phẩm", "Index", "Product", new { @class = "collapse-item" })
+                        @Html.ActionLink("Thêm mới", "Create", "Product", new { @class = "collapse-item" })
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuCategorys"
+                   aria-expanded="true" aria-controls="menuCategorys">
+                    <i class="fas fa-fw fa-bars"></i>
+                    <span>Thể loại</span>
+                </a>
+                <div id="menuCategorys" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        @Html.ActionLink("Tất cả thể loại", "Categorys", "Admin", new { @class = "collapse-item" })
                         @Html.ActionLink("Thêm mới", "Create", "Admin", new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                   aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuUsers"
+                   aria-expanded="true" aria-controls="menuUsers">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Thành viên</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="menuUsers" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Tất cả người dùng</a>
-                        <a class="collapse-item" href="utilities-border.html">Thêm mới</a>
+                        @Html.ActionLink("Tất cả thành viên", "Users", "Admin", new { @class = "collapse-item" })
+                        @Html.ActionLink("Thêm mới", "Create", "Admin", new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -85,7 +97,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                    aria-expanded="true" aria-controls="collapsePages">
@@ -104,18 +115,18 @@
 
             <!-- Nav Item - Charts -->
             <!--<li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
-                </a>
-            </li>-->
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Charts</span>
+        </a>
+    </li>-->
             <!-- Nav Item - Tables -->
             <!--<li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span>
-                </a>
-            </li>-->
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tables</span>
+        </a>
+    </li>-->
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -407,7 +418,7 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
    
     @*TinyECE*@
-    <script>
+    @*<script>
         tinymce.init({
             selector: 'textarea',
             plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
@@ -416,7 +427,7 @@
             tinycomments_mode: 'embedded',
             tinycomments_author: 'Author name',
         });
-    </script>
+    </script>*@
 </body>
 
 </html>

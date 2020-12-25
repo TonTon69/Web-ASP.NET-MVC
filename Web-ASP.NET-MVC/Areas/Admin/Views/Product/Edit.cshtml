@@ -2,12 +2,12 @@
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Chỉnh Sửa Thông Tin Sản Phẩm</h2>
 
-@using (Html.BeginForm("Edit", "Admin", FormMethod.Post))
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -32,7 +32,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.pro_des, "Mô tả", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <textarea name="Mota">@Model.pro_des</textarea>
+                <textarea name="pro_des">@Model.pro_des</textarea>
                 @Html.ValidationMessageFor(model => model.pro_des, "", new { @class = "text-danger" })
             </div>
         </div>

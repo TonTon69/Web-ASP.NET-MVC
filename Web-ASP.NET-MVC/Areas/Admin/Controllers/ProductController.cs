@@ -10,19 +10,12 @@ using System.IO;
 using System.Data.Entity;
 using System.Net;
 
-namespace Web_ASP.NET_MVC.Controllers
+namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    public class ProductController : Controller
     {
         QuanLyShopFashionEntities db = new QuanLyShopFashionEntities();
-        // GET: Admin
-        [HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Products(int? page)
+        public ActionResult Index(int? page)
         {
             //if (Session["AdminId"] == null)
             //{
@@ -31,42 +24,6 @@ namespace Web_ASP.NET_MVC.Controllers
             int pageNumber = (page ?? 1);
             int pageSize = 7;
             return View(db.tbl_product.ToList().OrderBy(n => n.pro_id).ToPagedList(pageNumber, pageSize));
-        }
-
-        [HttpGet]
-        public ActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Login(tbl_admin avm)
-        {
-            if (String.IsNullOrEmpty(avm.ad_username) && String.IsNullOrEmpty(avm.ad_password))
-            {
-                ViewData["error1"] = "Vui lòng nhập tên đăng nhập và mật khẩu";
-            }
-            else if (String.IsNullOrEmpty(avm.ad_username))
-            {
-                ViewData["error2"] = "Vui lòng nhập tên đăng nhập";
-            }
-            else if (String.IsNullOrEmpty(avm.ad_password))
-            {
-                ViewData["error3"] = "Vui lòng nhập mật khẩu";
-            }
-            else
-            {
-                tbl_admin ad = db.tbl_admin.SingleOrDefault(x => x.ad_username == avm.ad_username && x.ad_password == avm.ad_password);
-                if (ad != null)
-                {
-                    Session["AdminId"] = ad.ad_id.ToString();
-                    return RedirectToAction("Index", "Admin");
-                }
-                else
-                {
-                    ViewBag.error = "Tên đăng nhập hoặc mật khẩu không đúng!";
-                }
-            }
-            return View();
         }
         [HttpGet]
         public ActionResult Create()
@@ -81,14 +38,22 @@ namespace Web_ASP.NET_MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(tbl_product pro /*HttpPostedFileBase fileUpload*/)
+        public ActionResult Create(tbl_product pro)
         {
             if (ModelState.IsValid)
             {
-                db.tbl_product.Add(pro);
+                tbl_product obj = new tbl_product();
+                obj.pro_name = pro.pro_name;
+                obj.pro_price = pro.pro_price;
+                obj.pro_des = pro.pro_des;
+                obj.pro_image = pro.pro_image;
+                obj.pro_slton = pro.pro_slton;
+                obj.pro_day_update = pro.pro_day_update;
+                db.tbl_product.Add(obj);
                 db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Products");
+            return View(pro);
             //if (fileUpload == null)
             //{
             //    ViewBag.message = "Vui lòng chọn ảnh";
@@ -117,31 +82,12 @@ namespace Web_ASP.NET_MVC.Controllers
             //        db.tbl_product.Add(pro);
             //        db.SaveChanges();
             //    }
-            //    return RedirectToAction("Products");
+            //    return RedirectToAction("Index");
             //}
         }
         [HttpGet]
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            //Lay ra doi tuong san pham theo ID
-            tbl_product pro = db.tbl_product.SingleOrDefault(x => x.pro_id == id);
-            if (pro == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }
-            return View(pro);
-
-        }
-        [HttpGet]
-        public ActionResult Edit(int? id)
-        {
-            //DropDownList 
-            var cateList = db.tbl_category.ToList();
-            var ctyList = db.tbl_company.ToList();
-            ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
-            ViewBag.CtyList = new SelectList(ctyList, "cty_id", "cty_name");
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -152,24 +98,61 @@ namespace Web_ASP.NET_MVC.Controllers
                 return HttpNotFound();
             }
             return View(pro);
+
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            tbl_product pro = db.tbl_product.Find(id);
+            if (pro == null)
+            {
+                return HttpNotFound();
+            }
+            //DropDownList 
+            var cateList = db.tbl_category.ToList();
+            var ctyList = db.tbl_company.ToList();
+            ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
+            ViewBag.CtyList = new SelectList(ctyList, "cty_id", "cty_name");
+            return View(pro);
         }
 
         [HttpPost, ActionName("Edit")]
-        public ActionResult Edit(int id)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(tbl_product pro)
         {
-            var pro = db.tbl_product.Find(id);
-            if (pro == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            if (pro != null)
-            {
-                db.Entry(pro).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Products");
+            //DropDownList 
+            var cateList = db.tbl_category.ToList();
+            var ctyList = db.tbl_company.ToList();
+            ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
+            ViewBag.CtyList = new SelectList(ctyList, "cty_id", "cty_name");
 
+            tbl_product obj = new tbl_product();
+            if (ModelState.IsValid)
+            {
+                obj.pro_name = pro.pro_name;
+                obj.pro_price = pro.pro_price;
+                obj.pro_des = pro.pro_des;
+                obj.pro_image = pro.pro_image;
+                obj.pro_slton = pro.pro_slton;
+                obj.pro_day_update = pro.pro_day_update;
+
+                UpdateModel(obj);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             return View(pro);
+            //tbl_product pro = db.tbl_product.Find(id);
+            //if (pro == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //if (pro.pro_id != 0)
+            //{
+            //    db.Entry(pro).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Products");
+            //}
+            //return View(pro);
         }
 
         [HttpGet]
@@ -188,7 +171,7 @@ namespace Web_ASP.NET_MVC.Controllers
             tbl_product pro = db.tbl_product.Find(id);
             db.tbl_product.Remove(pro);
             db.SaveChanges();
-            return RedirectToAction("Products");
+            return RedirectToAction("Index");
         }
     }
 }
