@@ -34,17 +34,17 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product pro)
+        public ActionResult Create(ProductCetegory cate)
         {
             if (ModelState.IsValid)
             {
                 ProductCetegory obj = new ProductCetegory();
-                obj.Name = pro.Name;
+                obj.Name = cate.Name;
                 db.ProductCetegories.Add(obj);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pro);
+            return View(cate);
             //if (fileUpload == null)
             //{
             //    ViewBag.message = "Vui lòng chọn ảnh";
@@ -94,31 +94,31 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            ProductCetegory pro = db.ProductCetegories.Find(id);
-            if (pro == null)
+            ProductCetegory cate = db.ProductCetegories.Find(id);
+            if (cate == null)
             {
                 return HttpNotFound();
             }
             //DropDownList 
             var cateList = db.ProductCetegories.ToList();
             ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
-            return View(pro);
+            return View(cate);
         }
 
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product pro)
+        public ActionResult Edit(ProductCetegory cate)
         {
             ProductCetegory obj = new ProductCetegory();
             if (ModelState.IsValid)
             {
-                obj.Name = pro.Name;
+                obj.Name = cate.Name;
 
                 UpdateModel(obj);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pro);
+            return View(cate);
             //tbl_product pro = db.tbl_product.Find(id);
             //if (pro == null)
             //{
@@ -146,8 +146,8 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            ProductCetegory pro = db.ProductCetegories.Find(id);
-            db.ProductCetegories.Remove(pro);
+            ProductCetegory cate = db.ProductCetegories.Find(id);
+            db.ProductCetegories.Remove(cate);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
