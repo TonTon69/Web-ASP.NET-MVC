@@ -136,12 +136,12 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int? id)
         {
-            ProductCetegory pro = db.ProductCetegories.Find(id);
-            if (pro == null)
+            ProductCetegory cate = db.ProductCetegories.Find(id);
+            if (cate == null)
             {
                 return HttpNotFound();
             }
-            return View(pro);
+            return View(cate);
         }
         [HttpPost, ActionName("Delete")]
         public ActionResult Delete(int id)

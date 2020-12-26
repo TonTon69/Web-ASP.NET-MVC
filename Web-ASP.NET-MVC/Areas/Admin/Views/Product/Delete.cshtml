@@ -35,16 +35,15 @@
         <dt>Thể loại:</dt>
         <dd>
             @Html.DisplayFor(model => model.ProductCetegory.Name)
-        </dd> 
+        </dd>
     </dl>
     <br />
     <br />
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-primary btn-default" /> 
+            <input type="submit" value="Xóa" class="btn btn-primary btn-default" />
         </div>
     }
 </div>

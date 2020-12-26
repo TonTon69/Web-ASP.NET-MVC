@@ -1,0 +1,35 @@
+﻿@model Web_ASP.NET_MVC.Models.ProductCetegory
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa thể loại</h2>
+<h3>Bạn chắc chắn muốn xóa thể loại này?</h3>
+@Html.ActionLink("Quay về Danh sách thể loại", "Index")
+
+<div>
+    <br />
+    <dl class="dl-horizontal">
+        <dt>ID:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.CategoryID)
+        </dd>
+        <dt>Tên:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+    <br />
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-primary btn-default" />
+        </div>
+    }
+</div>
