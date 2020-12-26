@@ -1,70 +1,65 @@
-﻿@model IEnumerable<Web_ASP.NET_MVC.Models.ProductCetegory>
+﻿@using Web_ASP.NET_MVC.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<Web_ASP.NET_MVC.Models.ProductCetegory>
+
+
+@*Thuộc tính mô tả nội dung quá dài, do đó sẽ sử dụng một Helper HTML tùy chỉnh cho phép dễ dàng cắt những thuộc tính này với độ dài phù hợp.*@
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Quản Lý Thông Tin Thể Loại</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MetaTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DisplayOrder)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeoTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShowOnHome)
-        </th>
+        <th>ID</th>
+        <th>Tên thể loại</th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MetaTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DisplayOrder)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeoTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShowOnHome)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td style="width: 200px">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            
+
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.CategoryID }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.CategoryID }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.CategoryID })
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount:
+<div class="text-center">
+    <ul class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("ProductCetegory", new { page = page }))
+    </ul>
+</div>
+
+
