@@ -14,7 +14,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 {
     public class ProductController : Controller
     {
-        QuanLyShopFashionEntities db = new QuanLyShopFashionEntities();
+        ShopFashionContext db = new ShopFashionContext();
         public ActionResult Index(int? page)
         {
             //if (Session["AdminId"] == null)
@@ -23,33 +23,30 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             //}
             int pageNumber = (page ?? 1);
             int pageSize = 7;
-            return View(db.tbl_product.ToList().OrderBy(n => n.pro_id).ToPagedList(pageNumber, pageSize));
+            return View(db.Products.ToList().OrderBy(n => n.ProductCode).ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult Create()
         {
             //DropDownList 
-            var cateList = db.tbl_category.ToList();
-            var ctyList = db.tbl_company.ToList();
-            ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
-            ViewBag.CtyList = new SelectList(ctyList, "cty_id", "cty_name");
+            var cateList = db.ProductCetegories.ToList();
+            ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
 
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(tbl_product pro)
+        public ActionResult Create(Product pro)
         {
             if (ModelState.IsValid)
             {
-                tbl_product obj = new tbl_product();
-                obj.pro_name = pro.pro_name;
-                obj.pro_price = pro.pro_price;
-                obj.pro_des = pro.pro_des;
-                obj.pro_image = pro.pro_image;
-                obj.pro_slton = pro.pro_slton;
-                obj.pro_day_update = pro.pro_day_update;
-                db.tbl_product.Add(obj);
+                Product obj = new Product();
+                obj.Name = pro.Name;
+                obj.Price = pro.Price;
+                obj.ProductDescription = pro.ProductDescription;
+                obj.Image = pro.Image;
+                obj.Quanlity = pro.Quanlity;
+                db.Products.Add(obj);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -92,7 +89,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbl_product pro = db.tbl_product.Find(id);
+            Product pro = db.Products.Find(id);
             if (pro == null)
             {
                 return HttpNotFound();
@@ -103,38 +100,29 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            tbl_product pro = db.tbl_product.Find(id);
+            Product pro = db.Products.Find(id);
             if (pro == null)
             {
                 return HttpNotFound();
             }
             //DropDownList 
-            var cateList = db.tbl_category.ToList();
-            var ctyList = db.tbl_company.ToList();
+            var cateList = db.ProductCetegories.ToList();
             ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
-            ViewBag.CtyList = new SelectList(ctyList, "cty_id", "cty_name");
             return View(pro);
         }
 
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(tbl_product pro)
+        public ActionResult Edit(Product pro)
         {
-            //DropDownList 
-            var cateList = db.tbl_category.ToList();
-            var ctyList = db.tbl_company.ToList();
-            ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
-            ViewBag.CtyList = new SelectList(ctyList, "cty_id", "cty_name");
-
-            tbl_product obj = new tbl_product();
+            Product obj = new Product();
             if (ModelState.IsValid)
             {
-                obj.pro_name = pro.pro_name;
-                obj.pro_price = pro.pro_price;
-                obj.pro_des = pro.pro_des;
-                obj.pro_image = pro.pro_image;
-                obj.pro_slton = pro.pro_slton;
-                obj.pro_day_update = pro.pro_day_update;
+                obj.Name = pro.Name;
+                obj.Price = pro.Price;
+                obj.ProductDescription = pro.ProductDescription;
+                obj.Image = pro.Image;
+                obj.Quanlity = pro.Quanlity;
 
                 UpdateModel(obj);
                 db.SaveChanges();
@@ -158,7 +146,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int? id)
         {
-            tbl_product pro = db.tbl_product.Find(id);
+            Product pro = db.Products.Find(id);
             if (pro == null)
             {
                 return HttpNotFound();
@@ -168,8 +156,8 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            tbl_product pro = db.tbl_product.Find(id);
-            db.tbl_product.Remove(pro);
+            Product pro = db.Products.Find(id);
+            db.Products.Remove(pro);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

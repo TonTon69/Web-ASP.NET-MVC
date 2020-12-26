@@ -1,48 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Web_ASP.NET_MVC.Models;
-using PagedList;
-using PagedList.Mvc;
-using System.IO;
-using System.Data.Entity;
-using System.Net;
+
 
 namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 {
     public class LoginController : Controller
     {
-        QuanLyShopFashionEntities db = new QuanLyShopFashionEntities();
+        ShopFashionContext db = new ShopFashionContext();
 
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Login(tbl_admin avm)
+        public ActionResult Index(Administrator avm)
         {
-            if (String.IsNullOrEmpty(avm.ad_username) && String.IsNullOrEmpty(avm.ad_password))
+            if (String.IsNullOrEmpty(avm.UserAdmin) && String.IsNullOrEmpty(avm.PasswordAdmin))
             {
                 ViewData["error1"] = "Vui lòng nhập tên đăng nhập và mật khẩu";
             }
-            else if (String.IsNullOrEmpty(avm.ad_username))
+            else if (String.IsNullOrEmpty(avm.UserAdmin))
             {
-                ViewData["error2"] = "Vui lòng nhập tên đăng nhập";
+                ViewData["error2"] = "Vui lòng nhập tên tài khoản";
             }
-            else if (String.IsNullOrEmpty(avm.ad_password))
+            else if (String.IsNullOrEmpty(avm.PasswordAdmin))
             {
                 ViewData["error3"] = "Vui lòng nhập mật khẩu";
             }
             else
             {
-                tbl_admin ad = db.tbl_admin.SingleOrDefault(x => x.ad_username == avm.ad_username && x.ad_password == avm.ad_password);
+                Administrator ad = db.Admins.SingleOrDefault(x => x.UserAdmin == avm.UserAdmin && x.PasswordAdmin == avm.PasswordAdmin);
                 if (ad != null)
                 {
-                    Session["AdminId"] = ad.ad_id.ToString();
-                    return RedirectToAction("Index", "Admin");
+                    Session["AdminId"] = ad.UserAdmin;
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

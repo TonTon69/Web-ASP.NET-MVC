@@ -1,4 +1,4 @@
-﻿@model Web_ASP.NET_MVC.Models.tbl_admin
+﻿@model Web_ASP.NET_MVC.Models.Administrator
 @{
     Layout = null;
 }
@@ -47,11 +47,11 @@
                                         <form class="user">
                                             <p style="color: red">@ViewData["error1"]</p>
                                             <div class="form-group">
-                                                @Html.TextBoxFor(x => x.ad_username, new { @class = "form-control form-control-user", @placeholder = "Tên đăng nhập" })
+                                                @Html.TextBoxFor(x => x.UserAdmin, new { @class = "form-control form-control-user", @placeholder = "Tên tài khoản" })
                                             </div>
                                             <p style="color: red">@ViewData["error2"]</p>
                                             <div class="form-group">
-                                                @Html.PasswordFor(x => x.ad_password, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
+                                                @Html.PasswordFor(x => x.PasswordAdmin, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
                                             </div>
                                             <p style="color: red">@ViewData["error3"]</p>
                                             <div class="form-group">
