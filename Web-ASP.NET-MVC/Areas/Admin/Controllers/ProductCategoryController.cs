@@ -9,7 +9,7 @@ using Web_ASP.NET_MVC.Models;
 
 namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+    public class ProductCategoryController : Controller
     {
         // GET: Admin/Category
         ShopFashionContext db = new ShopFashionContext();
@@ -26,55 +26,20 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            //DropDownList 
-            var cateList = db.ProductCetegories.ToList();
-            ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
-
             return View();
         }
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProductCetegory cate)
         {
             if (ModelState.IsValid)
             {
-                ProductCetegory obj = new ProductCetegory();
-                obj.Name = cate.Name;
-                db.ProductCetegories.Add(obj);
+                db.ProductCetegories.Add(cate);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(cate);
-            //if (fileUpload == null)
-            //{
-            //    ViewBag.message = "Vui lòng chọn ảnh";
-            //    return View();
-            //}
-            //else
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        //Luu ten file
-            //        var fileName = Path.GetFileName(fileUpload.FileName);
-            //        //Luu duong dan cua file
-            //        var path = Path.Combine(Server.MapPath("~/ImageProduct"), fileName);
-            //        //Kiem tra image ton tai?
-            //        if (System.IO.File.Exists(path))
-            //        {
-            //            ViewBag.message = "Hình ảnh đã tồn tại";
-            //        }
-            //        else
-            //        {
-            //            //Luu anh vao duong dan
-            //            fileUpload.SaveAs(path);
-            //        }
-            //        pro.pro_image = fileName;
-            //        //Luu vao CSDL
-            //        db.tbl_product.Add(pro);
-            //        db.SaveChanges();
-            //    }
-            //    return RedirectToAction("Index");
-            //}
+           
         }
         [HttpGet]
         public ActionResult Details(int? id)
@@ -99,9 +64,6 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            //DropDownList 
-            var cateList = db.ProductCetegories.ToList();
-            ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
             return View(cate);
         }
 
@@ -109,28 +71,14 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ProductCetegory cate)
         {
-            ProductCetegory obj = new ProductCetegory();
             if (ModelState.IsValid)
             {
-                obj.Name = cate.Name;
-
-                UpdateModel(obj);
+                UpdateModel(cate);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(cate);
-            //tbl_product pro = db.tbl_product.Find(id);
-            //if (pro == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //if (pro.pro_id != 0)
-            //{
-            //    db.Entry(pro).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("Products");
-            //}
-            //return View(pro);
+           
         }
 
         [HttpGet]

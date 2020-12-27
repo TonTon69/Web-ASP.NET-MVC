@@ -9,7 +9,7 @@
     @Html.ActionLink("Quay về Danh sách sản phẩm", "Index")
 </div>
 
-@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Product", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">

@@ -84,34 +84,16 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product pro)
         {
-            Product obj = new Product();
+            //DropDownList 
+            var cateList = db.ProductCetegories.ToList();
+            ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
+
             if (ModelState.IsValid)
             {
-                obj.Name = pro.Name;
-                obj.MetaTitle = pro.MetaTitle;
-                obj.ProductDescription = pro.ProductDescription;
-                obj.Price = pro.Price;
-                obj.PromotionPrice = pro.PromotionPrice;
-                obj.Image = pro.Image;
-                obj.Image1 = pro.Image1;
-                obj.Image2 = pro.Image2;
-                obj.Image3 = pro.Image3;
-                obj.Image4 = pro.Image4;
-                obj.Quanlity = pro.Quanlity;
-                obj.CreateBy = pro.CreateBy;
-                obj.CreatedDate = pro.CreatedDate;
-                obj.TopHot = pro.TopHot;
-                obj.CategoryID = pro.CategoryID;
-
-                if (pro.CategoryID != 0)
-                {
-                    db.Entry(obj).State = EntityState.Added;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                ModelState.Clear();
+                UpdateModel(pro);
+                db.SaveChanges();
             }
-            return View(pro);
+            return RedirectToAction("Index");
 
         }
 
