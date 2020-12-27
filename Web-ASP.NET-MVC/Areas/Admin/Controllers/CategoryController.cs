@@ -1,6 +1,7 @@
 ﻿using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -9,7 +10,7 @@ using Web_ASP.NET_MVC.Models;
 
 namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 {
-    public class ProductCategoryController : Controller
+    public class CategoryController : Controller
     {
         // GET: Admin/Category
         ShopFashionContext db = new ShopFashionContext();
@@ -73,12 +74,11 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                UpdateModel(cate);
+                db.Entry(cate).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(cate);
-           
         }
 
         [HttpGet]

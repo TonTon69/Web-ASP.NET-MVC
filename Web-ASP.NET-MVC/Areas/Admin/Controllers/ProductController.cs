@@ -90,10 +90,11 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                UpdateModel(pro);
+                db.Entry(pro).State = EntityState.Modified;
                 db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View(pro);
 
         }
 
