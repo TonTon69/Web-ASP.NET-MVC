@@ -25,9 +25,11 @@ namespace Web_ASP.NET_MVC.Models
         [StringLength(250)]
         public string MetaTitle { get; set; }
 
+        [Required]
         [Column(TypeName = "ntext")]
         public string ProductDescription { get; set; }
 
+        [Required]
         [StringLength(250)]
         public string Image { get; set; }
 
@@ -43,12 +45,15 @@ namespace Web_ASP.NET_MVC.Models
         [StringLength(250)]
         public string Image4 { get; set; }
 
+        [Required]
         public decimal? Price { get; set; }
 
         public decimal? PromotionPrice { get; set; }
 
+        [Required]
         public int Quanlity { get; set; }
 
+        [Required]
         public int? CategoryID { get; set; }
 
         public DateTime? CreatedDate { get; set; }

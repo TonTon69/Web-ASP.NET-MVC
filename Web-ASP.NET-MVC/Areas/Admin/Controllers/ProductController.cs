@@ -42,45 +42,26 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             {
                 Product obj = new Product();
                 obj.Name = pro.Name;
-                obj.Price = pro.Price;
+                obj.MetaTitle = pro.MetaTitle;
                 obj.ProductDescription = pro.ProductDescription;
+                obj.Price = pro.Price;
+                obj.PromotionPrice = pro.PromotionPrice;
                 obj.Image = pro.Image;
+                obj.Image1 = pro.Image1;
+                obj.Image2 = pro.Image2;
+                obj.Image3 = pro.Image3;
+                obj.Image4 = pro.Image4;
                 obj.Quanlity = pro.Quanlity;
+                obj.CreateBy = pro.CreateBy;
+                obj.CreatedDate = pro.CreatedDate;
+                obj.TopHot = pro.TopHot;
+                obj.CategoryID = pro.CategoryID;
                 db.Products.Add(obj);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(pro);
-            //if (fileUpload == null)
-            //{
-            //    ViewBag.message = "Vui lòng chọn ảnh";
-            //    return View();
-            //}
-            //else
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        //Luu ten file
-            //        var fileName = Path.GetFileName(fileUpload.FileName);
-            //        //Luu duong dan cua file
-            //        var path = Path.Combine(Server.MapPath("~/ImageProduct"), fileName);
-            //        //Kiem tra image ton tai?
-            //        if (System.IO.File.Exists(path))
-            //        {
-            //            ViewBag.message = "Hình ảnh đã tồn tại";
-            //        }
-            //        else
-            //        {
-            //            //Luu anh vao duong dan
-            //            fileUpload.SaveAs(path);
-            //        }
-            //        pro.pro_image = fileName;
-            //        //Luu vao CSDL
-            //        db.tbl_product.Add(pro);
-            //        db.SaveChanges();
-            //    }
-            //    return RedirectToAction("Index");
-            //}
+
         }
         [HttpGet]
         public ActionResult Details(int? id)
@@ -107,7 +88,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             }
             //DropDownList 
             var cateList = db.ProductCetegories.ToList();
-            ViewBag.CateList = new SelectList(cateList, "cat_id", "cat_name");
+            ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
             return View(pro);
         }
 
@@ -119,28 +100,31 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 obj.Name = pro.Name;
-                obj.Price = pro.Price;
+                obj.MetaTitle = pro.MetaTitle;
                 obj.ProductDescription = pro.ProductDescription;
+                obj.Price = pro.Price;
+                obj.PromotionPrice = pro.PromotionPrice;
                 obj.Image = pro.Image;
+                obj.Image1 = pro.Image1;
+                obj.Image2 = pro.Image2;
+                obj.Image3 = pro.Image3;
+                obj.Image4 = pro.Image4;
                 obj.Quanlity = pro.Quanlity;
+                obj.CreateBy = pro.CreateBy;
+                obj.CreatedDate = pro.CreatedDate;
+                obj.TopHot = pro.TopHot;
+                obj.CategoryID = pro.CategoryID;
 
-                UpdateModel(obj);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (pro.CategoryID != 0)
+                {
+                    db.Entry(obj).State = EntityState.Added;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                ModelState.Clear();
             }
             return View(pro);
-            //tbl_product pro = db.tbl_product.Find(id);
-            //if (pro == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //if (pro.pro_id != 0)
-            //{
-            //    db.Entry(pro).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("Products");
-            //}
-            //return View(pro);
+
         }
 
         [HttpGet]

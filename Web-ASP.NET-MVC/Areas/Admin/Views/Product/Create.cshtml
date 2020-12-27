@@ -30,6 +30,13 @@
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.PromotionPrice, "Giá Khuyến Mãi", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PromotionPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PromotionPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.ProductDescription, "Mô tả", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <textarea class="form-control" name="ProductDescription"></textarea>
@@ -45,23 +52,74 @@
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.Image1, "Ảnh 1", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*<input type="file" name="fileUpload" />*@
+                @Html.EditorFor(model => model.Image1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Image1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image2, "Ảnh 2", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*<input type="file" name="fileUpload" />*@
+                @Html.EditorFor(model => model.Image2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Image2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image3, "Ảnh 3", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*<input type="file" name="fileUpload" />*@
+                @Html.EditorFor(model => model.Image3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Image3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image4, "Ảnh 4", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*<input type="file" name="fileUpload" />*@
+                @Html.EditorFor(model => model.Image4, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Image4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.Quanlity, "SL tồn", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Quanlity, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Quanlity, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.pro_fk_cat, "Thể loại", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.pro_fk_cat, ViewBag.CateList as SelectList, "-- Chọn thể loại --", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.pro_fk_cat, "", new { @class = "text-danger" })
-
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreateBy, "Được tạo bởi (Tên admin)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreateBy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CreateBy, "", new { @class = "text-danger" })
             </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedDate, "Được tạo ngày", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control" type="datetime" name="CreatedDate" />
+                @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TopHot, "Top hot", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TopHot, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TopHot, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryID, "Thể loại", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CategoryID, ViewBag.CateList as SelectList, "-- Chọn thể loại --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        *@
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Thêm mới" class="btn btn-primary btn-default" />

@@ -24,6 +24,10 @@
         <dd>
             @String.Format("{0:0,0}", Model.Price) VNĐ
         </dd>
+        <dt>Giá khuyến mãi:</dt>
+        <dd>
+            @String.Format("{0:0,0}", Model.PromotionPrice) VNĐ
+        </dd>
         <dt>Mô tả:</dt>
         <dd style="width: 700px; text-align: justify">
             @Html.DisplayFor(model => model.ProductDescription)
@@ -31,6 +35,22 @@
         <dt>Ảnh:</dt>
         <dd>
             @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt>Ảnh 1:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image1)
+        </dd>
+        <dt>Ảnh 2:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image2)
+        </dd>
+        <dt>Ảnh 3:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image3)
+        </dd>
+        <dt>Ảnh 4:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image4)
         </dd>
         <dt>Số lượng tồn:</dt>
         <dd>
@@ -40,7 +60,15 @@
         <dd>
             @Html.DisplayFor(model => model.ProductCetegory.Name)
         </dd>
-       
+        <dt>Được tạo bởi:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateBy)
+        </dd>
+        <dt>Được tạo ngày:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
     </dl>
     <br />
     <br />
