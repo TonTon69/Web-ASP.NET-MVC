@@ -34,29 +34,17 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 
             return View();
         }
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product pro)
         {
+            //DropDownList 
+            var cateList = db.ProductCetegories.ToList();
+            ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
+
             if (ModelState.IsValid)
             {
-                Product obj = new Product();
-                obj.Name = pro.Name;
-                obj.MetaTitle = pro.MetaTitle;
-                obj.ProductDescription = pro.ProductDescription;
-                obj.Price = pro.Price;
-                obj.PromotionPrice = pro.PromotionPrice;
-                obj.Image = pro.Image;
-                obj.Image1 = pro.Image1;
-                obj.Image2 = pro.Image2;
-                obj.Image3 = pro.Image3;
-                obj.Image4 = pro.Image4;
-                obj.Quanlity = pro.Quanlity;
-                obj.CreateBy = pro.CreateBy;
-                obj.CreatedDate = pro.CreatedDate;
-                obj.TopHot = pro.TopHot;
-                obj.CategoryID = pro.CategoryID;
-                db.Products.Add(obj);
+                db.Products.Add(pro);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
