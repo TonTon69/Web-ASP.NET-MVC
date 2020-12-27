@@ -9,7 +9,7 @@
 <div>
     @Html.ActionLink("Quay về Danh sách thể loại", "Index")
 </div>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "ProductCetegory", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 

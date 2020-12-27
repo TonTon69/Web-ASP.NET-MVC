@@ -32,7 +32,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             }
             else
             {
-                Administrator ad = db.Admins.SingleOrDefault(x => x.UserAdmin == avm.UserAdmin && x.PasswordAdmin == avm.PasswordAdmin);
+                Administrator ad = db.Admins.Where(x => x.UserAdmin == avm.UserAdmin && x.PasswordAdmin == avm.PasswordAdmin).FirstOrDefault();
                 if (ad != null)
                 {
                     Session["AdminId"] = ad.UserAdmin;
@@ -45,7 +45,13 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             }
             return View();
         }
-        
+        public ActionResult Logout()
+        {
+            Session["AdminId"] = "";
+            return RedirectToAction("Index", "Login");
+        }
+
+
     }
 }
 

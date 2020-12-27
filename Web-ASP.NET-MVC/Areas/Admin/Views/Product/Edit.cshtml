@@ -6,7 +6,9 @@
 }
 
 <h2>Chỉnh Sửa Thông Tin Sản Phẩm</h2>
-
+<div>
+    @Html.ActionLink("Quay về Danh sách sản phẩm", "Index")
+</div>
 @using (Html.BeginForm("Edit", "Product", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -53,13 +55,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.CategoryID, "Thể loại", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.CategoryID, ViewBag.CateList as SelectList, "-- Chọn thể loại --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
        
 
         <div class="form-group">
@@ -70,6 +72,4 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Products")
-</div>
+

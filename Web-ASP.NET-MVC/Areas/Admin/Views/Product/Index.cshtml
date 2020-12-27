@@ -31,9 +31,9 @@
         <th>Tên sản phẩm</th>
         <th>Giá</th>
         <th>Mô tả</th>
-        @*<th>Ảnh</th>*@
         <th>SL Tồn</th>
         <th>Thể loại</th>
+        <th>Ảnh</th>
         <th></th>
     </tr>
 
@@ -53,15 +53,16 @@
             <td style="width: 300px">
                 @Truncate(item.ProductDescription, 100)
             </td>
-            <!--<td>-->
-                @*<img src="@Url.Content("~/Image/" + item.pro_image)/>*@
-                <!--@Html.DisplayFor(modelItem => item.Image)
-            </td>-->
             <td>
                 @Html.DisplayFor(modelItem => item.Quanlity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductCetegory.Name)
+            </td>
+            <td>
+                @*<img src="@Url.Content("~/Image/" + item.pro_image)/>*@
+                @*@Html.DisplayFor(modelItem => item.Image)*@
+                @Truncate(item.Image, 10)
             </td>
 
             <td>
