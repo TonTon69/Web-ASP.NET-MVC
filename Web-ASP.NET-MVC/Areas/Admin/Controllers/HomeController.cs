@@ -12,6 +12,10 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 

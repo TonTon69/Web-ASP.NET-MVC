@@ -2243,6 +2243,7 @@
     <Content Include="Views\Products\ProductPartial.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Home\ProductPartial.cshtml" />
+    <Content Include="Views\Home\ProductNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
