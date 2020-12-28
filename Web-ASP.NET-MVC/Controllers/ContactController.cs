@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace Web_ASP.NET_MVC.Controllers
 {
-    public class HomeController : Controller
+    public class ContactController : Controller
     {
+        // GET: Contact
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }
