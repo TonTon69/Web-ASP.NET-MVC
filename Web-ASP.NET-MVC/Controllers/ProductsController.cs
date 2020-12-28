@@ -16,7 +16,7 @@ namespace Web_ASP.NET_MVC.Controllers
         }
         public PartialViewResult ProductPartial()
         {
-            var productNew = db.Products.OrderByDescending(x => x.CreatedDate).Take(5).ToList();
+            var productNew = db.Products.OrderByDescending(x => x.ProductCode).Take(6).ToList();
             return PartialView(productNew);
         }
     }
