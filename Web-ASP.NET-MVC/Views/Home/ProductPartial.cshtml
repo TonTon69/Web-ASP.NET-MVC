@@ -1,8 +1,6 @@
 ﻿@using Web_ASP.NET_MVC.Models
 @model List<Product>
 
-
-
 @{
     foreach (var item in Model)
     {
@@ -29,7 +27,7 @@
                     </div>
                 </div>
                 <div class="product-price">
-                    <span>
+                    <span style=" color: #333; font-weight: 600; font-size: 1.2rem">
                         @String.Format("{0:0,0}", @item.Price) đ
                     </span>
                     <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua Ngay</a>

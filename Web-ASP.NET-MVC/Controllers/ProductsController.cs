@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Web_ASP.NET_MVC.Models;
-
+using PagedList;
 namespace Web_ASP.NET_MVC.Controllers
 {
     public class ProductsController : Controller
@@ -14,10 +14,12 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             return View();
         }
-        public PartialViewResult ProductPartial()
+        public PartialViewResult ProductPartial(int? page)
         {
-            var productNew = db.Products.OrderByDescending(x => x.ProductCode).Take(6).ToList();
-            return PartialView(productNew);
+            var pageNumber = page ?? 1;
+            var pageSize = 6;
+            var productList = db.Products.OrderByDescending(x => x.ProductCode).ToPagedList(pageNumber, pageSize);
+            return PartialView(productList);
         }
     }
 }
