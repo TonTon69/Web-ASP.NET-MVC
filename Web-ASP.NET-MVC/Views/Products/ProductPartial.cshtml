@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="product-image">
-                    <a href="product-detail.html">
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductCode })">
                         <img src="@Url.Content("~/Content/assets/img/" + item.Image)">
                     </a>
                     <div class="product-action">
