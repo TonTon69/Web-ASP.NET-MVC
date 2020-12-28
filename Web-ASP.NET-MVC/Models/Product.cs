@@ -67,5 +67,6 @@ namespace Web_ASP.NET_MVC.Models
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         public virtual ProductCetegory ProductCetegory { get; set; }
+
     }
 }

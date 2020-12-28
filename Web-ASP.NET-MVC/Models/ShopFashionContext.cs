@@ -11,7 +11,6 @@ namespace Web_ASP.NET_MVC.Models
             : base("name=ShopFashionContext")
         {
         }
-
         public virtual DbSet<Administrator> Admins { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }

@@ -1,0 +1,123 @@
+﻿@model Web_ASP.NET_MVC.Models.Product
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">TRANG CHỦ</a></li>
+            <li class="breadcrumb-item"><a href="#">SẢN PHẨM</a></li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Product List Start -->
+<div class="product-view">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-view-top">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="product-search">
+                                        <input type="text" placeholder="Search" style="outline: none">
+                                        <button><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                                @*<div class="col-md-4">
+                                    <div class="product-short">
+                                        <div class="dropdown">
+                                            <div class="dropdown-toggle" data-toggle="dropdown">Product short by</div>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="#" class="dropdown-item">Newest</a>
+                                                <a href="#" class="dropdown-item">Popular</a>
+                                                <a href="#" class="dropdown-item">Most sale</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="product-price-range">
+                                        <div class="dropdown">
+                                            <div class="dropdown-toggle" data-toggle="dropdown">Product price range</div>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="#" class="dropdown-item">$0 to $50</a>
+                                                <a href="#" class="dropdown-item">$51 to $100</a>
+                                                <a href="#" class="dropdown-item">$101 to $150</a>
+                                                <a href="#" class="dropdown-item">$151 to $200</a>
+                                                <a href="#" class="dropdown-item">$201 to $250</a>
+                                                <a href="#" class="dropdown-item">$251 to $300</a>
+                                                <a href="#" class="dropdown-item">$301 to $350</a>
+                                                <a href="#" class="dropdown-item">$351 to $400</a>
+                                                <a href="#" class="dropdown-item">$401 to $450</a>
+                                                <a href="#" class="dropdown-item">$451 to $500</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @Html.Action("ProductPartial", "Products")
+
+
+                </div>
+
+                <!-- Pagination Start -->
+                <div class="col-md-12">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Trước</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Sau</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Pagination Start -->
+            </div>
+
+            <!-- Side Bar Start -->
+            <div class="col-lg-4 sidebar">
+                <div class="sidebar-widget category">
+                    <h2 class="title">Danh Mục</h2>
+                    <nav class="navbar bg-light">
+                        @Html.Action("CategoryPartial", "Category")
+
+                    </nav>
+                </div>
+
+
+            </div>
+            <!-- Side Bar End -->
+        </div>
+    </div>
+</div>
+<!-- Product List End -->
+<!-- Brand Start -->
+<div class="brand">
+    <div class="container-fluid">
+        <div class="brand-slider">
+            <div class="brand-item"><img src="img/brand-1.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-2.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-3.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-4.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-5.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-6.png" alt=""></div>
+        </div>
+    </div>
+</div>
+<!-- Brand End -->

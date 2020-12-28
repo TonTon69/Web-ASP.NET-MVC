@@ -1,0 +1,53 @@
+﻿@using Web_ASP.NET_MVC.Models
+@model List<Product>
+
+<style>
+    .product-item .product-image .product-action{
+        background: unset
+    }
+    .product-item:hover .product-price span {
+        color: #ffffff;
+    }
+
+    .product-price span {
+        color: #4287ee;
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+</style>
+
+@{
+    foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="product-item">
+                <div class="product-title">
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductCode })">@item.Name</a>
+                    <div class="ratting">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+                <div class="product-image">
+                    <a href="product-detail.html">
+                        <img src="@Url.Content("~/Content/assets/img/" + item.Image)">
+                    </a>
+                    <div class="product-action">
+                        <a href="#"><i class="fa fa-cart-plus"></i></a>
+                        <a href="#"><i class="fa fa-heart"></i></a>
+                        <a href="#"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="product-price">
+                    <span>
+                        @String.Format("{0:0,0}", @item.Price) đ
+                    </span>
+                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua Ngay</a>
+                </div>
+            </div>
+        </div>
+    }
+}

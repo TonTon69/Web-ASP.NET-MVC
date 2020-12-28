@@ -1,0 +1,12 @@
+﻿@using Web_ASP.NET_MVC.Models
+@model List<ProductCetegory>
+
+<ul class="navbar-nav">
+    @{ foreach (var item in Model)
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-female"></i>@item.Name</a>
+            </li>
+        }
+    }
+</ul>
