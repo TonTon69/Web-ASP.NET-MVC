@@ -21,7 +21,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             //    return RedirectToAction("Login");
             //}
             int pageNumber = (page ?? 1);
-            int pageSize = 7;
+            int pageSize = 5;
             return View(db.ProductCetegories.ToList().OrderBy(n => n.CategoryID).ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]

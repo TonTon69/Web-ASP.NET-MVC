@@ -177,6 +177,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\sb-admin-2.css" />
+    <Content Include="Content\assets\css\sb-admin-2.min.css" />
     <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\img\321.png" />
     <Content Include="Content\assets\img\brand-1.png" />
@@ -214,7 +216,19 @@
     <Content Include="Content\assets\img\slider-2.jpg" />
     <Content Include="Content\assets\img\slider-3.jpg" />
     <Content Include="Content\assets\img\ssl.svg" />
+    <Content Include="Content\assets\img\undraw_posting_photo.svg" />
+    <Content Include="Content\assets\img\undraw_profile.svg" />
+    <Content Include="Content\assets\img\undraw_profile_1.svg" />
+    <Content Include="Content\assets\img\undraw_profile_2.svg" />
+    <Content Include="Content\assets\img\undraw_profile_3.svg" />
+    <Content Include="Content\assets\img\undraw_rocket.svg" />
+    <Content Include="Content\assets\js\demo\chart-area-demo.js" />
+    <Content Include="Content\assets\js\demo\chart-bar-demo.js" />
+    <Content Include="Content\assets\js\demo\chart-pie-demo.js" />
+    <Content Include="Content\assets\js\demo\datatables-demo.js" />
     <Content Include="Content\assets\js\main.js" />
+    <Content Include="Content\assets\js\sb-admin-2.js" />
+    <Content Include="Content\assets\js\sb-admin-2.min.js" />
     <Content Include="Content\assets\lib\easing\easing.js" />
     <Content Include="Content\assets\lib\easing\easing.min.js" />
     <Content Include="Content\assets\lib\slick\ajax-loader.gif" />

@@ -41,50 +41,58 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.CategoryID)
-    </td>
-    <td style="width: 200px">
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.MetaTitle)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DisplayOrder)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SeoTitle)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ShowOnHome)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CreateDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CreateBy)
-    </td>
-    <td>
-        @Html.ActionLink("Sửa", "Edit", new
-        {
-            id = item.CategoryID
-}, new { @class = "btn btn-primary" })
-        @Html.ActionLink("Chi tiết", "Details", new { id = item.CategoryID }, new { @class = "btn btn-secondary" })
-        @Html.ActionLink("Xóa", "Delete", new { id = item.CategoryID }, new { @class = "btn btn-danger" })
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td style="width: 200px">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeoTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowOnHome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateBy)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new
+                {
+                    id = item.CategoryID
+        }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.CategoryID }, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Xóa", "Delete", new { id = item.CategoryID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
     }
 
 </table>
 
 
-Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount:
-<div class="text-center">
-    <ul class="pagination">
-        @Html.PagedListPager(Model, page => Url.Action("ProductCetegory", new { page = page }))
-    </ul>
+<style>
+    .pagination li {
+        padding: 8px 16px;
+        border: 1px solid rgba(0,0,0,0.1);
+    }
+</style>
+
+
+<div class="col-md-12">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount :
+    <div class="pagination text-center">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
 </div>
 
 

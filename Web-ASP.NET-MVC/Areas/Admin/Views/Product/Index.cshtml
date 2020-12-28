@@ -83,10 +83,17 @@
 
 </table>
 
+<style>
+    .pagination li {
+        padding: 8px 16px;
+        border: 1px solid rgba(0,0,0,0.1);
+    }
+</style>
 
-Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount:
-<div class="text-center">
-    <ul class="pagination">
-        @Html.PagedListPager(Model, page => Url.Action("Product", new { page = page }))
-    </ul>
+
+<div class="col-md-12">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount :
+    <div class="pagination text-center">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
 </div>
