@@ -17,17 +17,24 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
     public class ProductsController : Controller
     {
         ShopFashionContext db = new ShopFashionContext();
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string search)
         {
             if (Session["AdminId"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
 
+            var products = from s in db.Products select s;
+            if (!string.IsNullOrEmpty(search))
+            {
+                products = products.Where(s => s.Name.Contains(search) || s.ProductCetegory.Name == search);
+            }
+            products = products.OrderBy(c => c.ProductCode);
             int pageNumber = (page ?? 1);
             int pageSize = 5;
-            return View(db.Products.ToList().OrderBy(n => n.ProductCode).ToPagedList(pageNumber, pageSize));
+            return View(products.ToPagedList(pageNumber, pageSize));
         }
+
         [HttpGet]
         public ActionResult Create()
         {
