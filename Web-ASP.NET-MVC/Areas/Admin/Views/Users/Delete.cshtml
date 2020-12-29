@@ -1,0 +1,57 @@
+﻿@model Web_ASP.NET_MVC.Models.WebUser
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa thành viên</h2>
+<h3>Bạn chắc chắn muốn xóa thành viên này?</h3>
+<div>
+    <i class="fas fa-list"></i>
+    @Html.ActionLink("Quay về Danh sách thành viên", "Index")
+</div>
+
+<div>
+    <br />
+    <dl class="dl-horizontal">
+        <dt>ID:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserCode)
+        </dd>
+        <dt>Họ Tên:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt>Tên tài khoản:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Account)
+        </dd>
+        <dt>Email:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>Địa chỉ:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>SĐT:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>Ngày sinh:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.BirthDay)
+        </dd>
+    </dl>
+    <br />
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger btn-default" />
+        </div>
+    }
+
+</div>

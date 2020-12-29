@@ -1,0 +1,48 @@
+﻿@model Web_ASP.NET_MVC.Models.WebUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thông Tin Chi Tiết Thành Viên</h2>
+<p>
+    <i class="fas fa-list"></i>
+    @Html.ActionLink("Quay về Danh sách thành viên", "Index")
+</p>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>ID:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserCode)
+        </dd>
+        <dt>Họ Tên:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt>Tên tài khoản:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Account)
+        </dd>
+        <dt>Email:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>Địa chỉ:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>SĐT:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>Ngày sinh:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.BirthDay)
+        </dd>
+    </dl>
+    <br />
+    <br />
+
+</div>
