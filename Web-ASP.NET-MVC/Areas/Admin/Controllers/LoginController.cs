@@ -32,7 +32,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             }
             else
             {
-                Administrator ad = db.Admins.Where(x => x.UserAdmin == avm.UserAdmin && x.PasswordAdmin == avm.PasswordAdmin).FirstOrDefault();
+                Administrator ad = db.Administrators.Where(x => x.UserAdmin == avm.UserAdmin && x.PasswordAdmin == avm.PasswordAdmin).FirstOrDefault();
                 if (ad != null)
                 {
                     Session["AdminId"] = ad.UserAdmin;

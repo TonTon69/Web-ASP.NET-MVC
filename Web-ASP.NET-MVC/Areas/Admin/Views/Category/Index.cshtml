@@ -49,7 +49,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryID)
+                @Html.DisplayFor(modelItem => item.CategoryCode)
             </td>
             <td style="width: 200px">
                 @Html.DisplayFor(modelItem => item.Name)
@@ -74,11 +74,11 @@
             </td>
             <td>
                 @Html.ActionLink("Sửa", "Edit", new
-                {
-                    id = item.CategoryID
-                }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.CategoryID }, new { @class = "btn btn-secondary" })
-                @Html.ActionLink("Xóa", "Delete", new { id = item.CategoryID }, new { @class = "btn btn-danger" })
+           {
+               id = item.CategoryCode
+           }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.CategoryCode }, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Xóa", "Delete", new { id = item.CategoryCode }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

@@ -9,7 +9,8 @@ namespace Web_ASP.NET_MVC.Models
     [Table("Slide")]
     public partial class Slide
     {
-        public int SlideID { get; set; }
+        [Key]
+        public int SlideCode { get; set; }
 
         public string SlideImage { get; set; }
 

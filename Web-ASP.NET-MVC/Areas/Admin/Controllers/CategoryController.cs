@@ -26,7 +26,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 
             int pageNumber = (page ?? 1);
             int pageSize = 5;
-            return View(db.ProductCetegories.ToList().OrderBy(n => n.CategoryID).ToPagedList(pageNumber, pageSize));
+            return View(db.ProductCetegories.ToList().OrderBy(n => n.CategoryCode).ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult Create()
@@ -108,7 +108,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         {
             var gv = new GridView()
             {
-                DataSource = db.ProductCetegories.OrderBy(x => x.CategoryID).ToList()
+                DataSource = db.ProductCetegories.OrderBy(x => x.CategoryCode).ToList()
             };
             gv.DataBind();
             Response.ClearContent();

@@ -114,10 +114,10 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.CategoryID, "Thể loại", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CategoryCode, "Thể loại", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CategoryID, ViewBag.CateList as SelectList, "-- Chọn thể loại --", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.CategoryCode, ViewBag.CateList as SelectList, "-- Chọn thể loại --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryCode, "", new { @class = "text-danger" })
             </div>
         </div>
 

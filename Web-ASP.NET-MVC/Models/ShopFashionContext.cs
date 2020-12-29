@@ -11,7 +11,8 @@ namespace Web_ASP.NET_MVC.Models
             : base("name=ShopFashionContext")
         {
         }
-        public virtual DbSet<Administrator> Admins { get; set; }
+
+        public virtual DbSet<Administrator> Administrators { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<FeedBack> FeedBacks { get; set; }
@@ -19,7 +20,6 @@ namespace Web_ASP.NET_MVC.Models
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCetegory> ProductCetegories { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<WebUser> WebUsers { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
 

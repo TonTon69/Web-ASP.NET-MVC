@@ -9,7 +9,8 @@ namespace Web_ASP.NET_MVC.Models
     [Table("FeedBack")]
     public partial class FeedBack
     {
-        public int FeedBackID { get; set; }
+        [Key]
+        public int FeedBackCode { get; set; }
 
         [StringLength(50)]
         public string Name { get; set; }

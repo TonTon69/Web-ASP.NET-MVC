@@ -9,7 +9,8 @@ namespace Web_ASP.NET_MVC.Models
     [Table("Contact")]
     public partial class Contact
     {
-        public int ContactID { get; set; }
+        [Key]
+        public int ContactCode { get; set; }
 
         [Column(TypeName = "ntext")]
         public string Content { get; set; }

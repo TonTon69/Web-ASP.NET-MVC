@@ -2,7 +2,6 @@
 @using PagedList.Mvc;
 @model PagedList.PagedList<Web_ASP.NET_MVC.Models.Product>
 
-@*Thuộc tính mô tả nội dung quá dài, do đó sẽ sử dụng một Helper HTML tùy chỉnh cho phép dễ dàng cắt những thuộc tính này với độ dài phù hợp.*@
 @helper Truncate(string input, int length)
 {
     if (input.Length < length)
@@ -37,7 +36,7 @@
         <th>Tên</th>
         <th>Giá</th>
         <th>Giá khuyến mãi</th>
-        <th>Mô tả</th>
+        <th style="width: 250px">Mô tả</th>
         <th>SL Tồn</th>
         <th>Thể loại</th>
         <th>Ảnh</th>
@@ -61,7 +60,7 @@
             <td>
                 @String.Format("{0:0,0}", item.PromotionPrice) VNĐ
             </td>
-            <td style="width: 250px">
+            <td>
                 @Truncate(item.ProductDescription, 100)
             </td>
             <td>
@@ -95,7 +94,6 @@
         border: 1px solid rgba(0,0,0,0.1);
     }
 </style>
-
 
 <div class="col-md-12">
     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount :

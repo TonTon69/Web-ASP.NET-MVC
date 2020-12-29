@@ -16,7 +16,7 @@ namespace Web_ASP.NET_MVC.Models
         }
 
         [Key]
-        public int CategoryID { get; set; }
+        public int CategoryCode { get; set; }
 
         [Required]
         [StringLength(250)]

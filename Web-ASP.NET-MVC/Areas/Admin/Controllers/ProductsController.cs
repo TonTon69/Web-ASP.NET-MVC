@@ -40,7 +40,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         {
             //DropDownList 
             var cateList = db.ProductCetegories.ToList();
-            ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
+            ViewBag.CateList = new SelectList(cateList, "CategoryCode", "Name");
 
             return View();
         }
@@ -50,7 +50,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         {
             //DropDownList 
             var cateList = db.ProductCetegories.ToList();
-            ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
+            ViewBag.CateList = new SelectList(cateList, "CategoryCode", "Name");
 
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             }
             //DropDownList 
             var cateList = db.ProductCetegories.ToList();
-            ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
+            ViewBag.CateList = new SelectList(cateList, "CategoryCode", "Name");
             return View(pro);
         }
 
@@ -96,7 +96,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         {
             //DropDownList 
             var cateList = db.ProductCetegories.ToList();
-            ViewBag.CateList = new SelectList(cateList, "CategoryID", "Name");
+            ViewBag.CateList = new SelectList(cateList, "CategoryCode", "Name");
 
             if (ModelState.IsValid)
             {
