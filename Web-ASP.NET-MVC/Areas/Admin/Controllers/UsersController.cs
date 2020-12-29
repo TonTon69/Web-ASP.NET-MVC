@@ -52,7 +52,6 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             return View(user);
-
         }
         [HttpGet]
         public ActionResult Details(int? id)

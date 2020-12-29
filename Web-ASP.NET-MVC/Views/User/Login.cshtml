@@ -1,0 +1,55 @@
+﻿@model Web_ASP.NET_MVC.Models.WebUser
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
+            <li class="breadcrumb-item active">ĐĂNG NHẬP</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Login Start -->
+<div class="login" style="min-height: 80vh">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="login-form">
+                    <h2 class="text-center mb-4">Đăng Nhập</h2>
+                    @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Tên tài khoản</label>
+                                @Html.TextBoxFor(x => x.Account, new { @class = "form-control form-control-user", @placeholder = "Tên tài khoản" })
+                                @Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Mật khẩu</label>
+                                @Html.PasswordFor(x => x.UserPassword, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
+                                @Html.ValidationMessageFor(m => m.UserPassword, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="newaccount">
+                                    <label class="custom-control-label" for="newaccount">Giữ đăng nhập</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn">Đăng nhập</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

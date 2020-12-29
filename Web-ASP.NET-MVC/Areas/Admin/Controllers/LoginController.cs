@@ -50,8 +50,6 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             Session["AdminId"] = "";
             return RedirectToAction("Index", "Login");
         }
-
-
     }
 }
 

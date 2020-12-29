@@ -1,0 +1,83 @@
+﻿@model Web_ASP.NET_MVC.Models.WebUser
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
+            <li class="breadcrumb-item active">ĐĂNG KÍ</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Login Start -->
+<div class="login" style="min-height: 80vh">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="register-form mb-5">
+                    <h2 class="text-center mb-4">Đăng Kí</h2>
+                    @using (Html.BeginForm("Register", "User", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Họ & Tên</label>
+                                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "Họ & Tên" })
+                                @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Tên tài khoản</label>
+                                @Html.TextBoxFor(x => x.Account, new { @class = "form-control", @placeholder = "Tên tài khoản" })
+                                @Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })
+                                @if (ViewBag.error != null)
+                                {
+                                    <span class="text-danger">@ViewBag.error</span>
+                                }
+
+                            </div>
+                            <div class="col-md-6">
+                                <label>E-mail</label>
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "E-mail" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Số điện thoại</label>
+                                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @placeholder = "Số điện thoại" })
+                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Mật khẩu</label>
+                                @Html.PasswordFor(x => x.UserPassword, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                                @Html.ValidationMessageFor(m => m.UserPassword, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Gõ lại mật khẩu</label>
+                                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control", @placeholder = "Gõ lại mật khẩu" })
+                                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Địa chỉ</label>
+                                @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder = "Địa chỉ" })
+                                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Ngày sinh</label>
+                                <input class="form-control" type="date">
+                                @Html.ValidationMessageFor(m => m.BirthDay, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" name="submit" class="btn">Đăng kí</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
