@@ -16,10 +16,11 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         ShopFashionContext db = new ShopFashionContext();
         public ActionResult Index(int? page)
         {
-            //if (Session["AdminId"] == null)
-            //{
-            //    return RedirectToAction("Login");
-            //}
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             int pageNumber = (page ?? 1);
             int pageSize = 5;
             return View(db.ProductCetegories.ToList().OrderBy(n => n.CategoryID).ToPagedList(pageNumber, pageSize));

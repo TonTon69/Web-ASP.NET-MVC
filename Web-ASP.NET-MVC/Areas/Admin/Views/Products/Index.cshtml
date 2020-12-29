@@ -21,10 +21,16 @@
 }
 
 <h2>Quản Lý Thông Tin Sản Phẩm</h2>
-
-<p>
-    @Html.ActionLink("Thêm mới", "Create")
-</p>
+<div class="d-flex">
+    <p class="mr-4">
+        <i class="fas fa-plus"></i>
+        @Html.ActionLink("Thêm mới", "Create")
+    </p>
+    <p>
+        <i class="fas fa-file-excel"></i>
+        @Html.ActionLink("Xuất Excel", "ExportContentToExcel")
+    </p>
+</div>
 <table class="table">
     <tr>
         <th>ID</th>

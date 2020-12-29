@@ -4,12 +4,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    img {
+        outline: none;
+    }
+</style>
+
 <div class="breadcrumb-wrap">
     <div class="container-fluid">
         <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Products</a></li>
-            <li class="breadcrumb-item active">Product Detail</li>
+            <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
+            <li class="breadcrumb-item"><a href="/Products">SẢN PHẨM</a></li>
+            <li class="breadcrumb-item active">CHI TIẾT SẢN PHẨM</li>
         </ul>
     </div>
 </div>
@@ -23,14 +29,29 @@
                     <div class="row align-items-center">
                         <div class="col-md-5">
                             <div class="product-slider-single normal-slider">
-                                <img src="@Url.Content("~/Content/assets/img/" + @Model.Image)" style="outline: none">
+                                <img src="@Url.Content("~/Content/assets/img/" + @Model.Image)">
+                                <img src="@Url.Content("~/Content/assets/img/" + @Model.Image1)">
+                                <img src="@Url.Content("~/Content/assets/img/" + @Model.Image2)">
+                                <img src="@Url.Content("~/Content/assets/img/" + @Model.Image3)">
+                                <img src="@Url.Content("~/Content/assets/img/" + @Model.Image4)">
 
                             </div>
                             <div class="product-slider-single-nav normal-slider">
                                 <div class="slider-nav-img">
-                                    <img src="@Url.Content("~/Content/assets/img/" + @Model.Image)" style="outline: none">
+                                    <img src="@Url.Content("~/Content/assets/img/" + @Model.Image)">
                                 </div>
-
+                                <div class="slider-nav-img">
+                                    <img src="@Url.Content("~/Content/assets/img/" + @Model.Image1)">
+                                </div>
+                                <div class="slider-nav-img">
+                                    <img src="@Url.Content("~/Content/assets/img/" + @Model.Image2)">
+                                </div>
+                                <div class="slider-nav-img">
+                                    <img src="@Url.Content("~/Content/assets/img/" + @Model.Image3)">
+                                </div>
+                                <div class="slider-nav-img">
+                                    <img src="@Url.Content("~/Content/assets/img/" + @Model.Image4)">
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-7">

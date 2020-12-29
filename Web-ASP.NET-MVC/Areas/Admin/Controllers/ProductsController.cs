@@ -9,14 +9,21 @@ using PagedList.Mvc;
 using System.IO;
 using System.Data.Entity;
 using System.Net;
+using System.Web.UI.WebControls;
+using System.Web.UI;
 
 namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class ProductsController : Controller
     {
         ShopFashionContext db = new ShopFashionContext();
         public ActionResult Index(int? page)
         {
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             int pageNumber = (page ?? 1);
             int pageSize = 5;
             return View(db.Products.ToList().OrderBy(n => n.ProductCode).ToPagedList(pageNumber, pageSize));
@@ -111,6 +118,23 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             db.Products.Remove(pro);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public void ExportContentToExcel()
+        {
+            var gv = new GridView()
+            {
+                DataSource = db.Products.OrderBy(x => x.ProductCode).ToList()
+            };
+            gv.DataBind();
+            Response.ClearContent();
+            Response.AddHeader("content-disposition", string.Format("attachment;filename=ProductsListing_{0}.xls", DateTime.Now));
+            Response.ContentType = "application/excel";
+            var stw = new StringWriter();
+            var htmlTw = new HtmlTextWriter(stw);
+            gv.RenderControl(htmlTw);
+            Response.Write(stw.ToString());
+            Response.End();
         }
     }
 }

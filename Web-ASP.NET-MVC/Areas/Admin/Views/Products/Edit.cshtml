@@ -1,20 +1,22 @@
-﻿@model  Web_ASP.NET_MVC.Models.Product
+﻿@model Web_ASP.NET_MVC.Models.Product
+
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Thêm Mới Sản Phẩm</h2>
+<h2>Chỉnh Sửa Thông Tin Sản Phẩm</h2>
 <div>
+    <i class="fas fa-list"></i>
     @Html.ActionLink("Quay về Danh sách sản phẩm", "Index")
 </div>
-
-@using (Html.BeginForm("Create", "Product", FormMethod.Post))
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ProductCode)
         <div class="form-group">
             @Html.LabelFor(model => model.Name, "Tên sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -39,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProductDescription, "Mô tả", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <textarea class="form-control" name="ProductDescription"></textarea>
+                <textarea class="form-control" name="ProductDescription">@Model.ProductDescription</textarea>
                 @Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -100,7 +102,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CreatedDate, "Ngày khởi tạo", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input class="form-control" type="datetime" name="CreatedDate" />
+                <input class="form-control" type="datetime" name="CreatedDate" value="@Model.CreatedDate" />
                 @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -119,10 +121,9 @@
             </div>
         </div>
 
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Thêm mới" class="btn btn-primary btn-default" />
+                <input type="submit" value="Lưu lại" class="btn btn-primary btn-default" />
             </div>
         </div>
     </div>
