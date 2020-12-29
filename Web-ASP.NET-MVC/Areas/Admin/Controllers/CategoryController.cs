@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using Web_ASP.NET_MVC.Models;
 
 namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
@@ -99,6 +102,23 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             db.ProductCetegories.Remove(cate);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public void ExportContentToExcel()
+        {
+            var gv = new GridView()
+            {
+                DataSource = db.ProductCetegories.OrderBy(x => x.CategoryID).ToList()
+            };
+            gv.DataBind();
+            Response.ClearContent();
+            Response.AddHeader("content-disposition", string.Format("attachment;filename=CategoryListing_{0}.xls", DateTime.Now));
+            Response.ContentType = "application/excel";
+            var stw = new StringWriter();
+            var htmlTw = new HtmlTextWriter(stw);
+            gv.RenderControl(htmlTw);
+            Response.Write(stw.ToString());
+            Response.End();
         }
     }
 }
