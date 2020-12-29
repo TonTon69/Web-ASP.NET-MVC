@@ -23,7 +23,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-
+            ViewBag.CurrentFilter = search;
             var products = from s in db.Products select s;
             if (!string.IsNullOrEmpty(search))
             {

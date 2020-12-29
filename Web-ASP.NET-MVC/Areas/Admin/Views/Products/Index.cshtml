@@ -91,7 +91,7 @@
 
 <style>
     .pagination li {
-        padding: 8px 16px;
+        padding: 6px 12px;
         border: 1px solid rgba(0,0,0,0.1);
     }
 </style>
@@ -99,7 +99,7 @@
 
 <div class="col-md-12">
     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount :
-    <div class="pagination text-center">
+    <div class="pagination d-flex justify-content-center">
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
     </div>
 </div>

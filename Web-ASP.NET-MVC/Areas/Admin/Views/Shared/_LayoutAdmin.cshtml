@@ -138,7 +138,7 @@
                         <div class="input-group">
                             @using (Html.BeginForm("Index", "Products", FormMethod.Get))
                             {
-                                <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Tìm kiếm...">
+                                <input type="text" name="search" value="@ViewBag.CurrentFilter" class="form-control bg-light border-0 small" placeholder="Tìm kiếm...">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
                                         <i class="fas fa-search fa-sm"></i>

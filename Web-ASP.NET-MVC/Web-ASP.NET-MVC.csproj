@@ -2242,7 +2242,7 @@
     <Content Include="Views\Category\CategoryPartial.cshtml" />
     <Content Include="Views\Products\ProductPartial.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\Home\ProductPartial.cshtml" />
+    <Content Include="Views\Home\ProductHighlight.cshtml" />
     <Content Include="Views\Home\ProductNew.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
   </ItemGroup>

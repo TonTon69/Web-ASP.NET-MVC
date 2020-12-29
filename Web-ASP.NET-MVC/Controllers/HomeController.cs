@@ -14,7 +14,7 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             return View();
         }
-        public PartialViewResult ProductPartial()
+        public PartialViewResult ProductHighlight()
         {
             var productHighlight = db.Products.OrderByDescending(x => x.ProductCode).Take(5).ToList();
             return PartialView(productHighlight);

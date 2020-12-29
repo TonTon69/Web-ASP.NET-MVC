@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <i class="fa fa-envelope"></i> thanhhung041100@gmail.com
+                    <i class="fa fa-envelope"></i> hhtshop@gmail.com
                 </div>
                 <div class="col-sm-6">
                     <i class="fa fa-phone-alt"></i> +0783727238
@@ -71,7 +71,7 @@
                     <div class="search">
                         @using (Html.BeginForm("Index", "Products", FormMethod.Get))
                         {
-                            <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..." style="outline: none">
+                            <input type="text" name="search" value="@ViewBag.CurrentFilter" placeholder="Tìm kiếm sản phẩm..." style="outline: none">
                             <button class="btn btn-primary"><i class="fa fa-search"></i></button>
                         }
                     </div>

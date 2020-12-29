@@ -18,6 +18,7 @@ namespace Web_ASP.NET_MVC.Controllers
         }
         public PartialViewResult ProductPartial(int? page, string search)
         {
+            ViewBag.CurrentFilter = search;
             var products = from s in db.Products select s;
             if (!string.IsNullOrEmpty(search))
             {
