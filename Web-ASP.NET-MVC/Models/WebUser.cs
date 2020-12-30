@@ -39,7 +39,7 @@
         [Required(ErrorMessage = "Vui lòng nhập email")]
         [StringLength(100)]
         [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
-        ErrorMessage = "Vui lòng nhập email chính xác")]
+        ErrorMessage = "Vui lòng nhập email hợp lệ")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập địa chỉ")]
         [StringLength(250)]

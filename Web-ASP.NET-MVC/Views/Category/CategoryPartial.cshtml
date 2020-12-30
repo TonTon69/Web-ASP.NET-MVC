@@ -5,7 +5,7 @@
     @{ foreach (var item in Model)
         {
             <li class="nav-item" style="padding: 10px 20px">
-                @Html.ActionLink(@item.Name, "Index", "Products")
+                @Html.ActionLink(item.Name, "Index", "Products", new { page = 1, category = @item.CategoryCode }, null)
             </li>
         }
     }

@@ -16,7 +16,7 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             return View();
         }
-        public PartialViewResult ProductPartial(int? page, string search, string currentFilter)
+        public PartialViewResult ProductPartial(int? page, string search, string currentFilter, int? category)
         {
             if (search != null)
             {
@@ -27,15 +27,28 @@ namespace Web_ASP.NET_MVC.Controllers
                 search = currentFilter;
             }
             ViewBag.CurrentFilter = search;
+
             var products = from s in db.Products select s;
+
             if (!string.IsNullOrEmpty(search))
             {
                 products = products.Where(s => s.Name.Contains(search) || s.ProductCetegory.Name == search);
             }
-            products = products.OrderBy(x => x.ProductCode);
+
             int pageNumber = page ?? 1;
             int pageSize = 6;
-            return PartialView(products.ToPagedList(pageNumber, pageSize));
+
+            if (category != null)
+            {
+                ViewBag.category = category;
+                products = products.OrderByDescending(x => x.ProductCode).Where(x => x.CategoryCode == category);
+                return PartialView(products.ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                products = products.OrderByDescending(x => x.ProductCode);
+                return PartialView(products.ToPagedList(pageNumber, pageSize));
+            }
         }
         public ActionResult Details(int? id)
         {
