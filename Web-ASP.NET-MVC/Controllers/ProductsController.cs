@@ -50,5 +50,10 @@ namespace Web_ASP.NET_MVC.Controllers
             }
             return View(pro);
         }
+        public PartialViewResult ProductRelated(int id)
+        {
+            var productRelated = db.Products.Where(x => x.ProductCode != id && x.CategoryCode == id).ToList();
+            return PartialView(productRelated);
+        }
     }
 }

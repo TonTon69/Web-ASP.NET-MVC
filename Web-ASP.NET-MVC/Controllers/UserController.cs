@@ -47,9 +47,9 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Login(string account, string password)
         {
             if (ModelState.IsValid)
