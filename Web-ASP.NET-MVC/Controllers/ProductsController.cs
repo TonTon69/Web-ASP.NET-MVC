@@ -41,6 +41,7 @@ namespace Web_ASP.NET_MVC.Controllers
             if (category != null)
             {
                 ViewBag.category = category;
+                ViewBag.page = page;
                 products = products.OrderByDescending(x => x.ProductCode).Where(x => x.CategoryCode == category);
                 return PartialView(products.ToPagedList(pageNumber, pageSize));
             }

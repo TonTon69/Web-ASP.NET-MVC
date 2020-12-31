@@ -20,7 +20,6 @@ namespace Web_ASP.NET_MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Register(WebUser user)
         {
             if (ModelState.IsValid)

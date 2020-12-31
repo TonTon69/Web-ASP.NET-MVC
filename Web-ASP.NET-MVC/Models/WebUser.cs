@@ -31,10 +31,10 @@
         [StringLength(50)]
         [DataType(DataType.Password)]
         public string UserPassword { get; set; }
-        [DataType(DataType.Password)]
-        [DisplayName("Xác nhận mật khẩu")]
-        [Compare("UserPassword")]
+
+        [NotMapped]
         [Required(ErrorMessage = "Vui lòng nhập xác nhận mật khẩu")]
+        [System.ComponentModel.DataAnnotations.Compare("UserPassword")]
         public string ConfirmPassword { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập email")]
         [StringLength(100)]

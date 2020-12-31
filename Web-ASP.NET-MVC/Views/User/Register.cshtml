@@ -25,46 +25,46 @@
                     {
                         @Html.AntiForgeryToken()
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label>Họ & Tên</label>
-                                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "Họ & Tên" })
+                                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control m-0", @placeholder = "Họ & Tên" })
                                 @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label>Tên tài khoản</label>
-                                @Html.TextBoxFor(x => x.Account, new { @class = "form-control", @placeholder = "Tên tài khoản" })
+                                @Html.TextBoxFor(x => x.Account, new { @class = "form-control m-0", @placeholder = "Tên tài khoản" })
                                 @Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })
                                 @if (ViewBag.error != null)
                                 {
                                     <span class="text-danger">@ViewBag.error</span>
                                 }
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label>E-mail</label>
-                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "E-mail" })
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control m-0", @placeholder = "E-mail" })
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label>Số điện thoại</label>
-                                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @placeholder = "Số điện thoại" })
+                                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control m-0", @placeholder = "Số điện thoại" })
                                 @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label>Mật khẩu</label>
-                                @Html.PasswordFor(x => x.UserPassword, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                                @Html.PasswordFor(x => x.UserPassword, new { @class = "form-control m-0", @placeholder = "Mật khẩu" })
                                 @Html.ValidationMessageFor(m => m.UserPassword, "", new { @class = "text-danger" })
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label>Gõ lại mật khẩu</label>
-                                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control", @placeholder = "Gõ lại mật khẩu" })
+                                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control m-0", @placeholder = "Gõ lại mật khẩu" })
                                 @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label>Địa chỉ</label>
-                                @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder = "Địa chỉ" })
+                                @Html.TextBoxFor(x => x.Address, new { @class = "form-control m-0", @placeholder = "Địa chỉ" })
                                 @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label>Ngày sinh</label>
                                 <input class="form-control" type="date">
                                 @Html.ValidationMessageFor(m => m.BirthDay, "", new { @class = "text-danger" })
