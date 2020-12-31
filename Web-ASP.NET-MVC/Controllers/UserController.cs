@@ -24,8 +24,13 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var check = db.WebUsers.FirstOrDefault(s => s.Email == user.Email);
-                if (check == null)
+                var checkAcc = db.WebUsers.FirstOrDefault(s => s.Account == user.Account);
+                var checkEmail = db.WebUsers.FirstOrDefault(s => s.Email == user.Email);
+                if (checkEmail != null)
+                {
+                    ViewBag.error1 = "Email này đã tồn tại!";
+                }
+                if (checkAcc == null)
                 {
                     //user.UserPassword = GetMD5(user.UserPassword);
                     db.Configuration.ValidateOnSaveEnabled = false;

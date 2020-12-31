@@ -1,82 +1,126 @@
 ﻿@model Web_ASP.NET_MVC.Models.WebUser
+
 @{
-    ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<!-- Breadcrumb Start -->
-<div class="breadcrumb-wrap">
-    <div class="container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
-            <li class="breadcrumb-item active">ĐĂNG KÍ</li>
-        </ul>
-    </div>
-</div>
-<!-- Breadcrumb End -->
-<!-- Login Start -->
-<div class="login" style="min-height: 80vh">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="register-form mb-5">
-                    <h2 class="text-center mb-4">Đăng Kí</h2>
-                    @using (Html.BeginForm("Register", "User", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label>Họ & Tên</label>
-                                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control m-0", @placeholder = "Họ & Tên" })
-                                @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HHTShop - Đăng ký</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Content/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/Content/assets/css/sb-admin-2.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <style>
+        form.user .form-control-user, .btn.btn-primary.btn-user.btn-block, .small {
+            font-size: 1rem;
+        }
+    </style>
+
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 font-weight-bold mb-4">Đăng Ký</h1>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label>Tên tài khoản</label>
-                                @Html.TextBoxFor(x => x.Account, new { @class = "form-control m-0", @placeholder = "Tên tài khoản" })
-                                @Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })
-                                @if (ViewBag.error != null)
-                                {
-                                    <span class="text-danger">@ViewBag.error</span>
-                                }
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label>E-mail</label>
-                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control m-0", @placeholder = "E-mail" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label>Số điện thoại</label>
-                                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control m-0", @placeholder = "Số điện thoại" })
-                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label>Mật khẩu</label>
-                                @Html.PasswordFor(x => x.UserPassword, new { @class = "form-control m-0", @placeholder = "Mật khẩu" })
-                                @Html.ValidationMessageFor(m => m.UserPassword, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label>Gõ lại mật khẩu</label>
-                                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control m-0", @placeholder = "Gõ lại mật khẩu" })
-                                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label>Địa chỉ</label>
-                                @Html.TextBoxFor(x => x.Address, new { @class = "form-control m-0", @placeholder = "Địa chỉ" })
-                                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label>Ngày sinh</label>
-                                <input class="form-control" type="date">
-                                @Html.ValidationMessageFor(m => m.BirthDay, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-12">
-                                <button type="submit" name="submit" class="btn">Đăng kí</button>
+                            @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "user" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        @Html.TextBoxFor(x => x.FullName, new { @class = "form-control form-control-user", @placeholder = "Họ & Tên" })
+                                        @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @Html.TextBoxFor(x => x.Account, new { @class = "form-control form-control-user", @placeholder = "Tên tài khoản" })
+                                        @Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })
+                                        @if (ViewBag.error != null)
+                                        {
+                                            <span class="text-danger">@ViewBag.error</span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control form-control-user", @placeholder = "Email" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    @if (ViewBag.error != null)
+                                    {
+                                        <span class="text-danger">@ViewBag.error1</span>
+                                    }
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        @Html.PasswordFor(x => x.UserPassword, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
+                                        @Html.ValidationMessageFor(m => m.UserPassword, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control form-control-user", @placeholder = "Gõ lại mật khẩu" })
+                                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(x => x.Address, new { @class = "form-control form-control-user", @placeholder = "Địa chỉ" })
+                                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control form-control-user", @placeholder = "Số điện thoại" })
+                                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="date" name="BirthDay" class="form-control form-control-user" />
+                                        @Html.ValidationMessageFor(m => m.BirthDay, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Đăng ký
+                                </button>
+                            }
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="/User/Login">Bạn đã có tài khoản? Đăng nhập!</a>
                             </div>
                         </div>
-                    }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

@@ -7,6 +7,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+
     [Table("WebUser")]
     public partial class WebUser
     {
@@ -30,11 +31,12 @@
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
         [StringLength(50)]
         [DataType(DataType.Password)]
+        [MinLength(6, ErrorMessage = "Mật khẩu ít nhất phải 6 ký tự")]
         public string UserPassword { get; set; }
 
         [NotMapped]
         [Required(ErrorMessage = "Vui lòng nhập xác nhận mật khẩu")]
-        [System.ComponentModel.DataAnnotations.Compare("UserPassword")]
+        [Compare("UserPassword", ErrorMessage = "Mật khẩu nhập lại không đúng")]
         public string ConfirmPassword { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập email")]
         [StringLength(100)]
@@ -45,7 +47,7 @@
         [StringLength(250)]
         public string Address { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập số điện thoại")]
-        [StringLength(11)]
+        [StringLength(10, ErrorMessage = "Số điện thoại phải đúng 10 ký tự")]
         public string Phone { get; set; }
         public DateTime? BirthDay { get; set; }
 
