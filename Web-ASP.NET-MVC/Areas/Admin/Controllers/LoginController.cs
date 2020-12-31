@@ -18,19 +18,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Index(Administrator avm)
         {
-            if (String.IsNullOrEmpty(avm.UserAdmin) && String.IsNullOrEmpty(avm.PasswordAdmin))
-            {
-                ViewData["error1"] = "Vui lòng nhập tên đăng nhập và mật khẩu";
-            }
-            else if (String.IsNullOrEmpty(avm.UserAdmin))
-            {
-                ViewData["error2"] = "Vui lòng nhập tên tài khoản";
-            }
-            else if (String.IsNullOrEmpty(avm.PasswordAdmin))
-            {
-                ViewData["error3"] = "Vui lòng nhập mật khẩu";
-            }
-            else
+            if (ModelState.IsValid)
             {
                 Administrator ad = db.Administrators.Where(x => x.UserAdmin == avm.UserAdmin && x.PasswordAdmin == avm.PasswordAdmin).FirstOrDefault();
                 if (ad != null)

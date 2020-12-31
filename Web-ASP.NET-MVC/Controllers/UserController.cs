@@ -24,13 +24,13 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var checkAcc = db.WebUsers.FirstOrDefault(s => s.Account == user.Account);
+                var checkAccout = db.WebUsers.FirstOrDefault(s => s.Account == user.Account);
                 var checkEmail = db.WebUsers.FirstOrDefault(s => s.Email == user.Email);
                 if (checkEmail != null)
                 {
                     ViewBag.error1 = "Email này đã tồn tại!";
                 }
-                if (checkAcc == null)
+                if (checkAccout == null)
                 {
                     //user.UserPassword = GetMD5(user.UserPassword);
                     db.Configuration.ValidateOnSaveEnabled = false;
@@ -54,17 +54,16 @@ namespace Web_ASP.NET_MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(string account, string password)
+        public ActionResult Login(WebUser acc)
         {
             if (ModelState.IsValid)
             {
                 //var f_password = GetMD5(password);
-                var data = db.WebUsers.Where(s => s.Account == account && s.UserPassword == password).ToList();
-                if (data.Count() > 0)
+                WebUser obj = db.WebUsers.Where(x => x.Account == acc.Account && x.UserPassword == acc.UserPassword).FirstOrDefault();
+                if (obj != null )
                 {
-                    Session["FullName"] = data.FirstOrDefault().FullName;
-                    Session["Email"] = data.FirstOrDefault().Email;
-                    Session["UserId"] = data.FirstOrDefault().UserCode;
+                    Session["UserId"] = obj.UserCode;
+                    Session["FullName"] = obj.FullName;
                     return RedirectToAction("Index", "Home");
                 }
                 else

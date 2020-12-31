@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - Login</title>
+    <title>HHTShop - Admin</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/Content/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,12 +22,15 @@
 
     <!-- Custom styles for this template-->
     <link href="~/Content/assets/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="~/Content/assets/css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
-<body class="bg-gradient-light">
-
+<body class="bg-gradient-primary">
+    <style>
+        form.user .form-control-user, .btn.btn-primary.btn-user.btn-block, .small {
+            font-size: 1rem;
+        }
+    </style>
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
@@ -36,46 +39,32 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block" style="background-image: url(https://i.pinimg.com/originals/37/c7/46/37c74640a3cd5c78f8b0813445f07de7.jpg); background-size: cover"></div>
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Đăng Nhập</h1>
+                                        <h1 class="h4 text-gray-900 font-weight-bold mb-4">Đăng Nhập</h1>
                                     </div>
-                                    @using (@Html.BeginForm("Index", "Login", FormMethod.Post))
+                                    @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "user" }))
                                     {
-                                        <form class="user">
-                                            <p style="color: red">@ViewData["error1"]</p>
-                                            <div class="form-group">
-                                                @Html.TextBoxFor(x => x.UserAdmin, new { @class = "form-control form-control-user", @placeholder = "Tên tài khoản" })
-                                            </div>
-                                            <p style="color: red">@ViewData["error2"]</p>
-                                            <div class="form-group">
-                                                @Html.PasswordFor(x => x.PasswordAdmin, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
-                                            </div>
-                                            <p style="color: red">@ViewData["error3"]</p>
-                                            <div class="form-group">
-                                                <p style="color: red">@ViewBag.error</p>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary btn-user btn-block">Đăng nhập</button>
-
-                                            <hr>
-                                            <a href="index.html" class="btn btn-google btn-user btn-block">
-                                                <i class="fab fa-google fa-fw"></i> Đăng ký với tài khoản Google
-                                            </a>
-                                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                                <i class="fab fa-facebook-f fa-fw"></i> Đăng ký với tài khoản Facebook
-                                            </a>
-                                        </form>
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.UserAdmin, new { @class = "form-control form-control-user", @placeholder = "Tên tài khoản" })
+                                            @Html.ValidationMessageFor(m => m.UserAdmin, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.PasswordFor(x => x.PasswordAdmin, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
+                                            @Html.ValidationMessageFor(m => m.PasswordAdmin, "", new { @class = "text-danger" })
+                                        </div>
+                                        <button type="submit" name="submit" class="btn btn-primary btn-user btn-block mt-4 mb-4">
+                                            Đăng nhập
+                                        </button>
                                     }
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Quên Mật Khẩu?</a>
+                                        <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
                                     </div>
-                                    <div class="text-center">
-                                        <a class="small" href="/Admin/Register">Bạn chưa có tài khoản? Đăng ký</a>
-                                    </div>
-
+                                   
                                 </div>
                             </div>
                         </div>
