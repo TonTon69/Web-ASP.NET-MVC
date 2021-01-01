@@ -32,7 +32,7 @@ namespace Web_ASP.NET_MVC.Controllers
                 }
                 if (checkAccout == null)
                 {
-                    //user.UserPassword = GetMD5(user.UserPassword);
+                    user.UserPassword = GetMD5(user.UserPassword);
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.WebUsers.Add(user);
                     db.SaveChanges();
@@ -58,8 +58,8 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var f_password = GetMD5(password);
-                WebUser obj = db.WebUsers.Where(x => x.Account == acc.Account && x.UserPassword == acc.UserPassword).FirstOrDefault();
+                var f_password = GetMD5(acc.UserPassword);
+                WebUser obj = db.WebUsers.Where(x => x.Account == acc.Account && x.UserPassword == f_password).FirstOrDefault();
                 if (obj != null )
                 {
                     Session["UserId"] = obj.UserCode;
@@ -80,19 +80,19 @@ namespace Web_ASP.NET_MVC.Controllers
             return RedirectToAction("Login", "User");
         }
         //create a string MD5
-        //public static string GetMD5(string str)
-        //{
-        //    MD5 md5 = new MD5CryptoServiceProvider();
-        //    byte[] fromData = Encoding.UTF8.GetBytes(str);
-        //    byte[] targetData = md5.ComputeHash(fromData);
-        //    string byte2String = null;
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
 
-        //    for (int i = 0; i < targetData.Length; i++)
-        //    {
-        //        byte2String += targetData[i].ToString("x2");
-        //    }
-        //    return byte2String;
-        //}
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+            }
+            return byte2String;
+        }
 
     }
 }

@@ -49,6 +49,7 @@
         [Required(ErrorMessage = "Vui lòng nhập số điện thoại")]
         [StringLength(10, ErrorMessage = "Số điện thoại phải đúng 10 ký tự")]
         public string Phone { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập ngày sinh")]
         public DateTime? BirthDay { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
