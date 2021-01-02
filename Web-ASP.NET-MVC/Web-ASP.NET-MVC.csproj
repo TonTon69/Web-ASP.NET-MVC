@@ -161,6 +161,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
@@ -2143,6 +2144,9 @@
     <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Company\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Company\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Company\Delete.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />

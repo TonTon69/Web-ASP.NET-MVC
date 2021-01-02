@@ -1,0 +1,58 @@
+﻿@model Web_ASP.NET_MVC.Models.Company
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa công ty</h2>
+<h3>Bạn chắc chắn muốn xóa thông tin công ty?</h3>
+<div>
+    <i class="fas fa-list"></i>
+    @Html.ActionLink("Quay về Thông tin công ty", "Index")
+</div>
+<div>
+    <br />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Email:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            SĐT:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger btn-default" />
+        </div>
+    }
+</div>

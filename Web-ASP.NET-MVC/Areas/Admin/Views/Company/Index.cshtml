@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Web_ASP.NET_MVC.Models.Company>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thông Tin Công Ty</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Tên
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            SĐT
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.CompanyCode }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Xóa", "Delete", new { id = item.CompanyCode }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
