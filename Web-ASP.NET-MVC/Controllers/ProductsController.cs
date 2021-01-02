@@ -18,6 +18,8 @@ namespace Web_ASP.NET_MVC.Controllers
         }
         public PartialViewResult ProductPartial(int? page, string search, string currentFilter, int? category)
         {
+            ViewBag.CurrentFilter = search;
+
             if (search != null)
             {
                 page = 1;
@@ -26,7 +28,6 @@ namespace Web_ASP.NET_MVC.Controllers
             {
                 search = currentFilter;
             }
-            ViewBag.CurrentFilter = search;
 
             var products = from s in db.Products select s;
 
