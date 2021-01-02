@@ -46,6 +46,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 font-weight-bold mb-4">Đăng Nhập</h1>
                                     </div>
+
                                     @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "user" }))
                                     {
                                         @Html.AntiForgeryToken()
@@ -56,6 +57,12 @@
                                         <div class="form-group">
                                             @Html.PasswordFor(x => x.UserPassword, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
                                             @Html.ValidationMessageFor(m => m.UserPassword, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group">
+                                            @if (ViewBag.error != null)
+                                            {
+                                                <span class="text-danger">@ViewBag.error</span>
+                                            }
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block mt-4 mb-4">
                                             Đăng nhập

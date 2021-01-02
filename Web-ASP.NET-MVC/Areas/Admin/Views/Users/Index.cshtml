@@ -52,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BirthDay)
+                @String.Format("{0:MM/dd/yyyy}", @item.BirthDay)
             </td>
             <td>
                 @Html.ActionLink("Sửa", "Edit", new { id = item.UserCode }, new { @class = "btn btn-primary mb-1" })

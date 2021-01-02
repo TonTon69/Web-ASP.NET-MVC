@@ -2,6 +2,14 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<style>
+    .header-slider-item img {
+        width: 100%;
+        height: max-content;
+        object-fit: cover;
+    }
+</style>
 <!-- Main Slider Start -->
 <div class="header">
     <div class="container-fluid">
@@ -63,12 +71,12 @@
             </div>
             <div class="col-md-3">
                 <div class="header-img">
-                    <div class="img-item">
+                    <a href="/Products" class="img-item">
                         <img src="~/Content/assets/img/category-1.jpg" />
-                    </div>
-                    <div class="img-item">
+                    </a>
+                    <a href="/Products" class="img-item">
                         <img src="~/Content/assets/img/category-2.jpg" />
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

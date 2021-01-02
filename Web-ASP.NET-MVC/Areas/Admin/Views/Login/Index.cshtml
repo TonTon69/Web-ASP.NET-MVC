@@ -45,7 +45,8 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 font-weight-bold mb-4">Đăng Nhập</h1>
                                     </div>
-                                    @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "user" }))
+
+                                    @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "user mt-2" }))
                                     {
                                         @Html.AntiForgeryToken()
                                         <div class="form-group">
@@ -56,6 +57,12 @@
                                             @Html.PasswordFor(x => x.PasswordAdmin, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
                                             @Html.ValidationMessageFor(m => m.PasswordAdmin, "", new { @class = "text-danger" })
                                         </div>
+                                        <div class="form-group">
+                                            @if (ViewBag.error != null)
+                                            {
+                                                <span class="text-danger">@ViewBag.error</span>
+                                            }
+                                        </div>
                                         <button type="submit" name="submit" class="btn btn-primary btn-user btn-block mt-4 mb-4">
                                             Đăng nhập
                                         </button>
@@ -64,7 +71,7 @@
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>

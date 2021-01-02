@@ -44,7 +44,7 @@ namespace Web_ASP.NET_MVC.Controllers
                     return View();
                 }
             }
-            return View();
+            return View(user);
         }
         [HttpGet]
         public ActionResult Login()
@@ -54,26 +54,28 @@ namespace Web_ASP.NET_MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(WebUser acc)
+        public ActionResult Login(string Account, string UserPassword)
         {
             if (ModelState.IsValid)
             {
-                var f_password = GetMD5(acc.UserPassword);
-                WebUser obj = db.WebUsers.Where(x => x.Account == acc.Account && x.UserPassword == f_password).FirstOrDefault();
-                if (obj != null )
+                var f_password = GetMD5(UserPassword);
+                WebUser user = db.WebUsers.Where(x => x.Account.Equals(Account) && x.UserPassword.Equals(f_password)).FirstOrDefault();
+                if (user != null)
                 {
-                    Session["UserId"] = obj.UserCode;
-                    Session["FullName"] = obj.FullName;
+                    Session["UserId"] = user.UserCode;
+                    Session["Account"] = user.Account;
+                    Session["FullName"] = user.FullName;
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ViewBag.error = "Đăng nhập không thành công!";
-                    return RedirectToAction("Login", "User");
+                    ViewBag.error = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                    return View("Login");
                 }
             }
             return View();
         }
+
         public ActionResult Logout()
         {
             Session.Clear();

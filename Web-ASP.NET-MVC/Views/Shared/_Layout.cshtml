@@ -82,11 +82,24 @@
                             <i class="fa fa-shopping-cart"></i>
                             <span>(0)</span>
                         </a>
-                        <a href="#" class="nav-link dropdown-toggle" style="color:#ffff; font-weight: 600;" data-toggle="dropdown">TÀI KHOẢN</a>
-                        <div class="dropdown-menu">
-                            <a href="/User/Login" class="dropdown-item">Đăng Nhập</a>
-                            <a href="/User/Register" class="dropdown-item">Đăng kí</a>
-                        </div>
+                        @if (Session["Account"] == null)
+                        {
+
+                            <a href="#" class="nav-link dropdown-toggle" style="color:#ffff; font-weight: 600;" data-toggle="dropdown">TÀI KHOẢN</a>
+                            <div class="dropdown-menu">
+                                <a href="/User/Login" class="dropdown-item">Đăng Nhập</a>
+                                <a href="/User/Register" class="dropdown-item">Đăng kí</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <a href="#" class="nav-link dropdown-toggle" style="color:#ffff; font-weight: 600;" data-toggle="dropdown">@Session["Account"]</a>
+                            <div class="dropdown-menu">
+                                <a href="/User/Profile" class="dropdown-item">Hồ sơ</a>
+                                <a href="/User/Settings" class="dropdown-item">Cài đặt</a>
+                                <a href="@Url.Action("Logout", "User")" class="dropdown-item">Đăng xuất</a>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
