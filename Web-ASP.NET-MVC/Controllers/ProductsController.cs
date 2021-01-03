@@ -33,7 +33,7 @@ namespace Web_ASP.NET_MVC.Controllers
 
             if (!string.IsNullOrEmpty(search))
             {
-                products = products.Where(s => s.Name.Contains(search) || s.ProductCetegory.Name == search);
+                products = products.Where(s => s.Name.Contains(search) || s.ProductCetegory.Name.Contains(search));
             }
 
             int pageNumber = page ?? 1;
