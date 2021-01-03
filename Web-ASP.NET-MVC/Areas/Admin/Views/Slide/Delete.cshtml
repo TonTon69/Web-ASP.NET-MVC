@@ -1,0 +1,49 @@
+﻿@model Web_ASP.NET_MVC.Models.Slide
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa banner</h2>
+<h3>Bạn chắc chắn muốn xóa banner này?</h3>
+<p>
+    <i class="fas fa-list"></i>
+    @Html.ActionLink("Quay về Danh sách banner", "Index")
+</p>
+
+<div>
+    <br />
+    <dl class="dl-horizontal">
+        <dt>ID:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.SlideCode)
+        </dd>
+        <dt>Ảnh:</dt>
+        <dd>
+            <img src="@Url.Content(@Model.Link)" height="350" width="800" />
+        </dd>
+        <dt>Mô tả:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Discription)
+        </dd>
+        <dt>Được tạo bởi:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+        <dt>Ngày khởi tạo:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+    </dl>
+    <br />
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger btn-default" />
+        </div>
+    }
+</div>

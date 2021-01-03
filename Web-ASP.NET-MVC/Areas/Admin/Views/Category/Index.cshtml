@@ -1,20 +1,4 @@
-﻿@using Web_ASP.NET_MVC.Models
-@using PagedList.Mvc;
-@model PagedList.PagedList<Web_ASP.NET_MVC.Models.ProductCetegory>
-
-
-@*Thuộc tính mô tả nội dung quá dài, do đó sẽ sử dụng một Helper HTML tùy chỉnh cho phép dễ dàng cắt những thuộc tính này với độ dài phù hợp.*@
-@helper Truncate(string input, int length)
-{
-    if (input.Length < length)
-    {
-        @input
-    }
-    else
-    {
-        @input.Substring(0, length)<text>...</text>
-    }
-}
+﻿@model IEnumerable<Web_ASP.NET_MVC.Models.ProductCetegory>
 
 @{
     ViewBag.Title = "Index";
@@ -84,25 +68,4 @@
     }
 
 </table>
-
-<style>
-    .pagination li {
-        border: 1px solid rgba(0,0,0,0.1);
-        cursor: pointer;
-    }
-
-    .pagination a {
-        padding: 6px 14px;
-        display: block;
-    }
-</style>
-
-
-<div class="col-md-12">
-    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount :
-    <div class="pagination d-flex justify-content-center">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
-    </div>
-</div>
-
 

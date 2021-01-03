@@ -14,6 +14,10 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         // GET: Admin/Company
         public ActionResult Index()
         {
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.Companies.ToList());
         }
         [HttpGet]

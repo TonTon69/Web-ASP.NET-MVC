@@ -1,0 +1,18 @@
+﻿@using Web_ASP.NET_MVC.Models
+@model List<Company>
+
+@{
+    foreach (var item in Model)
+    {
+        <h3><i class="fa fa-map-marker"></i>@item.Address</h3>
+        <h3><i class="fa fa-envelope"></i>@item.Email</h3>
+        <h3><i class="fa fa-phone"></i>@item.Phone</h3>
+        <div class="social">
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/HuynhMinhHoang.69/"><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-linkedin-in"></i></a>
+            <a href="huynhminhhoangggg"><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-youtube"></i></a>
+        </div>
+    }
+}

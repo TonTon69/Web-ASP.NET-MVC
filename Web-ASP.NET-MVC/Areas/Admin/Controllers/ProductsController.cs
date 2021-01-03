@@ -72,7 +72,6 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             return View(pro);
-
         }
         [HttpGet]
         public ActionResult Edit(int id)
