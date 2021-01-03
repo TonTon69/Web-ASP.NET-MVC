@@ -69,7 +69,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.CreateDate, "Ngày khởi tạo", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input class="form-control" type="datetime" name="CreateDate" value="@Model.CreateDate" />
+            <input class="form-control" type="date" name="CreateDate" value="@Model.CreateDate" />
             @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
         </div>
     </div>
