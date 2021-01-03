@@ -11,10 +11,6 @@ namespace Web_ASP.NET_MVC.Controllers
     {
         ShopFashionContext db = new ShopFashionContext();
         // GET: CategoryPartial
-        public ActionResult Index()
-        {
-            return View();
-        }
         public PartialViewResult CategoryPartial()
         {
             var categoryList = db.ProductCetegories.OrderBy(x => x.CategoryCode).ToList();

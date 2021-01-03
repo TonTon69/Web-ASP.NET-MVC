@@ -1,0 +1,11 @@
+﻿@using Web_ASP.NET_MVC.Models
+@model List<Slide>
+
+@{
+    foreach (var item in Model)
+    {
+        <div class="header-slider-item">
+            <img src="@Url.Content(item.Link)" style="height: unset; image-rendering: pixelated; outline: none"/>
+        </div>
+    }
+}

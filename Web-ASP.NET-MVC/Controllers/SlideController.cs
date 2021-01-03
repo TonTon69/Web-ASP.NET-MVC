@@ -7,13 +7,14 @@ using Web_ASP.NET_MVC.Models;
 
 namespace Web_ASP.NET_MVC.Controllers
 {
-    public class ContactController : Controller
+    public class SlideController : Controller
     {
         ShopFashionContext db = new ShopFashionContext();
-        // GET: Contact
-        public ActionResult Index()
+        // GET: Slide
+        public PartialViewResult SlidePartial()
         {
-            return View();
+            var slideList = db.Slides.OrderBy(x => x.SlideCode).ToList();
+            return PartialView(slideList);
         }
     }
 }
