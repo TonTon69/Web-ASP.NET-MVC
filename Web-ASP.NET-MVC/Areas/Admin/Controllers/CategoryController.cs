@@ -17,13 +17,19 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
     {
         // GET: Admin/Category
         ShopFashionContext db = new ShopFashionContext();
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
             if (Session["AdminId"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
-            return View(db.ProductCetegories.ToList());
+            ViewBag.CurrentFilter = search;
+            var categories = from s in db.ProductCetegories select s;
+            if (!string.IsNullOrEmpty(search))
+            {
+                categories = categories.Where(s => s.Name.Contains(search));
+            }
+            return View(categories.ToList());
         }
         [HttpGet]
         public ActionResult Create()

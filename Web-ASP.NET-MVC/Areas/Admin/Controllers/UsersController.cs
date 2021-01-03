@@ -27,7 +27,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             var users = from s in db.WebUsers select s;
             if (!string.IsNullOrEmpty(search))
             {
-                users = users.Where(s => s.FullName.Contains(search) || s.Email == search);
+                users = users.Where(s => s.FullName.Contains(search) || s.Email.Contains(search) || s.Account.Contains(search));
             }
             users = users.OrderBy(c => c.UserCode);
             int pageNumber = (page ?? 1);

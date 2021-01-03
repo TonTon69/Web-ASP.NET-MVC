@@ -13,13 +13,19 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
     {
         ShopFashionContext db = new ShopFashionContext();
         // GET: Admin/Company
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
             if (Session["AdminId"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
-            return View(db.Slides.ToList());
+            ViewBag.CurrentFilter = search;
+            var banners = from s in db.Slides select s;
+            if (!string.IsNullOrEmpty(search))
+            {
+                banners = banners.Where(s => s.Discription.Contains(search));
+            }
+            return View(banners.ToList());
         }
         [HttpGet]
         public ActionResult Create()

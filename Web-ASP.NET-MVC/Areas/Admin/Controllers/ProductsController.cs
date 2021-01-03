@@ -26,7 +26,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             var products = from s in db.Products select s;
             if (!string.IsNullOrEmpty(search))
             {
-                products = products.Where(s => s.Name.Contains(search) || s.ProductCetegory.Name == search);
+                products = products.Where(s => s.Name.Contains(search) || s.ProductCetegory.Name.Contains(search));
             }
             products = products.OrderBy(c => c.ProductCode);
             int pageNumber = (page ?? 1);
