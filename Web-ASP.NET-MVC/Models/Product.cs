@@ -1,4 +1,4 @@
-namespace Web_ASP.NET_MVC.Models
+﻿namespace Web_ASP.NET_MVC.Models
 {
     using System;
     using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace Web_ASP.NET_MVC.Models
         [Key]
         public int ProductCode { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm")]
         [StringLength(250)]
         public string Name { get; set; }
 
@@ -26,8 +26,9 @@ namespace Web_ASP.NET_MVC.Models
         public string MetaTitle { get; set; }
 
         [Column(TypeName = "ntext")]
+        [Required(ErrorMessage = "Vui lòng nhập mô tả sản phẩm")]
         public string ProductDescription { get; set; }
-
+        [Required(ErrorMessage = "Vui lòng chọn ảnh sản phẩm")]
         [StringLength(250)]
         public string Image { get; set; }
 
@@ -42,17 +43,17 @@ namespace Web_ASP.NET_MVC.Models
 
         [StringLength(250)]
         public string Image4 { get; set; }
-
+        [Required(ErrorMessage = "Vui lòng nhập giá sản phẩm")]
         public decimal? Price { get; set; }
-
+        [Required(ErrorMessage = "Vui lòng nhập giá khuyến mãi")]
         public decimal? PromotionPrice { get; set; }
-
+        [Required(ErrorMessage = "Vui lòng nhập số lượng tồn")]
         public int Quanlity { get; set; }
-
+        [Required(ErrorMessage = "Vui lòng chọn thể loại")]
         public int? CategoryCode { get; set; }
-
+        [Required(ErrorMessage = "Vui lòng nhập ngày khởi tạo")]
         public DateTime? CreatedDate { get; set; }
-
+        [Required(ErrorMessage = "Vui lòng nhập người khởi tạo")]
         [StringLength(250)]
         public string CreateBy { get; set; }
 

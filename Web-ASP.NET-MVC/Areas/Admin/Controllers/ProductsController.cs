@@ -11,7 +11,6 @@ using System.Data.Entity;
 using System.Net;
 using System.Web.UI.WebControls;
 using System.Web.UI;
-
 namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 {
     public class ProductsController : Controller
@@ -59,7 +58,6 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             return View(pro);
-
         }
         [HttpGet]
         public ActionResult Details(int? id)
@@ -97,7 +95,6 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             //DropDownList 
             var cateList = db.ProductCetegories.ToList();
             ViewBag.CateList = new SelectList(cateList, "CategoryCode", "Name");
-
             if (ModelState.IsValid)
             {
                 db.Entry(pro).State = EntityState.Modified;
@@ -105,7 +102,6 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             return View(pro);
-
         }
 
         [HttpGet]

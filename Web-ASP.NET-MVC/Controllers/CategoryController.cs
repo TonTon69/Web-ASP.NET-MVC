@@ -17,7 +17,7 @@ namespace Web_ASP.NET_MVC.Controllers
         }
         public PartialViewResult CategoryPartial()
         {
-            var categoryList = db.ProductCetegories.OrderBy(x => x.Name).ToList();
+            var categoryList = db.ProductCetegories.OrderBy(x => x.CategoryCode).ToList();
             return PartialView(categoryList);
         }
     }

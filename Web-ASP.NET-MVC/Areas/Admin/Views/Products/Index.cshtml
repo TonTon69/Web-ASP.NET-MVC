@@ -70,7 +70,7 @@
                 @Html.DisplayFor(modelItem => item.ProductCetegory.Name)
             </td>
             <td>
-                @Truncate(item.Image, 10)
+                <img src="@Url.Content(item.Image)" height="50" width="50" />
             </td>
             <td style="width: 120px">
                 @Html.DisplayFor(modelItem => item.CreatedDate)
