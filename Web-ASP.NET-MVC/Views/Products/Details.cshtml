@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
                                 <div class="action mt-5">
-                                    <a class="btn" href="@Url.Action("AddToCart", "Cart", new { @iProductCode = @item.ProductCode, @strURL=Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                    <a class="btn" href="@Url.Action("AddToCart", "Cart", new { @iProductCode = @Model.ProductCode, @strURL=Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                     <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Mua ngay</a>
                                 </div>
                             </div>

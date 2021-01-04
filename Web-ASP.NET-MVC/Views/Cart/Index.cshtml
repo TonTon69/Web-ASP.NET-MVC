@@ -53,7 +53,7 @@
                                                 </div>
                                             </td>
                                             <td>@String.Format("{0:0,0}", item.dMoney) đ</td>
-                                            <td><button><i class="fa fa-trash"></i></button></td>
+                                            <td><a href="@Url.Action("Delete", "Cart", new { @iProductCode = item.iProductCode})" class="btn"><i class="fa fa-trash"></i></a></td>
                                         </tr>
                                     }
                                 }
@@ -67,11 +67,11 @@
                 <div class="cart-page-inner">
                     <div class="row">
                         @*<div class="col-md-12">
-                            <div class="coupon">
-                                <input type="text" placeholder="Nhập mã giảm giá...">
-                                <button>Mã giảm giá</button>
-                            </div>
-                        </div>*@
+                                <div class="coupon">
+                                    <input type="text" placeholder="Nhập mã giảm giá...">
+                                    <button>Mã giảm giá</button>
+                                </div>
+                            </div>*@
                         <div class="col-md-12">
                             <div class="cart-summary">
                                 <div class="cart-content">

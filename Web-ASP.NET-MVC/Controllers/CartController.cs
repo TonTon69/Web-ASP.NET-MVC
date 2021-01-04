@@ -25,7 +25,7 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             List<Cart> listCart = GetCart();
             Cart pro = listCart.Find(x => x.iProductCode == iProductCode);
-            if(pro == null)
+            if (pro == null)
             {
                 pro = new Cart(iProductCode);
                 listCart.Add(pro);
@@ -41,7 +41,7 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             int iSumQuantity = 0;
             List<Cart> listCart = Session["Cart"] as List<Cart>;
-            if(listCart != null)
+            if (listCart != null)
             {
                 iSumQuantity = listCart.Sum(x => x.iQuantity);
             }
@@ -62,7 +62,7 @@ namespace Web_ASP.NET_MVC.Controllers
         public ActionResult Index()
         {
             List<Cart> listCart = GetCart();
-            if(listCart.Count == 0)
+            if (listCart.Count == 0)
             {
                 return RedirectToAction("Index", "Products");
             }
@@ -76,6 +76,22 @@ namespace Web_ASP.NET_MVC.Controllers
             ViewBag.SumQuantity = SumQuantity();
             ViewBag.SumPrice = SumPrice();
             return PartialView();
+        }
+
+        public ActionResult Delete(int iProductCode)
+        {
+            List<Cart> listCart = GetCart();
+            Cart pro = listCart.SingleOrDefault(x => x.iProductCode == iProductCode);
+            if (pro != null)
+            {
+                listCart.RemoveAll(x => x.iProductCode == iProductCode);
+                return RedirectToAction("Index", "Cart");
+            }
+            if (listCart.Count == 0)
+            {
+                return RedirectToAction("Index", "Products");
+            }
+            return RedirectToAction("Index", "Cart");
         }
     }
 }
