@@ -196,6 +196,7 @@
     <Content Include="Content\assets\css\sb-admin-2.css" />
     <Content Include="Content\assets\css\sb-admin-2.min.css" />
     <Content Include="Content\assets\css\style.css" />
+    <Content Include="Content\assets\img\cart-null.png" />
     <Content Include="Content\assets\img\godaddy.svg" />
     <Content Include="Content\assets\img\norton.svg" />
     <Content Include="Content\assets\img\ssl.svg" />
@@ -2248,6 +2249,7 @@
     <Content Include="Views\Company\CompanyPartial.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\CartPartial.cshtml" />
+    <Content Include="Views\Cart\CartNull.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

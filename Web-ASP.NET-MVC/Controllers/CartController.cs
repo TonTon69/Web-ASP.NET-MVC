@@ -64,20 +64,32 @@ namespace Web_ASP.NET_MVC.Controllers
             List<Cart> listCart = GetCart();
             if (listCart.Count == 0)
             {
-                return RedirectToAction("Index", "Products");
+                return RedirectToAction("CartNull", "Cart");
             }
             ViewBag.SumQuantity = SumQuantity();
             ViewBag.SumPrice = SumPrice();
             return View(listCart);
         }
-
+        public ActionResult CartNull()
+        {
+            return View();
+        }
         public PartialViewResult CartPartial()
         {
             ViewBag.SumQuantity = SumQuantity();
             ViewBag.SumPrice = SumPrice();
             return PartialView();
         }
-
+        public ActionResult Edit(int iProductCode, FormCollection f)
+        {
+            List<Cart> listCart = GetCart();
+            Cart pro = listCart.SingleOrDefault(x => x.iProductCode == iProductCode);
+            if (pro != null)
+            {
+                pro.iQuantity = int.Parse(f["txtQuantity"].ToString());
+            }
+            return RedirectToAction("Index", "Cart");
+        }
         public ActionResult Delete(int iProductCode)
         {
             List<Cart> listCart = GetCart();
