@@ -70,5 +70,12 @@ namespace Web_ASP.NET_MVC.Controllers
             ViewBag.SumPrice = SumPrice();
             return View(listCart);
         }
+
+        public PartialViewResult CartPartial()
+        {
+            ViewBag.SumQuantity = SumQuantity();
+            ViewBag.SumPrice = SumPrice();
+            return PartialView();
+        }
     }
 }

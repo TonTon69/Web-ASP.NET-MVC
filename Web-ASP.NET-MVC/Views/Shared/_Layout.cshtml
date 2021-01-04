@@ -78,10 +78,9 @@
                 </div>
                 <div class="col-md-3">
                     <div class="user justify-content-end">
-                        <a href="/Cart" class="btn cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>(0)</span>
-                        </a>
+                        <div>
+                            @Html.Action("CartPartial", "Cart")
+                        </div>
                         @if (Session["Account"] == null)
                         {
 

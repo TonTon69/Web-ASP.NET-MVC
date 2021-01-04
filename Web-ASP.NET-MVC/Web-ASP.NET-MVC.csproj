@@ -2247,6 +2247,7 @@
     <Content Include="Views\Slide\SlidePartial.cshtml" />
     <Content Include="Views\Company\CompanyPartial.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\CartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
