@@ -60,7 +60,16 @@ namespace Web_ASP.NET_MVC.Controllers
             {
                 var f_password = GetMD5(UserPassword);
                 WebUser user = db.WebUsers.Where(x => x.Account.Equals(Account) && x.UserPassword.Equals(f_password)).FirstOrDefault();
-                if (user != null)
+                
+                if (String.IsNullOrEmpty(Account))
+                {
+                    ViewBag.error1 = "Vui lòng nhập tên tài khoản";
+                }
+                if (String.IsNullOrEmpty(UserPassword))
+                {
+                    ViewBag.error2 = "Vui lòng nhập mật khẩu";
+                }
+                else if (user != null)
                 {
                     Session["UserId"] = user.UserCode;
                     Session["Account"] = user.Account;

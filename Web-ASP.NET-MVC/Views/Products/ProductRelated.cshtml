@@ -1,7 +1,6 @@
 ﻿@using Web_ASP.NET_MVC.Models
 @model List<Product>
 
-
 <div class="product">
     <div class="section-header">
         <h1>Sản Phẩm Liên Quan</h1>
@@ -28,7 +27,7 @@
                                 <img src="@Url.Content("~/Content/assets/img/" + item.Image)">
                             </a>
                             <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="@Url.Action("AddToCart", "Cart", new { @iProductCode = @item.ProductCode, @strURL=Request.Url.ToString() })"><i class="fa fa-cart-plus"></i></a>
                                 <a href="@Url.Action("Details", "Products", new { id = item.ProductCode })"><i class="fa fa-search"></i></a>
                             </div>
                         </div>

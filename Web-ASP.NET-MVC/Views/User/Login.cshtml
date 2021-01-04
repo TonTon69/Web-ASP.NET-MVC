@@ -55,10 +55,22 @@
                                         <div class="form-group">
                                             @Html.TextBoxFor(x => x.Account, new { @class = "form-control form-control-user", @placeholder = "Tên tài khoản" })
                                             @Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })
+                                            @if (ViewBag.error1 != null)
+                                            {
+                                                <span class="text-danger">@ViewBag.error1</span>
+                                            }
+                                            @if (ViewBag.error3 != null)
+                                            {
+                                                <span class="text-danger">@ViewBag.error3</span>
+                                            }
                                         </div>
                                         <div class="form-group">
                                             @Html.PasswordFor(x => x.UserPassword, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
                                             @Html.ValidationMessageFor(m => m.UserPassword, "", new { @class = "text-danger" })
+                                            @if (ViewBag.error2 != null)
+                                            {
+                                                <span class="text-danger">@ViewBag.error2</span>
+                                            }
                                         </div>
                                         <div class="form-group">
                                             @if (ViewBag.error != null)

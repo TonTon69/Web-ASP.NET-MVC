@@ -1,0 +1,101 @@
+﻿@using Web_ASP.NET_MVC.Models
+@model List<Cart>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
+            <li class="breadcrumb-item"><a href="/Products">SẢN PHẨM</a></li>
+            <li class="breadcrumb-item active">GIỎ HÀNG</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Cart Start -->
+<div class="cart-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-page-inner">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                    <th>Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody class="align-middle">
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <div class="img">
+                                                    <img src="@item.sImage">
+                                                    <p>@item.sProductName</p>
+                                                </div>
+                                            </td>
+                                            <td>@String.Format("{0:0,0}", item.dPrice) đ</td>
+                                            <td>
+                                                <div class="qty">
+                                                    <button class="btn-minus"><i class="fa fa-minus"></i></button>
+                                                    <input type="text" value="@item.iQuantity">
+                                                    <button class="btn-plus"><i class="fa fa-plus"></i></button>
+                                                </div>
+                                            </td>
+                                            <td>@String.Format("{0:0,0}", item.dMoney) đ</td>
+                                            <td><button><i class="fa fa-trash"></i></button></td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="cart-page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="coupon">
+                                <input type="text" placeholder="Nhập mã giảm giá...">
+                                <button>Mã giảm giá</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="cart-summary">
+                                <div class="cart-content">
+                                    @{
+                                        foreach (var item in Model)
+                                        {
+                                            <h1>Tóm tắt giỏ hàng</h1>
+                                            <p>Thành tiền<span>@String.Format("{0:0,0}", item.dMoney) đ</span></p>
+                                            <p>Tổng số lượng<span>@ViewBag.SumQuantity</span></p>
+                                            <p>Phí vận chuyển<span>1đ</span></p>
+                                            <h2>Tổng cộng<span>@String.Format("{0:0,0}", ViewBag.SumPrice) đ </span></h2>
+                                        }
+                                    }
+                                </div>
+                                <div class="cart-btn">
+                                    <button>Cập nhập giỏ hàng</button>
+                                    <button>Thanh toán</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart End -->
