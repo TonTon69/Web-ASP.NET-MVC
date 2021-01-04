@@ -1,12 +1,37 @@
 ﻿@using Web_ASP.NET_MVC.Models
 @model List<ProductCetegory>
 
-<ul class="navbar-nav">
-    @{ foreach (var item in Model)
-        {
-            <li class="nav-item" style="padding: 10px 20px">
-                @Html.ActionLink(item.Name, "Index", "Products", new { page = ViewBag.page, category = @item.CategoryCode }, null)
-            </li>
-        }
+<style>
+    .navbar-nav .nav-item a {
+        transition: all .3s;
     }
-</ul>
+
+        .navbar-nav .nav-item a::before {
+            content: '\f105';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            padding-right: 5px;
+        }
+
+        .navbar-nav .nav-item a:hover::before {
+            content: '\f101';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+</style>
+
+<h2 class="title d-flex align-items-center">
+    <img src="~/Content/assets/img/list.svg" class="mr-2" style="width: 20px" />
+    Danh Mục
+</h2>
+<nav class="navbar bg-light">
+    <ul class="navbar-nav">
+        @{ foreach (var item in Model)
+            {
+                <li class="nav-item" style="padding: 10px 20px">
+                    @Html.ActionLink(item.Name, "Index", "Products", new { page = ViewBag.page, category = @item.CategoryCode }, null)
+                </li>
+            }
+        }
+    </ul>
+</nav>

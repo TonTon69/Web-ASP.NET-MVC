@@ -198,6 +198,7 @@
     <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\img\cart-null.png" />
     <Content Include="Content\assets\img\godaddy.svg" />
+    <Content Include="Content\assets\img\list.svg" />
     <Content Include="Content\assets\img\norton.svg" />
     <Content Include="Content\assets\img\ssl.svg" />
     <Content Include="Content\assets\img\undraw_posting_photo.svg" />

@@ -54,10 +54,6 @@ namespace Web_ASP.NET_MVC.Controllers
         }
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Product pro = db.Products.Find(id);
             if (pro == null)
             {
