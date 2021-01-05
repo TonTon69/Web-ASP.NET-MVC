@@ -123,6 +123,41 @@ namespace Web_ASP.NET_MVC.Controllers
 
             return View(listCart);
         }
+        [HttpPost]
+        public ActionResult Checkout(FormCollection collection)
+        {
+            FSOrder ddh = new FSOrder();
+            WebUser user = (WebUser)Session["Account"];
+            List<Cart> listCart = GetCart();
+            ddh.UserCode = user.UserCode;
+            ddh.OrderDay = DateTime.Now;
 
+            var deliveryDay = String.Format("{0:MM/dd/yyyy}", collection["DeliveryDay"]);
+            ddh.DeliveryDay = DateTime.Parse(deliveryDay);
+            //tinh trang giao hang
+            ddh.Status = false;
+            //da thanh toan
+            ddh.Paid = false;
+            db.FSOrders.Add(ddh);
+            db.SaveChanges();
+
+            //them CTDH
+            foreach (var item in listCart)
+            {
+                OrderDetail ctdh = new OrderDetail();
+                ctdh.OrderCode = ctdh.OrderCode;
+                ctdh.ProductCode = item.iProductCode;
+                ctdh.Number = item.iQuantity;
+                ctdh.TotalPrice = (decimal)item.dPrice;
+                db.OrderDetails.Add(ctdh);
+            }
+            db.SaveChanges();
+            Session["Cart"] = null;
+            return RedirectToAction("ConfirmOrder", "Cart");
+        }
+        public ActionResult ConfirmOrder(FormCollection collection)
+        {
+            return View();
+        }
     }
 }

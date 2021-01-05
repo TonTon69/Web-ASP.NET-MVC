@@ -17,20 +17,19 @@
 </div>
 <!-- Breadcrumb End -->
 <!-- Checkout Start -->
+@*@{
+        WebUser user = (WebUser)Session["Account"];
+    }*@
+
 <div class="checkout">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="checkout-inner">
-
-                    @*@{
-                            WebUser user = (WebUser)Session["Account"];
-                        }*@
-
-                    <div class="billing-address">
-                        @using (Html.BeginForm())
-                        {
-                            @Html.ValidationSummary(true)
+        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
+        {
+            <div class="row">
+                @Html.ValidationSummary(true)
+                <div class="col-lg-8">
+                    <div class="checkout-inner">
+                        <div class="billing-address">
                             <h2>Địa chỉ giao hàng</h2>
                             <div class="row">
                                 <div class="col-md-6">
@@ -57,44 +56,44 @@
                                     <label>Địa chỉ</label>
                                     <input class="form-control" type="text" @*value="@user.Address"*@ placeholder="Địa chỉ">
                                 </div>
-
                             </div>
-                        }
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="checkout-inner">
-                    <div class="checkout-summary">
-                        <div class="d-flex align-items-baseline justify-content-between">
-                            <h1>Đơn hàng</h1>
-                            <a href="@Url.Action("Index", "Cart")" class="btn ">Sửa</a>
-                        </div>
-                        @{
-                            foreach (var item in Model)
-                            {
-                                <p>
-                                    @item.iQuantity x
-                                    <a href="@Url.Action("Details", "Products", new { id = item.iProductCode })">@item.sProductName</a>
-                                </p>
+                <div class="col-lg-4">
+                    <div class="checkout-inner">
+                        <div class="checkout-summary">
+                            <div class="d-flex align-items-baseline justify-content-between">
+                                <h1>Đơn hàng</h1>
+                                <a href="@Url.Action("Index", "Cart")" class="btn ">Sửa</a>
+                            </div>
+                            @{
+                                foreach (var item in Model)
+                                {
+                                    <div>
+                                        @item.iQuantity x
+                                        <a href="@Url.Action("Details", "Products", new { id = item.iProductCode })">@item.sProductName</a>
+                                    </div>
+                                }
                             }
-                        }
-                        <p class="sub-total">Tạm tính<span>@String.Format("{0:0,0}", ViewBag.SumPrice) đ</span></p>
-                        <p>Phí vận chuyển<span>35,000 đ</span></p>
-                        <h2>
-                            Tổng cộng
-                            <span style="color: red">@String.Format("{0:0,0}", ViewBag.SumPrice + 35000) đ</span>
-                        </h2>
-                        <i class="d-flex justify-content-end" style="font-size: 12px">(Đã bao gồm VAT nếu có)</i>
-                    </div>
-                    <div class="checkout-payment">
-                        <div class="checkout-btn">
-                            <button>Đặt mua</button>
+                            <br />
+                            <p class="sub-total">Tạm tính<span>@String.Format("{0:0,0}", ViewBag.SumPrice) đ</span></p>
+                            <p>Phí vận chuyển<span>35,000 đ</span></p>
+                            <h2>
+                                Tổng cộng
+                                <span style="color: red">@String.Format("{0:0,0}", ViewBag.SumPrice + 35000) đ</span>
+                            </h2>
+                            <i class="d-flex justify-content-end" style="font-size: 12px">(Đã bao gồm VAT nếu có)</i>
+                        </div>
+                        <div class="checkout-payment">
+                            <div class="checkout-btn">
+                                <button type="submit">Đặt mua</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
 </div>
 <!-- Checkout End -->

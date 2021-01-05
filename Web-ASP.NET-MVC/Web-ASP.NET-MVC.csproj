@@ -2253,6 +2253,7 @@
     <Content Include="Views\Cart\CartNull.cshtml" />
     <Content Include="Views\Products\ShowComment.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\ConfirmOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
