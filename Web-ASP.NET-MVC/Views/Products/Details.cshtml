@@ -156,7 +156,15 @@
 
                     </div>
                 </div>
-                @Html.Action("ProductRelated", "Products")
+                <div class="product">
+                    <div class="section-header">
+                        <h1>Sản Phẩm Liên Quan</h1>
+                    </div>
+                    <div class="row align-items-center product-slider product-slider-3">
+                        @Html.Action("ProductRelated", "Products", new { id = @Model.CategoryCode})
+                    </div>
+                </div>
+
             </div>
             <!-- Side Bar Start -->
             <div class="col-lg-3 sidebar">

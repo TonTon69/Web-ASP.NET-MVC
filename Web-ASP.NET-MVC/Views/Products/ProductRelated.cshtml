@@ -1,45 +1,37 @@
 ﻿@using Web_ASP.NET_MVC.Models
 @model List<Product>
 
-<div class="product">
-    <div class="section-header">
-        <h1>Sản Phẩm Liên Quan</h1>
-    </div>
-
-    <div class="row align-items-center product-slider product-slider-3">
-        @{
-            foreach (var item in Model)
-            {
-                <div class="col-lg-4" style="outline: none">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="@Url.Action("Details", "Products", new { id = item.ProductCode })">@item.Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <img src="@Url.Content("~/Content/assets/img/" + item.Image)">
-                            </a>
-                            <div class="product-action">
-                                <a href="@Url.Action("AddToCart", "Cart", new { @iProductCode = @item.ProductCode, @strURL=Request.Url.ToString() })"><i class="fa fa-cart-plus"></i></a>
-                                <a href="@Url.Action("Details", "Products", new { id = item.ProductCode })"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <span style=" color: #333; font-weight: 600; font-size: 1.2rem">
-                                @String.Format("{0:0,0}", @item.Price) đ
-                            </span>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                        </div>
+@{
+    foreach (var item in Model)
+    {
+        <div class="col-lg-4" style="outline: none">
+            <div class="product-item">
+                <div class="product-title">
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductCode })">@item.Name</a>
+                    <div class="ratting">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
                     </div>
                 </div>
-            }
-        }
-    </div>
-</div>
+                <div class="product-image">
+                    <a href="product-detail.html">
+                        <img src="@Url.Content(item.Image)">
+                    </a>
+                    <div class="product-action">
+                        <a href="@Url.Action("AddToCart", "Cart", new { @iProductCode = @item.ProductCode, @strURL=Request.Url.ToString() })"><i class="fa fa-cart-plus"></i></a>
+                        <a href="@Url.Action("Details", "Products", new { id = item.ProductCode })"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="product-price">
+                    <span style=" color: #333; font-weight: 600; font-size: 1.2rem">
+                        @String.Format("{0:0,0}", @item.Price) đ
+                    </span>
+                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                </div>
+            </div>
+        </div>
+    }
+}
