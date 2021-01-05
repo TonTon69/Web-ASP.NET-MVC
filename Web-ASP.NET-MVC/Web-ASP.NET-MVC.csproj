@@ -181,13 +181,13 @@
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\FeedBack.cs" />
     <Compile Include="Models\FSOrder.cs" />
-    <Compile Include="Models\ShopFashionContext.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCetegory.cs" />
+    <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\ShopFashionContext.cs" />
     <Compile Include="Models\Slide.cs" />
     <Compile Include="Models\WebUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

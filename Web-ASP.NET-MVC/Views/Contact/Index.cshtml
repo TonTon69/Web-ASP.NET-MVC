@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Web_ASP.NET_MVC.Models.FeedBack
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -15,7 +16,7 @@
     .gmap_canvas {
         overflow: hidden;
         background: none !important;
-        width: 1170px;
+        width: 1340px;
         height: 500px;
     }
 </style>
@@ -32,6 +33,15 @@
 <div class="contact">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12">
+                <div class="contact-map">
+                    <div class="mapouter">
+                        <div class="gmap_canvas">
+                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Đại học Hutech Khu E&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-4">
                 <div class="contact-info">
                     <h2>Công Ty</h2>
@@ -44,35 +54,44 @@
                     @Html.Action("CompanyPartial", "Company")
                 </div>
             </div>
+            @Html.AntiForgeryToken()
             <div class="col-lg-4">
-                <div class="contact-form">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Họ & Tên" />
+                @using (Html.BeginForm("Index", "Contact", FormMethod.Post))
+                {
+                    <div class="contact-form">
+                        <h2>Gửi phản hồi</h2>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Họ & Tên" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Địa chỉ" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-12">
+                                    @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" placeholder="Email" />
+                            <div>
+                                <input type="submit" value="Gửi" class="btn btn-default" />
+                                @if (ViewBag.Success != null)
+                                {<span class="text-danger">@ViewBag.Success</span>}
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Chủ đề" />
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Nội Dung"></textarea>
-                        </div>
-                        <div><button class="btn" type="submit">Gửi</button></div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="contact-map">
-                    <div class="mapouter">
-                        <div class="gmap_canvas">
-                            <iframe width="1200px" height="500px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Đại học Hutech Khu E&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-                        </div>
+                        </form>
                     </div>
-                </div>
+                }
             </div>
         </div>
     </div>

@@ -14,11 +14,11 @@ namespace Web_ASP.NET_MVC.Models
 
         public virtual DbSet<Administrator> Administrators { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<FeedBack> FeedBacks { get; set; }
         public virtual DbSet<FSOrder> FSOrders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCetegory> ProductCetegories { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<WebUser> WebUsers { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
@@ -48,6 +48,11 @@ namespace Web_ASP.NET_MVC.Models
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.OrderDetails)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Reviews)
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
 

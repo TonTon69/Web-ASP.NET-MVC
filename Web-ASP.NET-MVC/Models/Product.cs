@@ -13,6 +13,7 @@
         public Product()
         {
             OrderDetails = new HashSet<OrderDetail>();
+            Reviews = new HashSet<Review>();
         }
 
         [Key]
@@ -61,7 +62,7 @@
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-
+        public HashSet<Review> Reviews { get; }
         public virtual ProductCetegory ProductCetegory { get; set; }
     }
 }

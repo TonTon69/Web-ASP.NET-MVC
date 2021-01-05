@@ -15,5 +15,25 @@ namespace Web_ASP.NET_MVC.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Index(FeedBack user)
+        {
+            if (ModelState.IsValid)
+            {
+                var feeback = new FeedBack();
+                feeback.Name = user.Name;
+                feeback.Email = user.Email;
+                feeback.Address = user.Address;
+                feeback.Content = user.Content;
+                feeback.Phone = user.Phone;
+                feeback.CreateDate = DateTime.Now;
+                feeback.FbStatus = false;
+                db.FeedBacks.Add(feeback);
+                db.SaveChanges();
+                ViewBag.Success = "Cảm ơn bạn đã gửi phản hồi cho chúng tôi!";
+            }
+            return View();
+        }
+
     }
 }

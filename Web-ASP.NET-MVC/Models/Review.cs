@@ -6,15 +6,22 @@ namespace Web_ASP.NET_MVC.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Contact")]
-    public partial class Contact
+    [Table("Review")]
+    public partial class Review
     {
         [Key]
-        public int ContactCode { get; set; }
+        public int ReviewCode { get; set; }
 
         [Column(TypeName = "ntext")]
+        [Required]
         public string Content { get; set; }
 
-        public bool? ContactStatus { get; set; }
+        public int Rating { get; set; }
+
+        public DateTime DatePost { get; set; }
+
+        public int ProductCode { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }
