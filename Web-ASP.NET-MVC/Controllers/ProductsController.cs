@@ -79,10 +79,10 @@ namespace Web_ASP.NET_MVC.Controllers
         //Comment
         public PartialViewResult ShowComment(int id)
         {
-            var commentshow = db.Reviews.Where(t => t.ProductCode == id).ToList();
+            var commentShow = db.Reviews.Where(t => t.ProductCode == id).ToList();
             
             ViewBag.productCode = id;
-            return PartialView(commentshow);
+            return PartialView(commentShow);
         }
         public ActionResult LeaveComment(int productCode, int rating, string txtComment)
         {
@@ -90,15 +90,14 @@ namespace Web_ASP.NET_MVC.Controllers
             {
                 return RedirectToAction("Login", "User");
             }
-
-            var objreview = new Review();
-            objreview.Content = txtComment;
-            objreview.Rating = rating;
-            objreview.DatePost = DateTime.Now;
-            objreview.ProductCode = productCode;
-            db.Reviews.Add(objreview);
+            var objReview = new Review();
+            objReview.Content = txtComment;
+            objReview.Rating = rating;
+            objReview.DatePost = DateTime.Now;
+            objReview.ProductCode = productCode;
+            db.Reviews.Add(objReview);
             db.SaveChanges();
-            return RedirectToAction("Index", "Products");
+            return RedirectToAction("Details", "Products", new { id = productCode });
         }
 
     }

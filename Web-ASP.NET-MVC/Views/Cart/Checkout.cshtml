@@ -1,0 +1,100 @@
+﻿@using Web_ASP.NET_MVC.Models
+@model List<Cart>
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
+            <li class="breadcrumb-item"><a href="/Products">SẢN PHẨM</a></li>
+            <li class="breadcrumb-item active">THỦ TỤC THANH TOÁN</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Checkout Start -->
+<div class="checkout">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="checkout-inner">
+
+                    @*@{
+                            WebUser user = (WebUser)Session["Account"];
+                        }*@
+
+                    <div class="billing-address">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            <h2>Địa chỉ giao hàng</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Họ & Tên</label>
+                                    <input class="form-control" type="text" @*value="@user.FullName"*@ placeholder="Họ & Tên">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>E-mail</label>
+                                    <input class="form-control" type="text" @*value="@user.Email"*@ placeholder="E-mail">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Ngày đặt hàng</label>
+                                    <input class="form-control" type="text" @*value="@DateTime.Now.ToShortDateString()"*@>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Ngày giao hàng</label>
+                                    <input class="form-control" type="text" @*value="@DateTime.Now.ToShortDateString()"*@>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Số điện thoại</label>
+                                    <input class="form-control" type="text" @*value="@user.Phone"*@ placeholder="Số điện thoại">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Địa chỉ</label>
+                                    <input class="form-control" type="text" @*value="@user.Address"*@ placeholder="Địa chỉ">
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="checkout-inner">
+                    <div class="checkout-summary">
+                        <div class="d-flex align-items-baseline justify-content-between">
+                            <h1>Đơn hàng</h1>
+                            <a href="@Url.Action("Index", "Cart")" class="btn ">Sửa</a>
+                        </div>
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <p>
+                                    @item.iQuantity x
+                                    <a href="@Url.Action("Details", "Products", new { id = item.iProductCode })">@item.sProductName</a>
+                                </p>
+                            }
+                        }
+                        <p class="sub-total">Tạm tính<span>@String.Format("{0:0,0}", ViewBag.SumPrice) đ</span></p>
+                        <p>Phí vận chuyển<span>35,000 đ</span></p>
+                        <h2>
+                            Tổng cộng
+                            <span style="color: red">@String.Format("{0:0,0}", ViewBag.SumPrice + 35000) đ</span>
+                        </h2>
+                        <i class="d-flex justify-content-end" style="font-size: 12px">(Đã bao gồm VAT nếu có)</i>
+                    </div>
+                    <div class="checkout-payment">
+                        <div class="checkout-btn">
+                            <button>Đặt mua</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Checkout End -->

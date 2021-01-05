@@ -83,13 +83,13 @@
                                     <p>Tổng số lượng<span>@ViewBag.SumQuantity</span></p>
                                     <h2>
                                         Tổng cộng
-                                        <span>
+                                        <span style="color: red">
                                             @String.Format("{0:0,0}", ViewBag.SumPrice) đ
                                         </span>
                                     </h2>
                                 </div>
-                                <div class="cart-btn">
-                                    <button>Tiến hành đặt hàng</button>
+                                <div class="cart-btn mt-4">
+                                    <a href="@Url.Action("Checkout", "Cart")" class="btn">Tiến hành đặt hàng</a>
                                 </div>
                             </div>
                         </div>

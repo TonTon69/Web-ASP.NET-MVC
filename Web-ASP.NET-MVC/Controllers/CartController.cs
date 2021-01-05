@@ -105,5 +105,24 @@ namespace Web_ASP.NET_MVC.Controllers
             }
             return RedirectToAction("Index", "Cart");
         }
+        [HttpGet]
+        public ActionResult Checkout()
+        {
+            if (Session["Account"] == null || Session["Account"].ToString() == "")
+            {
+                return RedirectToAction("Login", "User");
+            }
+            if (Session["Cart"] == null)
+            {
+                return RedirectToAction("Index", "Products");
+            }
+
+            List<Cart> listCart = GetCart();
+            ViewBag.SumQuantity = SumQuantity();
+            ViewBag.SumPrice = SumPrice();
+
+            return View(listCart);
+        }
+
     }
 }

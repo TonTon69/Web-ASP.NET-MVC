@@ -120,35 +120,37 @@
                         </ul>
                         <div class="tab-content">
                             <div id="description" class="container tab-pane active">
-                                <h4>Mô tả sản phẩm</h4>
+                                <h5 style="font-weight: 600">Mô tả sản phẩm</h5>
                                 <p>@Model.ProductDescription</p>
                             </div>
                             <div id="reviews" class="container tab-pane fade">
                                 @Html.Action("ShowComment", "Products")
                                 @using (Html.BeginForm("LeaveComment", "Products", FormMethod.Post, htmlAttributes: new { onsubmit = "return VerifyRating()" }))
-                                {@Html.AntiForgeryToken()
-                                <div class="reviews-submit">
-                                    <h4>Give your Review:</h4>
-                                    <div class="text-warning">
-                                        <i class="ratingStar far fa-star" data-value="1"></i>
-                                        <i class="ratingStar far fa-star" data-value="2"></i>
-                                        <i class="ratingStar far fa-star" data-value="3"></i>
-                                        <i class="ratingStar far fa-star" data-value="4"></i>
-                                        <i class="ratingStar far fa-star" data-value="5"></i>
-                                    </div>
-                                    <div>
-                                        <input type="hidden" name="rating" id="lbRating" value="0" />
-                                        <input type="hidden" name="productcode" id="lbRating" value="@Model.ProductCode" />
-                                    </div>
-                                    <div class="row form">
-                                        <div class="col-sm-12">
-                                            <textarea placeholder="Hãy nhập bình luận..." name="txtComment"></textarea>
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="reviews-submit">
+                                        <h5>Đưa ra đánh giá của bạn:</h5>
+                                        <div class="text-warning">
+                                            <i class="ratingStar far fa-star" data-value="1"></i>
+                                            <i class="ratingStar far fa-star" data-value="2"></i>
+                                            <i class="ratingStar far fa-star" data-value="3"></i>
+                                            <i class="ratingStar far fa-star" data-value="4"></i>
+                                            <i class="ratingStar far fa-star" data-value="5"></i>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <input type="submit" class="btn btn-primary active" name="SaveComment" value="Bình luận" />
+                                        <div>
+                                            <input type="hidden" name="rating" id="lbRating" value="0" />
+                                            <input type="hidden" name="productcode" id="lbRating" value="@Model.ProductCode" />
+                                        </div>
+                                        <div class="row form">
+                                            <div class="col-sm-12 mt-2">
+                                                <textarea placeholder="Hãy nhập bình luận..." name="txtComment"></textarea>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input type="submit" class="btn btn-primary active" name="SaveComment" value="Bình luận" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>}
+                                }
                             </div>
                         </div>
 
