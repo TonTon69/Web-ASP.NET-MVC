@@ -54,6 +54,16 @@ namespace Web_ASP.NET_MVC.Controllers
         }
         public ActionResult Details(int? id)
         {
+            var sumComment = db.Reviews.Count(t => t.ProductCode == id).ToString();
+            if (sumComment != null)
+            {
+                ViewBag.message = sumComment;
+            }
+            else
+            {
+                ViewBag.message = 0;
+            }
+
             Product pro = db.Products.Find(id);
             if (pro == null)
             {
@@ -66,5 +76,30 @@ namespace Web_ASP.NET_MVC.Controllers
             var productRelated = db.Products.Where(x => x.ProductCode != id && x.CategoryCode == id).ToList();
             return PartialView(productRelated);
         }
+        //Comment
+        public PartialViewResult ShowComment(int id)
+        {
+            var commentshow = db.Reviews.Where(t => t.ProductCode == id).ToList();
+            
+            ViewBag.productCode = id;
+            return PartialView(commentshow);
+        }
+        public ActionResult LeaveComment(int productCode, int rating, string txtComment)
+        {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+
+            var objreview = new Review();
+            objreview.Content = txtComment;
+            objreview.Rating = rating;
+            objreview.DatePost = DateTime.Now;
+            objreview.ProductCode = productCode;
+            db.Reviews.Add(objreview);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Products");
+        }
+
     }
 }

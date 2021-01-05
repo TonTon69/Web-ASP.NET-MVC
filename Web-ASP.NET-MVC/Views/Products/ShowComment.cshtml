@@ -1,0 +1,25 @@
+﻿@using Web_ASP.NET_MVC.Models
+@model List<Review>
+@{ foreach (var item in Model)
+    {
+        <div class="reviews-submitted">
+            <span style="font-weight: 600">@Session["FullName"]</span>
+            <div class="text-warning">
+                @for (int i = 0; i < item.Rating; i++)
+                {
+                    <i class="fa fa-star"></i>
+                }
+                @for (int i = item.Rating; i < 5; i++)
+                {
+                    <i class="far fa-star"></i>
+                }
+            </div>
+            <p>
+                @item.Content
+            </p>
+            <div class="reviewer"><span>@item.DatePost</span></div>
+
+        </div>
+    } }
+
+

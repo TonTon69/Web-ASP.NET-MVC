@@ -77,10 +77,10 @@
                                 <div class="quantity mt-4">
                                     <h4>Số lượng:</h4>
                                     @*<div class="qty">
-                                        <button class="btn-minus" style="outline: none"><i class="fa fa-minus"></i></button>
-                                        <input type="text" name="txtQuantity" value="1">
-                                        <button class="btn-plus" style="outline: none"><i class="fa fa-plus"></i></button>
-                                    </div>*@
+                                            <button class="btn-minus" style="outline: none"><i class="fa fa-minus"></i></button>
+                                            <input type="text" name="txtQuantity" value="1">
+                                            <button class="btn-plus" style="outline: none"><i class="fa fa-plus"></i></button>
+                                        </div>*@
                                     <span class="ml-4">@Model.Quanlity sản phẩm có sẵn</span>
                                 </div>
                                 <div class="p-size mt-4">
@@ -115,55 +115,43 @@
                                 <a class="nav-link active" data-toggle="pill" href="#description">Mô tả</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#reviews">Đánh giá (1)</a>
+                                <a class="nav-link" data-toggle="pill" href="#reviews">Đánh giá (@ViewBag.message)</a>
                             </li>
                         </ul>
-
                         <div class="tab-content">
                             <div id="description" class="container tab-pane active">
                                 <h4>Mô tả sản phẩm</h4>
                                 <p>@Model.ProductDescription</p>
                             </div>
                             <div id="reviews" class="container tab-pane fade">
-                                <div class="reviews-submitted">
-                                    <div class="reviewer">Phasellus Gravida - <span>01 Jan 2020</span></div>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-                                    </p>
-                                </div>
+                                @Html.Action("ShowComment", "Products")
+                                @using (Html.BeginForm("LeaveComment", "Products", FormMethod.Post, htmlAttributes: new { onsubmit = "return VerifyRating()" }))
+                                {@Html.AntiForgeryToken()
                                 <div class="reviews-submit">
                                     <h4>Give your Review:</h4>
-                                    <div class="ratting">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
+                                    <div class="text-warning">
+                                        <i class="ratingStar far fa-star" data-value="1"></i>
+                                        <i class="ratingStar far fa-star" data-value="2"></i>
+                                        <i class="ratingStar far fa-star" data-value="3"></i>
+                                        <i class="ratingStar far fa-star" data-value="4"></i>
+                                        <i class="ratingStar far fa-star" data-value="5"></i>
+                                    </div>
+                                    <div>
+                                        <input type="hidden" name="rating" id="lbRating" value="0" />
+                                        <input type="hidden" name="productcode" id="lbRating" value="@Model.ProductCode" />
                                     </div>
                                     <div class="row form">
-                                        <div class="col-sm-6">
-                                            <input type="text" placeholder="Name">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input type="email" placeholder="Email">
-                                        </div>
                                         <div class="col-sm-12">
-                                            <textarea placeholder="Review"></textarea>
+                                            <textarea placeholder="Hãy nhập bình luận..." name="txtComment"></textarea>
                                         </div>
-                                        <div class="col-sm-12">
-                                            <button>Submit</button>
+                                        <div class="col-sm-3">
+                                            <input type="submit" class="btn btn-primary active" name="SaveComment" value="Bình luận" />
                                         </div>
                                     </div>
-                                </div>
+                                </div>}
                             </div>
                         </div>
+
                     </div>
                 </div>
                 @Html.Action("ProductRelated", "Products")

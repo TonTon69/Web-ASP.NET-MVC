@@ -13,7 +13,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
-    
+
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -179,6 +179,7 @@
     <!-- Back to Top -->
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -187,6 +188,29 @@
 
     <!-- Template Javascript -->
     <script src="~/Content/assets/js/main.js"></script>
+
+
+    <script type="text/javascript">
+        "use strict";
+        $(".ratingStar").hover(function () {
+            $(".ratingStar").addClass("far").removeClass("fas");
+
+            $(this).prevAll(".ratingStar").addClass("fas").removeClass("far");
+            $(this).addClass("fas").removeClass("far");
+        });
+        $(".ratingStar").click(function () {
+            debugger;
+            var starvalue = $(this).attr("data-value");
+            $("#lbRating").val(starvalue);
+        });
+        function VerifyRating() {
+            var rating = $("#lbRating").val();
+            if (rating == "0") {
+                alert("Hãy chọn đánh giá");
+                return false;
+            }
+        }
+    </script>
 </body>
 
 </html>

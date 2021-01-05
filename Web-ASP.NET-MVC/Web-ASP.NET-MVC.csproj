@@ -2251,6 +2251,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\CartPartial.cshtml" />
     <Content Include="Views\Cart\CartNull.cshtml" />
+    <Content Include="Views\Products\ShowComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
