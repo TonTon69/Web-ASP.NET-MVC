@@ -81,7 +81,7 @@
                         <div>
                             @Html.Action("CartPartial", "Cart")
                         </div>
-                        @if (Session["Account"] == null)
+                        @if (Session["FullName"] == null)
                         {
 
                             <a href="#" class="nav-link dropdown-toggle" style="color:#ffff; font-weight: 600;" data-toggle="dropdown">TÀI KHOẢN</a>
@@ -92,7 +92,7 @@
                         }
                         else
                         {
-                            <a href="#" class="nav-link dropdown-toggle" style="color:#ffff; font-weight: 600;" data-toggle="dropdown">@Session["Account"]</a>
+                            <a href="#" class="nav-link dropdown-toggle" style="color:#ffff; font-weight: 600;" data-toggle="dropdown">@Session["FullName"]</a>
                             <div class="dropdown-menu">
                                 <a href="/User/Profile" class="dropdown-item">Hồ sơ</a>
                                 <a href="/User/Settings" class="dropdown-item">Cài đặt</a>
