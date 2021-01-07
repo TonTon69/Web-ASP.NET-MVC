@@ -7,7 +7,7 @@
         <div class="col-lg-3" style="outline: none">
             <div class="product-item">
                 <div class="product-title">
-                    <a href="@Url.Action("Details", "Products" , new { id=item.ProductCode })">@item.Name</a>
+                    <a href="@Url.Action("Details", "Products" , new { id = item.ProductCode, name = item.Name })">@item.Name</a>
                     <div class="ratting">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -22,7 +22,7 @@
                     </a>
                     <div class="product-action">
                         <a href="@Url.Action("AddToCart", "Cart", new { @iProductCode = @item.ProductCode, @strURL=Request.Url.ToString() })"><i class="fa fa-cart-plus"></i></a>
-                        <a href="@Url.Action("Details", "Products", new { id = item.ProductCode })"><i class="fa fa-search"></i></a>
+                        <a href="@Url.Action("Details", "Products", new { id = item.ProductCode, name = item.Name })"><i class="fa fa-search"></i></a>
                     </div>
                 </div>
                 <div class="product-price">

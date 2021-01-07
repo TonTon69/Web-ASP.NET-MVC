@@ -19,6 +19,11 @@ namespace Web_ASP.NET_MVC
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "Web_ASP.NET_MVC.Controllers" }
             );
+            routes.MapRoute(
+               name: "ViewProduct",
+               url: "{controller}/{id}/{name}",
+               defaults: new { controller = "Products", action = "Details", id = "", name = "" }
+           );
         }
     }
 }

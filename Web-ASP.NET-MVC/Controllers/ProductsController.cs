@@ -52,7 +52,7 @@ namespace Web_ASP.NET_MVC.Controllers
                 return PartialView(products.ToPagedList(pageNumber, pageSize));
             }
         }
-        public ActionResult Details(int? id)
+        public ActionResult Details(string name, int? id)
         {
             var sumComment = db.Reviews.Count(t => t.ProductCode == id).ToString();
             if (sumComment != null)
@@ -63,7 +63,6 @@ namespace Web_ASP.NET_MVC.Controllers
             {
                 ViewBag.message = 0;
             }
-
             Product pro = db.Products.Find(id);
             if (pro == null)
             {
@@ -80,7 +79,7 @@ namespace Web_ASP.NET_MVC.Controllers
         public PartialViewResult ShowComment(int id)
         {
             var commentShow = db.Reviews.Where(t => t.ProductCode == id).ToList();
-            
+
             ViewBag.productCode = id;
             return PartialView(commentShow);
         }

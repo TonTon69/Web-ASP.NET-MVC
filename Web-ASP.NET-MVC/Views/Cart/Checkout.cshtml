@@ -17,9 +17,9 @@
 </div>
 <!-- Breadcrumb End -->
 <!-- Checkout Start -->
-@*@{
-        WebUser user = (WebUser)Session["Account"];
-    }*@
+@{
+    WebUser user = (WebUser)Session["Account"];
+}
 
 <div class="checkout">
     <div class="container-fluid">
@@ -34,27 +34,27 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Họ & Tên</label>
-                                    <input class="form-control" type="text" @*value="@user.FullName"*@ placeholder="Họ & Tên">
+                                    <input class="form-control" type="text" value="@user.FullName" placeholder="Họ & Tên">
                                 </div>
                                 <div class="col-md-6">
                                     <label>E-mail</label>
-                                    <input class="form-control" type="text" @*value="@user.Email"*@ placeholder="E-mail">
+                                    <input class="form-control" type="text" value="@user.Email" placeholder="E-mail">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Ngày đặt hàng</label>
-                                    <input class="form-control" type="text" @*value="@DateTime.Now.ToShortDateString()"*@>
+                                    <input class="form-control" type="text" value="@DateTime.Now.ToShortDateString()">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Ngày giao hàng</label>
-                                    <input class="form-control" type="text" @*value="@DateTime.Now.ToShortDateString()"*@>
+                                    <input class="form-control" type="text" value="@DateTime.Now.ToShortDateString()">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Số điện thoại</label>
-                                    <input class="form-control" type="text" @*value="@user.Phone"*@ placeholder="Số điện thoại">
+                                    <input class="form-control" type="text" value="@user.Phone" placeholder="Số điện thoại">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Địa chỉ</label>
-                                    <input class="form-control" type="text" @*value="@user.Address"*@ placeholder="Địa chỉ">
+                                    <input class="form-control" type="text" value="@user.Address" placeholder="Địa chỉ">
                                 </div>
                             </div>
                         </div>
