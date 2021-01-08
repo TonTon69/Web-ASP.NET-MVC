@@ -17,13 +17,13 @@
 </div>
 <!-- Breadcrumb End -->
 <!-- Checkout Start -->
-@{
+@*@{
     WebUser user = (WebUser)Session["Account"];
-}
+}*@
 
 <div class="checkout">
     <div class="container-fluid">
-        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
+        @using (Html.BeginForm("Order", "Cart", FormMethod.Post))
         {
             <div class="row">
                 @Html.ValidationSummary(true)
@@ -32,7 +32,7 @@
                         <div class="billing-address">
                             <h2>Địa chỉ giao hàng</h2>
                             <div class="row">
-                                <div class="col-md-6">
+                                @*<div class="col-md-6">
                                     <label>Họ & Tên</label>
                                     <input class="form-control" type="text" value="@user.FullName" placeholder="Họ & Tên">
                                 </div>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>Ngày giao hàng</label>
-                                    <input class="form-control" type="text" value="@DateTime.Now.ToShortDateString()">
+                                    <input class="form-control" type="date" name="DeliveryDay">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Số điện thoại</label>
@@ -55,7 +55,7 @@
                                 <div class="col-md-6">
                                     <label>Địa chỉ</label>
                                     <input class="form-control" type="text" value="@user.Address" placeholder="Địa chỉ">
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>

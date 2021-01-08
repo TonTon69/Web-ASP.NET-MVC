@@ -106,7 +106,7 @@ namespace Web_ASP.NET_MVC.Controllers
             return RedirectToAction("Index", "Cart");
         }
         [HttpGet]
-        public ActionResult Checkout()
+        public ActionResult Order()
         {
             if (Session["Account"] == null || Session["Account"].ToString() == "")
             {
@@ -116,7 +116,6 @@ namespace Web_ASP.NET_MVC.Controllers
             {
                 return RedirectToAction("Index", "Products");
             }
-
             List<Cart> listCart = GetCart();
             ViewBag.SumQuantity = SumQuantity();
             ViewBag.SumPrice = SumPrice();
@@ -124,7 +123,7 @@ namespace Web_ASP.NET_MVC.Controllers
             return View(listCart);
         }
         [HttpPost]
-        public ActionResult Checkout(FormCollection collection)
+        public ActionResult Order(FormCollection collection)
         {
             FSOrder ddh = new FSOrder();
             WebUser user = (WebUser)Session["Account"];

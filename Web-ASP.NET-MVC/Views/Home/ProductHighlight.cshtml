@@ -22,7 +22,7 @@
                     <a href="@Url.Action("Details", "Products", new { id = item.ProductCode, name = item.MetaTitle })">
                         <img src="@Url.Content(item.Image)">
                     </a>
-                    <div class="product-action">    
+                    <div class="product-action">
                         <a href="@Url.Action("AddToCart", "Cart", new { @iProductCode = @item.ProductCode, @strURL=Request.Url.ToString() })"><i class="fa fa-cart-plus"></i></a>
                         <a href="@Url.Action("Details", "Products", new { id = item.ProductCode, name = item.MetaTitle })"><i class="fa fa-search"></i></a>
                     </div>
@@ -31,7 +31,7 @@
                     <span style=" color: #333; font-weight: 600; font-size: 1.2rem">
                         @String.Format("{0:0,0}", @item.Price) đ
                     </span>
-                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua Ngay</a>
+                    <a class="btn" href="@Url.Action("Order", "Cart", new { id = item.ProductCode })"><i class="fa fa-shopping-cart"></i>Mua Ngay</a>
                 </div>
             </div>
         </div>

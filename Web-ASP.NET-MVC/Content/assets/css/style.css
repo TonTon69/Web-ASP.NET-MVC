@@ -1207,14 +1207,14 @@ h2 {
 
 .product-detail .product-content .price p {
     display: inline-block;
-    color: #4287ee;
-    font-size: 30px;
-    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+    font-size: 32px;
+    font-weight: bold;
     margin: 0;
 }
 
 .product-detail .product-content .price span {
-    color: #999999;
+    color: rgba(255, 255, 255, 0.5);;
     text-decoration: line-through;
     margin-left: 12px;
 }
@@ -1313,10 +1313,10 @@ h2 {
     font-weight: 400;
 }
 
-.product-detail .tab-content .ratting {
-    color: #4287ee;
-    margin-bottom: 15px;
-}
+    .product-detail .tab-content .ratting {
+        color: #ffc120;
+        margin-bottom: 15px;
+    }
 
 .product-detail .tab-content .reviews-submit .ratting {
     font-size: 24px;

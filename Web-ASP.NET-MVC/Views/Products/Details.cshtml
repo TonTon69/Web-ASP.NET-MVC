@@ -8,6 +8,30 @@
     img {
         outline: none;
     }
+
+    .ratting i {
+        color: #ffc120 !important;
+    }
+
+    .btn-addToCart {
+        background: #ff3945;
+        color: #ffffff;
+        padding: 10px 40px 10px 40px;
+    }
+
+    .product-content .price {
+        background: linear-gradient(100deg, rgb(255, 66, 78), rgb(253, 130, 10));
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        border-radius: 3px;
+    }
+
+    .title a::after {
+        content: "";
+        border-left: 1px solid rgb(199, 199, 199);
+    }
 </style>
 
 <div class="breadcrumb-wrap">
@@ -55,8 +79,11 @@
                         </div>
                         <div class="col-md-7">
                             <div class="product-content">
-                                <div class="title">
-                                    <h2>@Model.Name</h2>
+                                <div class="title d-flex">
+                                    <a href="/">
+                                        <img src="~/Content/assets/img/hhtnow.png" width="120" height="32" />
+                                    </a>
+                                    <h2 class="ml-2">@Model.Name</h2>
                                 </div>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
@@ -66,22 +93,16 @@
                                     <i class="fa fa-star"></i>
                                 </div>
                                 <div class="price">
-                                    <h4>Giá:</h4>
                                     <p>
-                                        @String.Format("{0:0,0}", @Model.PromotionPrice) đ
+                                        @String.Format("{0:0,0}", @Model.PromotionPrice) ₫
                                     </p>
                                     <span>
-                                        @String.Format("{0:0,0}", @Model.Price) đ
+                                        @String.Format("{0:0,0}", @Model.Price) ₫
                                     </span>
                                 </div>
                                 <div class="quantity mt-4">
                                     <h4>Số lượng:</h4>
-                                    @*<div class="qty">
-                                            <button class="btn-minus" style="outline: none"><i class="fa fa-minus"></i></button>
-                                            <input type="text" name="txtQuantity" value="1">
-                                            <button class="btn-plus" style="outline: none"><i class="fa fa-plus"></i></button>
-                                        </div>*@
-                                    <span class="ml-4">@Model.Quanlity sản phẩm có sẵn</span>
+                                    <span>@Model.Quanlity sản phẩm có sẵn</span>
                                 </div>
                                 <div class="p-size mt-4">
                                     <h4>Size:</h4>
@@ -101,8 +122,7 @@
                                     </div>
                                 </div>
                                 <div class="action mt-5">
-                                    <a class="btn" href="@Url.Action("AddToCart", "Cart", new { @iProductCode = @Model.ProductCode, @strURL = Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
-                                    <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Mua ngay</a>
+                                    <a class="btn btn-addToCart" href="@Url.Action("AddToCart", "Cart", new { @iProductCode = @Model.ProductCode, @strURL = Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                 </div>
                             </div>
                         </div>
@@ -161,7 +181,7 @@
                         <h1>Sản Phẩm Liên Quan</h1>
                     </div>
                     <div class="row align-items-center product-slider product-slider-3">
-                        @Html.Action("ProductRelated", "Products", new { id = @Model.CategoryCode})
+                        @Html.Action("ProductRelated", "Products", new { id = @Model.CategoryCode })
                     </div>
                 </div>
 

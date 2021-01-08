@@ -199,6 +199,7 @@
     <Content Include="Content\assets\img\cart-null.png" />
     <Content Include="Content\assets\img\godaddy.svg" />
     <Content Include="Content\assets\img\HHT-Fashion.png" />
+    <Content Include="Content\assets\img\hhtnow.png" />
     <Content Include="Content\assets\img\list.svg" />
     <Content Include="Content\assets\img\norton.svg" />
     <Content Include="Content\assets\img\ssl.svg" />
@@ -2253,7 +2254,7 @@
     <Content Include="Views\Cart\CartPartial.cshtml" />
     <Content Include="Views\Cart\CartNull.cshtml" />
     <Content Include="Views\Products\ShowComment.cshtml" />
-    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\Order.cshtml" />
     <Content Include="Views\Cart\ConfirmOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
