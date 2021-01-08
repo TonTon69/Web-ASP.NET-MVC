@@ -144,7 +144,7 @@ namespace Web_ASP.NET_MVC.Controllers
             foreach (var item in listCart)
             {
                 OrderDetail ctdh = new OrderDetail();
-                ctdh.OrderCode = ctdh.OrderCode;
+                ctdh.OrderCode = ddh.OrderCode;
                 ctdh.ProductCode = item.iProductCode;
                 ctdh.Number = item.iQuantity;
                 ctdh.TotalPrice = (decimal)item.dPrice;

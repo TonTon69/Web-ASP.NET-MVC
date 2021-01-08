@@ -72,7 +72,7 @@ namespace Web_ASP.NET_MVC.Controllers
                 else if (user != null)
                 {
                     Session["UserId"] = user.UserCode;
-                    Session["Account"] = user.Account;
+                    Session["Account"] = user;
                     Session["FullName"] = user.FullName;
                     return RedirectToAction("Index", "Home");
                 }

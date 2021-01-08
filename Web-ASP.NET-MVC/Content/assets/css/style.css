@@ -1893,31 +1893,22 @@ h2 {
         font-weight: 700;
         font-size: 25px;
         text-align: center;
-        color: #000000;
-        background: #4287ee;
+        color: #ffffff;
+        background: #ff3945;
         border: none;
         border-radius: 4px;
         transition: all .3s;
     }
-
-        .checkout .checkout-payment .checkout-btn button:hover, .btn-order:hover {
-            color: #4287ee;
-            background: #000000;
+        .btn-order:hover,.btn-addToCart:hover{
+            color: #ffffff;
         }
-
-
-/**********************************/
-
-
-/********* My Account CSS *********/
-
-
-/**********************************/
-
-.my-account {
-    position: relative;
-    padding: 30px 0;
-}
+        /**********************************/
+        /********* My Account CSS *********/
+        /**********************************/
+        .my-account {
+            position: relative;
+            padding: 30px 0;
+        }
 
 .my-account .nav.nav-pills .nav-link {
     padding: 10px 15px;
