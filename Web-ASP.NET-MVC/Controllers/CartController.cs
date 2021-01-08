@@ -147,7 +147,7 @@ namespace Web_ASP.NET_MVC.Controllers
                 ctdh.OrderCode = ddh.OrderCode;
                 ctdh.ProductCode = item.iProductCode;
                 ctdh.Number = item.iQuantity;
-                ctdh.TotalPrice = (decimal)item.dPrice;
+                ctdh.TotalPrice = (decimal)item.dMoney;
                 db.OrderDetails.Add(ctdh);
             }
             db.SaveChanges();
