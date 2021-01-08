@@ -880,13 +880,13 @@ h2 {
         font-weight: 600;
         font-size: 1.2rem;
     }
-
-.product-item .product-price .btn {
-    float: right;
-    border: none;
-    color: #ffffff;
-    background: #4287ee;
-}
+        
+        .product-item .product-price .btn {
+            float: right;
+            border: none;
+            color: #ffffff;
+            background: #4287ee;
+        }
 
 .product-item:hover .product-price .btn,
 .product-item .product-price .btn:hover {
@@ -1214,7 +1214,7 @@ h2 {
 }
 
 .product-detail .product-content .price span {
-    color: rgba(255, 255, 255, 0.5);;
+    color: rgba(255, 255, 255, 0.5);
     text-decoration: line-through;
     margin-left: 12px;
 }
