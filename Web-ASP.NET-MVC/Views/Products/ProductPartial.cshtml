@@ -28,14 +28,16 @@
         <div class="col-md-4">
             <div class="product-item">
                 <div class="product-title">
-                    <a href="@Url.Action("Details", "Products", new { id = item.ProductCode, name = item.MetaTitle })">@item.Name</a>
-                    <div class="ratting">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductCode, name = item.MetaTitle })">
+                        <span class="d-block">@item.Name</span>
+                        <div class="ratting">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </a>
                 </div>
                 <div class="product-image">
                     <a href="@Url.Action("Details", "Products", new { id = item.ProductCode , name = item.MetaTitle})">
@@ -46,11 +48,10 @@
                         <a href="@Url.Action("Details", "Products", new { id = item.ProductCode, name = item.MetaTitle })"><i class="fa fa-search"></i></a>
                     </div>
                 </div>
-                <div class="product-price">
-                    <span>
-                        @String.Format("{0:0,0}", @item.Price) đ
-                    </span>
-                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua Ngay</a>
+                <div class="product-price text-center">
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductCode , name = item.MetaTitle})">
+                        <span class="d-block">@String.Format("{0:0,0}", @item.Price) đ</span>
+                    </a>
                 </div>
             </div>
         </div>
