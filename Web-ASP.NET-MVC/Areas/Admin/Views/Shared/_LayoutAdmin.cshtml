@@ -20,8 +20,6 @@
     <link href="~/Content/assets/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="~/Content/assets/css/sb-admin-2.css" rel="stylesheet">
 
-    @*TinyMCE*@
-    <script src="https://cdn.tiny.cloud/1/vjzzaq9wpwi6gds0m7nf4dp5z8u1bxzd2qocu7in9zxyfks8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body id="page-top">
@@ -45,7 +43,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Trang chủ Shop</span>
+                    <span>HHT Shop</span>
                 </a>
             </li>
 
@@ -123,9 +121,16 @@
                 </div>
             </li>
 
-
             <hr class="sidebar-divider d-none d-md-block">
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/Admin/Orders" data-target="#menuOrder"
+                   aria-expanded="true" aria-controls="menuOrder">
+                    <i class="fas fa-fw fa-building"></i>
+                    <span>Đơn hàng</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -314,7 +319,7 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @if (Session["AdminId"] != null)
                                 {
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Session["AdminId"]</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào chủ nhân, <b>@Session["AdminId"]</b></span>
                                 }
                                 <img class="img-profile rounded-circle"
                                      src="~/Content/assets/img/undraw_profile.svg">

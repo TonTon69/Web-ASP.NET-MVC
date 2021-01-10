@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Web_ASP.NET_MVC.Models.OrderDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Đơn hàng</h2>
+<br />
+<p>Tất cả (@ViewBag.message)</p>
+<table class="table">
+    <tr>
+        <th>
+            Đơn hàng
+        </th>
+        <th>
+            Ngày đặt hàng
+        </th>
+        <th>
+            Tình trạng
+        </th>
+        <th>
+            Tổng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FSOrder.OrderDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FSOrder.Paid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                <i class="far fa-eye"></i>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
