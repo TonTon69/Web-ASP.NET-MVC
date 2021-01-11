@@ -35,13 +35,13 @@
                 @Html.DisplayFor(modelItem => item.OrderDay)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Paid)
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @*@String.Format("{0:0,0}", item.OrderDetails.)₫*@
+                @String.Format("{0:0,0}", item.OrderDetails.Sum(x => x.TotalPrice))₫
             </td>
             <td>
-                <a class="btn btn-primary" data-toggle="modal" data-target="#orderDetail" href="@Url.Action("Details", "Orders", new { @id= item.OrderCode })">
+                <a class="btn btn-primary" href="@Url.Action("Details", "Orders", new { id = item.OrderCode })">
                     <i class="far fa-eye"></i>
                 </a>
             </td>
@@ -49,11 +49,4 @@
     }
 </table>
 
-<style>
-    .modal-title, table tr th, h6, p {
-        color: #333;
-    }
-</style>
 
-<!-- Modal -->
-@Html.Action("Details", "Orders")

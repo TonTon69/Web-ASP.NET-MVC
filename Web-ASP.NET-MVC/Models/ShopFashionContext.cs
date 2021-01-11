@@ -16,12 +16,13 @@ namespace Web_ASP.NET_MVC.Models
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<FeedBack> FeedBacks { get; set; }
         public virtual DbSet<FSOrder> FSOrders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCetegory> ProductCetegories { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<WebUser> WebUsers { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<ViewOrderDetail> ViewOrderDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -37,6 +38,10 @@ namespace Web_ASP.NET_MVC.Models
                 .HasMany(e => e.OrderDetails)
                 .WithRequired(e => e.FSOrder)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<OrderDetail>()
+                .Property(e => e.TotalPrice)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Price)
@@ -69,9 +74,13 @@ namespace Web_ASP.NET_MVC.Models
                 .WithRequired(e => e.WebUser)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<OrderDetail>()
+            modelBuilder.Entity<ViewOrderDetail>()
                 .Property(e => e.TotalPrice)
                 .HasPrecision(18, 0);
+
+            modelBuilder.Entity<ViewOrderDetail>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
         }
     }
 }
