@@ -18,6 +18,8 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         ShopFashionContext db = new ShopFashionContext();
         public ActionResult Index(int? page, string search)
         {
+            var count = db.Products.Count();
+            ViewBag.message = count;
             if (Session["AdminId"] == null)
             {
                 return RedirectToAction("Index", "Login");

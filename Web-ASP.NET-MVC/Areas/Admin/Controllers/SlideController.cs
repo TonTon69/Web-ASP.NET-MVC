@@ -15,6 +15,8 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         // GET: Admin/Company
         public ActionResult Index(string search)
         {
+            var count = db.Slides.Count();
+            ViewBag.message = count;
             if (Session["AdminId"] == null)
             {
                 return RedirectToAction("Index", "Login");

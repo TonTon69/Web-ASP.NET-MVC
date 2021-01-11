@@ -1,0 +1,69 @@
+﻿@using Web_ASP.NET_MVC.Models
+@model List<OrderDetail>
+
+<div class="modal fade" id="orderDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold" id="exampleModalLongTitle">Đơn hàng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h6 class="font-weight-bold">Thông tin thanh toán</h6>
+                        <div>
+                            @*<p>@user.FullName</p>
+                                <p>@user.Address</p>
+                                <p>@user.Email</p>
+                                <p>@user.Phone</p>*@
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h6 class="font-weight-bold">Thông tin giao hàng</h6>
+
+                        <div>
+                            <p class="m-0">Phương thức giao hàng</p>
+                            <span>Đồng giá 35k</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    Sản phẩm
+                                </th>
+                                <th>
+                                    Số lượng
+                                </th>
+                                <th>
+                                    Tổng
+                                </th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Product.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Number)
+                                    </td>
+                                    <td>
+                                        @String.Format("{0:0,0}", item.TotalPrice)₫
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+</div>

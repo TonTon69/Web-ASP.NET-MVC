@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Web_ASP.NET_MVC.Models.OrderDetail>
+﻿@using Web_ASP.NET_MVC.Models
+@model List<FSOrder>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -31,20 +32,28 @@
                 @Html.DisplayFor(modelItem => item.OrderCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FSOrder.OrderDay)
+                @Html.DisplayFor(modelItem => item.OrderDay)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FSOrder.Paid)
+                @Html.DisplayFor(modelItem => item.Paid)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
+                @*@String.Format("{0:0,0}", item.OrderDetails.)₫*@
             </td>
             <td>
-                <i class="far fa-eye"></i>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#orderDetail" href="@Url.Action("Details", "Orders", new { @id= item.OrderCode })">
+                    <i class="far fa-eye"></i>
+                </a>
             </td>
         </tr>
     }
-
 </table>
 
+<style>
+    .modal-title, table tr th, h6, p {
+        color: #333;
+    }
+</style>
 
+<!-- Modal -->
+@Html.Action("Details", "Orders")

@@ -13,8 +13,13 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         // GET: Admin/Orders
         public ActionResult Index()
         {
-            var count = db.OrderDetails.Count();
+            var count = db.FSOrders.Count();
             ViewBag.message = count;
+            return View(db.FSOrders.ToList());
+        }
+        public ActionResult Details(int? id)
+        {
+            //OrderDetail pro = db.OrderDetails.Find(id);
             return View(db.OrderDetails.ToList());
         }
     }
