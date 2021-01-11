@@ -19,8 +19,10 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         ShopFashionContext db = new ShopFashionContext();
         public ActionResult Index(string search)
         {
+            //dem so luong the loai
             var count = db.ProductCetegories.Count();
             ViewBag.message = count;
+
             if (Session["AdminId"] == null)
             {
                 return RedirectToAction("Index", "Login");
