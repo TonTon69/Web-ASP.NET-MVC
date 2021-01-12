@@ -1,4 +1,3 @@
-
 namespace Web_ASP.NET_MVC.Models
 {
     using System;

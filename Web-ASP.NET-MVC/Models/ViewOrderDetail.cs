@@ -16,32 +16,8 @@ namespace Web_ASP.NET_MVC.Models
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(250)]
-        public string Name { get; set; }
-
-        [Key]
-        [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int OrderCode { get; set; }
-
-        [Key]
-        [Column(Order = 3)]
-        public DateTime OrderDay { get; set; }
-
-        [Key]
-        [Column(Order = 4)]
-        public bool Status { get; set; }
-
-        public bool? Paid { get; set; }
-
-        public decimal? TotalPrice { get; set; }
-
-        public int? Number { get; set; }
-
-        [Key]
-        [Column(Order = 5)]
-        [StringLength(50)]
-        public string FullName { get; set; }
 
         [StringLength(250)]
         public string Address { get; set; }
@@ -49,7 +25,35 @@ namespace Web_ASP.NET_MVC.Models
         [StringLength(100)]
         public string Email { get; set; }
 
+        [Key]
+        [Column(Order = 2)]
+        [StringLength(50)]
+        public string FullName { get; set; }
+
         [StringLength(11)]
         public string Phone { get; set; }
+
+        [Key]
+        [Column(Order = 3)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int UserCode { get; set; }
+
+        public int? Number { get; set; }
+
+        public decimal? TotalPrice { get; set; }
+
+        [Key]
+        [Column(Order = 4)]
+        public DateTime OrderDay { get; set; }
+
+        [Key]
+        [Column(Order = 5)]
+        public DateTime DeliveryDay { get; set; }
+
+        public bool? Paid { get; set; }
+
+        [Key]
+        [Column(Order = 6)]
+        public bool Status { get; set; }
     }
 }

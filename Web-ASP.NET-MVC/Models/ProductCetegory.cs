@@ -41,4 +41,3 @@ namespace Web_ASP.NET_MVC.Models
         public virtual ICollection<Product> Products { get; set; }
     }
 }
-

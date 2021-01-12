@@ -32,6 +32,7 @@ namespace Web_ASP.NET_MVC.Controllers
                 db.SaveChanges();
                 ViewBag.Success = "Cảm ơn bạn đã gửi phản hồi cho chúng tôi!";
             }
+            ModelState.Clear();
             return View();
         }
 
