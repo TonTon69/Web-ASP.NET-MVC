@@ -35,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.OrderDay)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @Html.DisplayFor(modelItem => item.Paid)
             </td>
             <td>
                 @String.Format("{0:0,0}", item.OrderDetails.Sum(x => x.TotalPrice))₫
