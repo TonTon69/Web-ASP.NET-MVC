@@ -23,6 +23,7 @@
         [StringLength(250)]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập metatile")]
         [StringLength(250)]
         public string MetaTitle { get; set; }
 
@@ -33,15 +34,19 @@
         [StringLength(250)]
         public string Image { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng chọn ảnh sản phẩm")]
         [StringLength(250)]
         public string Image1 { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng chọn ảnh sản phẩm")]
         [StringLength(250)]
         public string Image2 { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng chọn ảnh sản phẩm")]
         [StringLength(250)]
         public string Image3 { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng chọn ảnh sản phẩm")]
         [StringLength(250)]
         public string Image4 { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập giá sản phẩm")]
