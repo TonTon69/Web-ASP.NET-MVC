@@ -56,43 +56,42 @@
             </div>
             @Html.AntiForgeryToken()
             <div class="col-lg-4">
-                @using (Html.BeginForm("Index", "Contact", FormMethod.Post))
-                {
-                    <div class="contact-form">
-                        <h2>Gửi phản hồi</h2>
+                <div class="contact-form">
+                    <h2>Gửi phản hồi</h2>
+                    @using (Html.BeginForm("Index", "Contact", FormMethod.Post))
+                    {
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <form>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Họ & Tên" } })
-                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-6">
-                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại" } })
-                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-6">
-                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Địa chỉ" } })
-                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-6">
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-12">
-                                    @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-                                </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Họ & Tên" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </div>
-                            <div>
-                                <input type="submit" value="Gửi" class="btn btn-default" />
-                                @if (ViewBag.Success != null)
-                                {<span class="text-danger">@ViewBag.Success</span>}
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại" } })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                             </div>
-                        </form>
-                    </div>
-                }
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Địa chỉ" } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" value="Gửi" class="btn btn-default" />
+                            @if (ViewBag.Success != null)
+                            {
+                                <span class="text-danger">@ViewBag.Success</span>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
         </div>
     </div>
-</div>

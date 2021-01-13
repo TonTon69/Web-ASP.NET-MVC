@@ -1,15 +1,10 @@
 ﻿@using Web_ASP.NET_MVC.Models
 @model List<Review>
 
-@*@{
-    WebUser user = (WebUser)Session["Account"];
-}*@
-
 @{
     foreach (var item in Model)
     {
         <div class="reviews-submitted">
-            @*<span style="font-weight: 600">@user.FullName</span>*@
             <div class="text-warning">
                 @for (int i = 0; i < item.Rating; i++)
                 {

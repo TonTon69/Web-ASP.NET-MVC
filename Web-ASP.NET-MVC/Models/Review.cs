@@ -16,7 +16,7 @@ namespace Web_ASP.NET_MVC.Models
         [Required]
         public string Content { get; set; }
 
-        public double Rating { get; set; }
+        public int Rating { get; set; }
 
         public DateTime DatePost { get; set; }
 
