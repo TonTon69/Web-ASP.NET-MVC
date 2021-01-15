@@ -20,7 +20,7 @@ namespace Web_ASP.NET_MVC.Models
 
         public bool? Paid { get; set; }
 
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
 
         public DateTime OrderDay { get; set; }
 

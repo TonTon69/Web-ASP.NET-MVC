@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Web_ASP.NET_MVC.Models.FeedBack>
+﻿@using Web_ASP.NET_MVC.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<Web_ASP.NET_MVC.Models.FeedBack>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -6,6 +8,10 @@
 
 
 <h2>Phản Hồi Của Khách Hàng</h2>
+<p>
+    <i class="fas fa-file-excel"></i>
+    @Html.ActionLink("Xuất Excel", "ExportContentToExcel")
+</p>
 <br />
 <p>Tất cả (@ViewBag.message)</p>
 <table class="table">
@@ -72,4 +78,29 @@
 
 </table>
 
+<style>
+    .pagination li {
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 5px;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+
+    .pagination .PagedList-skipToNext, .pagination .PagedList-skipToPrevious {
+        font-size: 14px;
+        border: none;
+    }
+
+    .pagination a {
+        padding: 6px 14px;
+        display: block;
+    }
+</style>
+
+<div class="col-md-12">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div class="pagination d-flex justify-content-center">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>
 

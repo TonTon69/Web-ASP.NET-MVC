@@ -1,11 +1,16 @@
 ﻿@using Web_ASP.NET_MVC.Models
-@model List<FSOrder>
+@using PagedList.Mvc;
+@model PagedList.PagedList<Web_ASP.NET_MVC.Models.FSOrder>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Đơn hàng</h2>
+<p>
+    <i class="fas fa-file-excel"></i>
+    @Html.ActionLink("Xuất Excel", "ExportContentToExcel")
+</p>
 <br />
 <p>Tất cả (@ViewBag.message)</p>
 <table class="table">
@@ -20,7 +25,13 @@
             Tình trạng
         </th>
         <th>
-            Tổng
+            Đã thanh toán
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Tổng tiền
         </th>
         <th></th>
     </tr>
@@ -35,7 +46,13 @@
                 @Html.DisplayFor(modelItem => item.OrderDay)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Paid)
+            </td>
+            <td>
+                @item.OrderDetails.Sum(x => x.Number)
             </td>
             <td>
                 @String.Format("{0:0,0}", item.OrderDetails.Sum(x => x.TotalPrice))₫
@@ -49,4 +66,28 @@
     }
 </table>
 
+<style>
+    .pagination li {
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 5px;
+        margin-right: 5px;
+        cursor: pointer;
+    }
 
+    .pagination .PagedList-skipToNext, .pagination .PagedList-skipToPrevious {
+        font-size: 14px;
+        border: none;
+    }
+
+    .pagination a {
+        padding: 6px 14px;
+        display: block;
+    }
+</style>
+
+<div class="col-md-12">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount 
+    <div class="pagination d-flex justify-content-center">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>
