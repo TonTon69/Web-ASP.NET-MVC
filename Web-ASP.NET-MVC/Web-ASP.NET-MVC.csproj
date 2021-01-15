@@ -191,7 +191,6 @@
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\ShopFashionContext.cs" />
     <Compile Include="Models\Slide.cs" />
-    <Compile Include="Models\ViewOrderDetail.cs" />
     <Compile Include="Models\WebUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2134,7 +2133,6 @@
     <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\ProductOrderDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Feedbacks\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Feedbacks\Delete.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />

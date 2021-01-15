@@ -39,17 +39,12 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ViewOrderDetail orderDetail = db.ViewOrderDetails.SingleOrDefault(x => x.OrderCode == id);
+            var orderDetail = db.FSOrders.Find(id);
             if (orderDetail == null)
             {
                 return HttpNotFound();
             }
             return View(orderDetail);
-        }
-        public PartialViewResult ProductOrderDetail()
-        {
-            var productOrderDetail = db.ViewOrderDetails.Select(q => q.OrderCode).ToList();
-            return PartialView(productOrderDetail);
         }
 
         public void ExportContentToExcel()

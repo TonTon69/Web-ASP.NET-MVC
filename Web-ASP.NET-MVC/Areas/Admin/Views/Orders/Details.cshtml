@@ -1,4 +1,4 @@
-﻿@model Web_ASP.NET_MVC.Models.ViewOrderDetail
+﻿@model Web_ASP.NET_MVC.Models.FSOrder
 
 @{
     ViewBag.Title = "Details";
@@ -9,10 +9,9 @@
     .modal-title, table tr th, h6 {
         color: #333;
     }
-
 </style>
 
-<h2>Chi Tiết Đơn Hàng</h2>
+<h2>Chi Tiết Đơn Hàng #@Html.DisplayFor(model => model.OrderCode)</h2>
 <p>
     <i class="fas fa-list"></i>
     @Html.ActionLink("Quay về Danh sách đơn hàng", "Index")
@@ -23,17 +22,17 @@
         <div class="col-lg-6">
             <h6 class="font-weight-bold mb-3">Thông tin thanh toán</h6>
             <div>
-                <p>Tên: @Model.FullName</p>
-                <p>Địa chỉ: @Model.Address</p>
-                <p>Email: @Model.Email</p>
-                <p>Số điện thoại: @Model.Phone</p>
+                <p>Tên: @Model.WebUser.FullName</p>
+                <p>Địa chỉ: @Model.WebUser.Address</p>
+                <p>Email: @Model.WebUser.Email</p>
+                <p>Số điện thoại: @Model.WebUser.Phone</p>
             </div>
         </div>
         <div class="col-lg-6">
             <h6 class="font-weight-bold mb-3">Thông tin giao hàng</h6>
             <div>
-                <p>Tên: @Model.FullName</p>
-                <p>Địa chỉ: @Model.Address</p>
+                <p>Tên: @Model.WebUser.FullName</p>
+                <p>Địa chỉ: @Model.WebUser.Address</p>
             </div>
             <h6 class="font-weight-bold mb-3">Phương thức giao hàng</h6>
             <div>
@@ -53,7 +52,15 @@
                         Tổng
                     </th>
                 </tr>
-                @*@Html.Action("ProductOrderDetail", "Orders")*@
+                @{ foreach (var item in Model.OrderDetails)
+                    {
+                        <tr>
+                            <td>@item.Product.Name</td>
+                            <td>@item.Number</td>
+                            <td>@String.Format("{0:0,0}", @item.TotalPrice)₫</td>
+                        </tr>
+                    }
+                }
             </table>
         </div>
     </div>

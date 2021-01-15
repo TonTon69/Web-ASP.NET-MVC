@@ -22,7 +22,6 @@ namespace Web_ASP.NET_MVC.Models
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<WebUser> WebUsers { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-        public virtual DbSet<ViewOrderDetail> ViewOrderDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -74,13 +73,6 @@ namespace Web_ASP.NET_MVC.Models
                 .Property(e => e.TotalPrice)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<ViewOrderDetail>()
-                .Property(e => e.Phone)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewOrderDetail>()
-                .Property(e => e.TotalPrice)
-                .HasPrecision(18, 0);
         }
     }
 }
