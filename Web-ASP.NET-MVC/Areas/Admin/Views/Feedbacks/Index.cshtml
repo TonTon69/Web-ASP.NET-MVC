@@ -28,6 +28,12 @@
         <th>
             Nội dung
         </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Ngày gửi
+        </th>
         <th></th>
     </tr>
 
@@ -51,6 +57,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FbStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
             </td>
             <td>
                 @Html.ActionLink("Xóa", "Delete", new { id = item.FeedBackCode }, new { @class = "btn btn-danger" })

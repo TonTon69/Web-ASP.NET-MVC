@@ -19,5 +19,24 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
 
             return View(db.FeedBacks.ToList());
         }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            FeedBack fb = db.FeedBacks.Find(id);
+            if (fb == null)
+            {
+                return HttpNotFound();
+            }
+            return View(fb);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            FeedBack fb = db.FeedBacks.Find(id);
+            db.FeedBacks.Remove(fb);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
