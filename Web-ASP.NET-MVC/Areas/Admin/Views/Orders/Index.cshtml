@@ -6,7 +6,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Đơn hàng</h2>
+<h2>Tất cả đơn hàng</h2>
 <p>
     <i class="fas fa-file-excel"></i>
     @Html.ActionLink("Xuất Excel", "ExportContentToExcel")
@@ -15,7 +15,7 @@
 <p>Tất cả (@ViewBag.message)</p>
 <table class="table">
     <tr>
-        <th>
+        <th class="text-center">
             Đơn hàng
         </th>
         <th>
@@ -27,7 +27,7 @@
         <th>
             Đã thanh toán
         </th>
-        <th>
+        <th class="text-center">
             Số lượng
         </th>
         <th>
@@ -39,19 +39,33 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.OrderCode)
             </td>
             <td>
                 @String.Format("{0:dd/MM/yyyy}", item.OrderDay)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @if (item.Status == false)
+                {
+                    @String.Format("Chưa giao hàng");
+                }
+                else
+                {
+                    @String.Format("Đã giao hàng");
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Paid)
+                @if (item.Paid == false)
+                {
+                    @String.Format("Chưa thanh toán");
+                }
+                else
+                {
+                    @String.Format("Đã thanh toán");
+                }
             </td>
-            <td>
+            <td class="text-center">
                 @item.OrderDetails.Sum(x => x.Number)
             </td>
             <td>
