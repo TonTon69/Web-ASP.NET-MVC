@@ -12,7 +12,7 @@ namespace Web_ASP.NET_MVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FSOrder()
         {
-            OrderDetails = new HashSet<OrderDetail>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
 
         [Key]
