@@ -13,6 +13,10 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
         // GET: Admin/Feedbacks
         public ActionResult Index()
         {
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             //dem so luong 
             var count = db.FeedBacks.Count();
             ViewBag.message = count;
