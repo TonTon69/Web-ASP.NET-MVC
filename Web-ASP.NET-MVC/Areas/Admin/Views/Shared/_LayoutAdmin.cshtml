@@ -43,7 +43,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">
                     <i class="fas fa-store-alt"></i>
-                    <span>HHT Shop</span>
+                    <span>HHT SHOP</span>
                 </a>
             </li>
 
@@ -96,7 +96,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuUsers"
                    aria-expanded="true" aria-controls="menuUsers">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Thành viên</span>
+                    <span>Người dùng</span>
                 </a>
                 <div id="menuUsers" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
@@ -154,18 +154,17 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    @*@using (Html.BeginForm("Index", "Products", FormMethod.Get, new { @class = "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" }))
+                    {
                         <div class="input-group">
-                            @using (Html.BeginForm("Index", "Products", FormMethod.Get))
-                            {
-                <input type="text" name="search" value="@ViewBag.CurrentFilter" class="form-control bg-light border-0 small" placeholder="Tìm kiếm...">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>}
+                            <input type="text" name="search" value="@ViewBag.CurrentFilter" class="form-control bg-light border-0 small" placeholder="Tìm kiếm...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
                         </div>
-                    </form>
+                    }*@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -325,7 +324,7 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @if (Session["AdminId"] != null)
                                 {
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào chủ nhân, <b>@Session["AdminId"]</b></span>}
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào chủ nhân, <b>@Session["AdminId"]</b></span>}
                                 <img class="img-profile rounded-circle"
                                      src="~/Content/assets/img/undraw_profile.svg">
                             </a>

@@ -19,31 +19,44 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Quản Lý Thông Tin Sản Phẩm</h2>
-<div class="d-flex">
-    <p class="mr-4">
-        <i class="fas fa-plus"></i>
-        @Html.ActionLink("Thêm mới", "Create")
-    </p>
-    <p>
-        <i class="fas fa-file-excel"></i>
-        @Html.ActionLink("Xuất Excel", "ExportContentToExcel")
-    </p>
+<h2>Danh Mục Sản Phẩm</h2>
+<div class="d-flex mb-4">
+    @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { @class = "d-none d-sm-inline-block form-inline my-2 my-md-0 mw-100 navbar-search" }))
+    {
+        <div class="input-group">
+            <input type="text" name="search" value="@ViewBag.CurrentFilter" class="form-control border-0 small" placeholder="Tìm kiếm...">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    }
+    <div class="d-flex">
+        <a href="@Url.Action("Create","Products")" class="btn btn-primary ml-4">
+            <i class="fas fa-plus"></i>
+            Thêm mới sản phẩm
+        </a>
+        <a href="@Url.Action("ExportContentToExcel","Products")" class="btn btn-success ml-2">
+            <i class="fas fa-file-excel"></i>
+            Xuất excel
+        </a>
+    </div>
 </div>
 <span>Tất cả (@ViewBag.message)</span>
 <table class="table">
     <tr>
         <th>ID</th>
         <th>Tên</th>
-        <th>Giá</th>
-        <th>Giá khuyến mãi</th>
+        <th>Giá gốc</th>
+        <th>Giá KM</th>
         <th style="width: 250px">Mô tả</th>
         <th>SL Tồn</th>
         <th>Thể loại</th>
-        <th>Ảnh</th>
-        <th>Được tạo ngày</th>
+        <th>Ảnh chính</th>
+        <th>Ngày tạo</th>
         <th>Được tạo bởi</th>
-        <th></th>
+        <th style="width: 162px">Tùy chỉnh</th>
     </tr>
 
     @foreach (var item in Model)
@@ -74,15 +87,21 @@
                 <img src="@Url.Content(item.Image)" height="50" width="50" />
             </td>
             <td style="width: 120px">
-                @Html.DisplayFor(modelItem => item.CreatedDate)
+                @String.Format("{0:dd/MM/yyyy}", item.CreatedDate)
             </td>
             <td style="width: 120px">
                 @Html.DisplayFor(modelItem => item.CreateBy)
             </td>
             <td>
-                @Html.ActionLink("Sửa", "Edit", new { id = item.ProductCode }, new { @class = "btn btn-primary mb-1" })
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.ProductCode }, new { @class = "btn btn-secondary mb-1" })
-                @Html.ActionLink("Xóa", "Delete", new { id = item.ProductCode }, new { @class = "btn btn-danger" })
+                <a href="@Url.Action("Edit","Products",new { id = item.ProductCode })" class="btn btn-primary">
+                    <i class="far fa-edit"></i>
+                </a>
+                <a href="@Url.Action("Details","Products",new { id = item.ProductCode })" class="btn btn-secondary">
+                    <i class="far fa-eye"></i>
+                </a>
+                <a href="@Url.Action("Delete","Products",new { id = item.ProductCode })" class="btn btn-danger">
+                    <i class="far fa-trash-alt"></i>
+                </a>
             </td>
         </tr>
     }
@@ -109,7 +128,7 @@
 </style>
 
 <div class="col-md-12">
-    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount 
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
     <div class="pagination d-flex justify-content-center">
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
     </div>
