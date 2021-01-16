@@ -78,8 +78,6 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                //db.Entry(order).State = EntityState.Modified;
-                //db.SaveChanges();
             }
             return View();
         }

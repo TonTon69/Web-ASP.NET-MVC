@@ -52,6 +52,34 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            FeedBack fb = db.FeedBacks.Find(id);
+            if (fb == null)
+            {
+                return HttpNotFound();
+            }
+            return View(fb);
+        }
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int? id)
+        {
+            if (ModelState.IsValid)
+            {
+                FeedBack fb = db.FeedBacks.SingleOrDefault(x => x.FeedBackCode == id);
+                if (fb != null)
+                {
+                    fb.FbStatus = true;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            return View();
+        }
+
         public void ExportContentToExcel()
         {
             var gv = new GridView()

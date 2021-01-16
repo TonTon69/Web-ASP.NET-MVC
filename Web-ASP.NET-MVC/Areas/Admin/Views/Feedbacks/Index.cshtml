@@ -8,10 +8,13 @@
 
 
 <h2>Phản Hồi Của Khách Hàng</h2>
-<p>
-    <i class="fas fa-file-excel"></i>
-    @Html.ActionLink("Xuất Excel", "ExportContentToExcel")
-</p>
+<div class="d-flex">
+    <a href="@Url.Action("ExportContentToExcel","Feedbacks")" class="btn btn-success ml-2">
+        <i class="fas fa-file-excel"></i>
+        Xuất excel
+    </a>
+</div>
+
 <br />
 <p>Tất cả (@ViewBag.message)</p>
 <table class="table">
@@ -67,18 +70,27 @@
             <td>
                 @if (item.FbStatus == false)
                 {
-                    @String.Format("Chưa phản hồi");
+                    <div class="btn btn-secondary" style="line-height: 10px">
+                        @String.Format("Chưa phản hồi")
+                    </div>
                 }
                 else
                 {
-                    @String.Format("Đã phản hồi");
+                    <div class="btn btn-success" style="line-height: 10px">
+                        @String.Format("Đã phản hồi")
+                    </div>
                 }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreateDate)
             </td>
             <td>
-                @Html.ActionLink("Xóa", "Delete", new { id = item.FeedBackCode }, new { @class = "btn btn-danger" })
+                <a href="@Url.Action("Edit","Feedbacks",new { id = item.FeedBackCode })" class="btn btn-primary">
+                    <i class="far fa-edit"></i>
+                </a>
+                <a href="@Url.Action("Delete","Feedbacks",new { id = item.FeedBackCode })" class="btn btn-danger">
+                    <i class="far fa-trash-alt"></i>
+                </a>
             </td>
         </tr>
     }
