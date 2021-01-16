@@ -1,5 +1,5 @@
-﻿@model Web_ASP.NET_MVC.Models.FSOrder
-
+﻿@using System.Web.Mvc;
+@model Web_ASP.NET_MVC.Models.FSOrder
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -19,22 +19,75 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.OrderCode)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Paid, "Đã thanh toán", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Paid, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <table class="table">
+            <tr>
+                <th class="text-center">
+                    Đơn hàng
+                </th>
+                <th>
+                    Ngày đặt hàng
+                </th>
+                <th>
+                    Ngày giao hàng
+                </th>
+                <th>
+                    Trạng thái
+                </th>
+                <th>
+                    Thanh toán
+                </th>
+                <th class="text-center">
+                    Số lượng
+                </th>
+                <th>
+                    Tổng tiền
+                </th>
+            </tr>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status, "Chưa giao hàng", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => @Model.OrderCode)
+                </td>
+                <td>
+                    @String.Format("{0:dd/MM/yyyy}", @Model.OrderDay)
+                </td>
+                <td>
+                    @String.Format("{0:dd/MM/yyyy}", @Model.DeliveryDay)
+                </td>
+                <td class="text-center">
+                    <div class="form-group">
+                        @{
+                            var htmlAttributes = ViewData["htmlAttributes"] ?? new { };
 
+                            @Html.DropDownListFor(model => model.Status,
+                                new List<SelectListItem>(2) {
+                                new SelectListItem { Text = "Đã giao hàng", Value = "true"},
+                                new SelectListItem { Text = "Chưa giao hàng", Value = "false"}
+                            }, htmlAttributes = new { @class = "form-control" })
+                        }
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="form-group">
+                        @{
+                            @Html.DropDownListFor(model => model.Paid,
+                                new List<SelectListItem>(2) {
+                                new SelectListItem { Text = "Đã thanh toán", Value = "true"},
+                                new SelectListItem { Text = "Chưa thanh toán", Value = "false"}
+                            }, htmlAttributes = new { @class = "form-control" })
+                        }
+                        @Html.ValidationMessageFor(model => model.Paid, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td class="text-center">
+                    @Model.OrderDetails.Sum(x => x.Number)
+                </td>
+                <td>
+                    @String.Format("{0:0,0}", @Model.OrderDetails.Sum(x => x.TotalPrice))₫
+                </td>
+            </tr>
+        </table>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Lưu lại" class="btn btn-default btn-primary" />
