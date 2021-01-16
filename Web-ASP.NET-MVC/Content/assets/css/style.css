@@ -804,6 +804,8 @@ h2 {
 .product-item .product-image img {
     width: 100%;
     transition: all .3s;
+    height: 350px;
+    object-fit: cover;
 }
 
 .product-item:hover .product-image img {
