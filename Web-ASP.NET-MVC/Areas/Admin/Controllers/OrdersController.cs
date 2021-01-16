@@ -16,7 +16,7 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
     {
         ShopFashionContext db = new ShopFashionContext();
         // GET: Admin/Orders
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string search)
         {
             if (Session["AdminId"] == null)
             {
@@ -26,8 +26,12 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
             var count = db.FSOrders.Count();
             ViewBag.message = count;
 
+            ViewBag.CurrentFilter = search;
             var orders = from s in db.FSOrders select s;
-
+            if (!string.IsNullOrEmpty(search))
+            {
+                orders = orders.Where(s => s.Status.ToString().Contains(search) || s.Paid.ToString().Contains(search));
+            }
             orders = orders.OrderBy(c => c.OrderCode);
             int pageNumber = (page ?? 1);
             int pageSize = 5;

@@ -5,29 +5,42 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Quản Lý Thông Tin Thể Loại</h2>
-<div class="d-flex">
-    <p class="mr-4">
-        <i class="fas fa-plus"></i>
-        @Html.ActionLink("Thêm mới", "Create")
-    </p>
-    <p>
-        <i class="fas fa-file-excel"></i>
-        @Html.ActionLink("Xuất Excel", "ExportContentToExcel")
-    </p>
+<h2>Danh Mục Thể Loại</h2>
+<div class="d-flex mb-4">
+    @using (Html.BeginForm("Index", "Category", FormMethod.Get, new { @class = "d-none d-sm-inline-block form-inline my-2 my-md-0 mw-100 navbar-search" }))
+    {
+        <div class="input-group">
+            <input type="text" name="search" value="@ViewBag.CurrentFilter" class="form-control border-0 small" placeholder="Tìm kiếm...">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    }
+    <div class="d-flex">
+        <a href="@Url.Action("Create","Category")" class="btn btn-primary ml-4">
+            <i class="fas fa-plus"></i>
+            Thêm mới thể loại
+        </a>
+        <a href="@Url.Action("ExportContentToExcel","Category")" class="btn btn-success ml-2">
+            <i class="fas fa-file-excel"></i>
+            Xuất excel
+        </a>
+    </div>
 </div>
 <span>Tất cả (@ViewBag.message)</span>
 <table class="table">
     <tr>
         <th>ID</th>
         <th>Tên</th>
-        @*<th>MetaTitle</th>
+        <th>MetaTitle</th>
         <th>DisplayOrder</th>
         <th>SeoTitle</th>
-        <th>ShowOnHome</th>*@
+        <th>ShowOnHome</th>
         <th>Ngày khởi tạo</th>
         <th>Được tạo bởi</th>
-        <th></th>
+        <th>Tùy chỉnh</th>
     </tr>
 
     @foreach (var item in Model)
@@ -39,7 +52,7 @@
             <td style="width: 200px">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            @*<td>
+            <td>
                 @Html.DisplayFor(modelItem => item.MetaTitle)
             </td>
             <td>
@@ -50,7 +63,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ShowOnHome)
-            </td>*@
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreateDate)
             </td>
@@ -58,12 +71,15 @@
                 @Html.DisplayFor(modelItem => item.CreateBy)
             </td>
             <td>
-                @Html.ActionLink("Sửa", "Edit", new
-           {
-               id = item.CategoryCode
-           }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.CategoryCode }, new { @class = "btn btn-secondary" })
-                @Html.ActionLink("Xóa", "Delete", new { id = item.CategoryCode }, new { @class = "btn btn-danger" })
+                <a href="@Url.Action("Edit","Category",new { id = item.CategoryCode })" class="btn btn-primary">
+                    <i class="far fa-edit"></i>
+                </a>
+                <a href="@Url.Action("Details","Category",new { id = item.CategoryCode })" class="btn btn-secondary">
+                    <i class="far fa-eye"></i>
+                </a>
+                <a href="@Url.Action("Delete","Category",new { id = item.CategoryCode })" class="btn btn-danger">
+                    <i class="far fa-trash-alt"></i>
+                </a>
             </td>
         </tr>
     }

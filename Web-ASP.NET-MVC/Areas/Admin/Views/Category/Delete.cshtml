@@ -7,10 +7,10 @@
 
 <h2>Xóa thể loại</h2>
 <h3>Bạn chắc chắn muốn xóa thể loại này?</h3>
-<p>
+<div>
     <i class="fas fa-list"></i>
-    @Html.ActionLink("Quay về Danh sách thể loại", "Index")
-</p>
+    @Html.ActionLink("Quay về Danh mục thể loại", "Index")
+</div>
 
 <div>
     <br />
@@ -55,7 +55,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-primary btn-default" />
+            <input type="submit" value="Xóa" class="btn btn-danger btn-default" />
         </div>
     }
 </div>

@@ -8,7 +8,7 @@
 <h2>Thêm Mới Thể Loại</h2>
 <div>
     <i class="fas fa-list"></i>
-    @Html.ActionLink("Quay về Danh sách thể loại", "Index")
+    @Html.ActionLink("Quay về Danh mục thể loại", "Index")
 </div>
 @using (Html.BeginForm("Create", "Category", FormMethod.Post))
 {
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        @*<div class="form-group">
+        <div class="form-group">
             @Html.LabelFor(model => model.MetaTitle, "MetaTitle", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MetaTitle, new { htmlAttributes = new { @class = "form-control" } })
@@ -54,7 +54,7 @@
                 @Html.EditorFor(model => model.ShowOnHome, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ShowOnHome, "", new { @class = "text-danger" })
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.CreateBy, "Được tạo bởi", htmlAttributes: new { @class = "control-label col-md-2" })

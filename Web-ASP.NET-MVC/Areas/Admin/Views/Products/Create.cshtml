@@ -7,7 +7,7 @@
 <h2>Thêm Mới Sản Phẩm</h2>
 <div>
     <i class="fas fa-list"></i>
-    @Html.ActionLink("Quay về Danh sách sản phẩm", "Index")
+    @Html.ActionLink("Quay về Danh mục sản phẩm", "Index")
 </div>
 
 @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -17,7 +17,7 @@
         <br />
         <div class="row">
             <div class="col-md-6">
-                @Html.LabelFor(model => model.Name, "Tên sản phẩm", htmlAttributes: new { @class = "control-label" })
+                @Html.LabelFor(model => model.Name, "Tên sản phẩm", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="form-group">
                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    @Html.LabelFor(model => model.PromotionPrice, "Giá Khuyến Mãi", htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.PromotionPrice, "Giá Khuyến Mãi", htmlAttributes: new { @class = "control-label col-md-4" })
                     @Html.EditorFor(model => model.PromotionPrice, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.PromotionPrice, "", new { @class = "text-danger" })
                 </div>
@@ -115,14 +115,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CreateBy, "Được tạo bởi", htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.CreateBy, "Được tạo bởi", htmlAttributes: new { @class = "control-label col-md-4" })
                     @Html.EditorFor(model => model.CreateBy, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.CreateBy, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CreatedDate, "Ngày khởi tạo", htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.CreatedDate, "Ngày khởi tạo", htmlAttributes: new { @class = "control-label col-md-4" })
                     <input class="form-control" type="date" name="CreatedDate" />
                     @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
                 </div>
