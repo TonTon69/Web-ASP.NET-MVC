@@ -3,4 +3,4 @@
 * ASP.NET MVC (C#)
 * SQL Server
 
-* Demo: [HHT Fashion]: http://hhtfashion.somee.com/
+* Demo: [HHT Fashion](http://hhtfashion.somee.com/)
