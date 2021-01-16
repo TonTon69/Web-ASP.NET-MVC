@@ -45,61 +45,49 @@
     <div class="bottom-bar sticky-top" style="top: -1px">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-between">
-                <div class="col-md-2">
+                <div class="ml-2">
                     <div class="logo">
                         <a href="/">
-                            <img src="~/Content/assets/img/hht-fashion.png" width="150" height="70"/>
+                            <img src="~/Content/assets/img/hht-fashion.png" width="150" height="70" />
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 nav-title">
                     <div class="nav">
-                        <div class="container-fluid">
-                            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                                    <div class="navbar-nav mr-auto">
-                                        <a href="/" class="nav-item nav-link active mr-4">TRANG CHỦ</a>
-                                        <a href="/Products" class="nav-item nav-link mr-4">SẢN PHẨM</a>
-                                        <a href="/Contact" class="nav-item nav-link ">LIÊN LẠC</a>
-                                    </div>
+                        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                                <div class="navbar-nav mr-auto">
+                                    <a href="/" class="nav-item nav-link nav-layout-user active mr-4">TRANG CHỦ</a>
+                                    <a href="/Products" class="nav-item nav-link nav-layout-user mr-3">SẢN PHẨM</a>
+                                    <a href="/Contact" class="nav-item nav-link nav-layout-user">LIÊN LẠC</a>
                                 </div>
-                            </nav>
-                        </div>
+                            </div>
+                        </nav>
                     </div>
                 </div>
-                @*<div class="col-md-3">
-                    <div class="search">
-                        @using (Html.BeginForm("Index", "Products", FormMethod.Get))
-                        {
-                            <input type="text" name="search" value="@ViewBag.CurrentFilter" placeholder="Tìm kiếm sản phẩm..." style="outline: none">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                        }
-                    </div>
-                </div>*@
-                <div class="col-md-3">
-                    <div class="user justify-content-end">
-                        <div>
-                            @Html.Action("CartPartial", "Cart")
-                        </div>
-                        @if (Session["FullName"] == null)
-                        {
 
-                            <a href="#" class="nav-link dropdown-toggle" style="color:#ffff; font-weight: 600;" data-toggle="dropdown">TÀI KHOẢN</a>
-                            <div class="dropdown-menu">
-                                <a href="/User/Login" class="dropdown-item">Đăng Nhập</a>
-                                <a href="/User/Register" class="dropdown-item">Đăng kí</a>
-                            </div>
-                        }
-                        else
-                        {
-                            <a href="#" class="nav-link dropdown-toggle" style="color:#ffff; font-weight: 600;" data-toggle="dropdown">@Session["FullName"]</a>
-                            <div class="dropdown-menu">
-                                <a href="/User/Profile" class="dropdown-item">Hồ sơ</a>
-                                <a href="/User/Settings" class="dropdown-item">Cài đặt</a>
-                                <a href="@Url.Action("Logout", "User")" class="dropdown-item">Đăng xuất</a>
-                            </div>
-                        }
+                <div class="user justify-content-end">
+                    <div>
+                        @Html.Action("CartPartial", "Cart")
                     </div>
+                    @if (Session["FullName"] == null)
+                    {
+
+                        <a href="#" class="nav-link dropdown-toggle" style="color:#ffff; font-weight: 600;" data-toggle="dropdown">TÀI KHOẢN</a>
+                        <div class="dropdown-menu">
+                            <a href="/User/Login" class="dropdown-item">Đăng Nhập</a>
+                            <a href="/User/Register" class="dropdown-item">Đăng kí</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <a href="#" class="nav-link dropdown-toggle" style="color:#ffff; font-weight: 600;" data-toggle="dropdown">@Session["FullName"]</a>
+                        <div class="dropdown-menu">
+                            <a href="/User/Profile" class="dropdown-item">Hồ sơ</a>
+                            <a href="/User/Settings" class="dropdown-item">Cài đặt</a>
+                            <a href="@Url.Action("Logout", "User")" class="dropdown-item">Đăng xuất</a>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

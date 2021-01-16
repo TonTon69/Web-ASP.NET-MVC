@@ -294,13 +294,14 @@ h2 {
 }
 
 @media (min-width: 768px) {
+   
     .nav,
     .nav .navbar {
         background: #4287ee !important;
     }
-    .nav .navbar-brand {
-        display: none;
-    }
+        .nav .navbar-brand {
+            display: none;
+        }
     .nav .navbar-dark a.nav-link {
         color: #ffffff;
         font-size: 15px;
@@ -313,12 +314,11 @@ h2 {
 }
 
 @media (max-width: 768px) {
+    .nav-title{
+        display: none;
+    }
     .nav {
         padding: 5px 0;
-    }
-    .nav,
-    .nav .navbar {
-        background: #000000 !important;
     }
     .nav a.nav-link {
         padding: 5px 0;
@@ -1261,6 +1261,10 @@ h2 {
 
 .product-detail .product-content .action a i {
     margin-right: 5px;
+}
+
+.nav-item.nav-link.nav-layout-user {
+    width: 105px;
 }
 
 .product-detail .nav.nav-pills .nav-link {
