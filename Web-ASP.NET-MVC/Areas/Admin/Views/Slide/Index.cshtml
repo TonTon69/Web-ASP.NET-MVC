@@ -7,15 +7,12 @@
 
 <h2>Quản Lý Thông Tin Banner</h2>
 <div class="d-flex">
-    <p class="mr-4">
+    <a href="@Url.Action("Create","Slide")" class="btn btn-primary">
         <i class="fas fa-plus"></i>
-        @Html.ActionLink("Thêm mới", "Create")
-    </p>
-    <p>
-        <i class="fas fa-file-excel"></i>
-        @Html.ActionLink("Xuất Excel", "ExportContentToExcel")
-    </p>
+        Thêm mới sản phẩm
+    </a>
 </div>
+<br />
 <span>Tất cả (@ViewBag.message)</span>
 <table class="table">
     <tr>
@@ -46,12 +43,15 @@
                 @Html.DisplayFor(modelItem => item.CreatedDate)
             </td>
             <td>
-                @Html.ActionLink("Sửa", "Edit", new
-           {
-               id = item.SlideCode
-           }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.SlideCode }, new { @class = "btn btn-secondary" })
-                @Html.ActionLink("Xóa", "Delete", new { id = item.SlideCode }, new { @class = "btn btn-danger" })
+                <a href="@Url.Action("Edit","Slide",new { id = item.SlideCode })" class="btn btn-primary">
+                    <i class="far fa-edit"></i>
+                </a>
+                <a href="@Url.Action("Details","Slide",new { id = item.SlideCode })" class="btn btn-secondary">
+                    <i class="far fa-eye"></i>
+                </a>
+                <a href="@Url.Action("Delete","Slide",new { id = item.SlideCode })" class="btn btn-danger">
+                    <i class="far fa-trash-alt"></i>
+                </a>
             </td>
         </tr>
     }
