@@ -40,10 +40,10 @@
             Ngày giao hàng
         </th>
         <th>
-            Tình trạng
+            Trạng thái
         </th>
         <th>
-            Đã thanh toán
+            Thanh toán
         </th>
         <th class="text-center">
             Số lượng
@@ -69,21 +69,29 @@
             <td>
                 @if (item.Status == false)
                 {
-                    @String.Format("Chưa giao hàng");
+                    <div class="btn btn-secondary" style="line-height: 10px">
+                        @String.Format("Chưa giao hàng")
+                    </div>
                 }
                 else
                 {
-                    @String.Format("Đã giao hàng");
+                    <div class="btn btn-success" style="line-height: 10px">
+                        @String.Format("Đã giao hàng")
+                    </div>
                 }
             </td>
             <td>
                 @if (item.Paid == false)
                 {
-                    @String.Format("Chưa thanh toán");
+                    <div class="btn btn-warning" style="line-height: 10px">
+                        @String.Format("Chưa thanh toán")
+                    </div>
                 }
                 else
                 {
-                    @String.Format("Đã thanh toán");
+                    <div class="btn btn-danger" style="line-height: 10px">
+                        @String.Format("Đã thanh toán")
+                    </div>
                 }
             </td>
             <td class="text-center">
@@ -93,7 +101,10 @@
                 @String.Format("{0:0,0}", item.OrderDetails.Sum(x => x.TotalPrice))₫
             </td>
             <td>
-                <a class="btn btn-primary" href="@Url.Action("Details", "Orders", new { id = item.OrderCode })">
+                <a href="@Url.Action("Edit","Orders",new { id = item.OrderCode })" class="btn btn-primary">
+                    <i class="far fa-edit"></i>
+                </a>
+                <a href="@Url.Action("Details", "Orders", new { id = item.OrderCode })" class="btn btn-secondary">
                     <i class="far fa-eye"></i>
                 </a>
             </td>

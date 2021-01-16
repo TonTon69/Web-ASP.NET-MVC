@@ -1,6 +1,7 @@
 ﻿using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -49,6 +50,38 @@ namespace Web_ASP.NET_MVC.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             return View(orderDetail);
+        }
+
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            FSOrder order = db.FSOrders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int? id)
+        {
+            if (ModelState.IsValid)
+            {
+                FSOrder order = db.FSOrders.SingleOrDefault(x => x.OrderCode == id);
+                if (order != null)
+                {
+                    order.Status = true;
+                    order.Paid = true;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                //db.Entry(order).State = EntityState.Modified;
+                //db.SaveChanges();
+            }
+            return View();
         }
 
         public void ExportContentToExcel()
